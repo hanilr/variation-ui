@@ -1,7 +1,6 @@
 /* VARIATION TUI (LIBRARY) */
 #ifndef _VN_H
 #define _VN_H
-
 /* -------------------------------- *
  * ASCII ESCAPE SEQUENCE RESET CODE *
  * -------------------------------- */
@@ -43,11 +42,13 @@ void vn_gotoxy(int pos_x, int pos_y); /* SET CURSOR TO X AND Y POSITIONS */
 
 void vn_print(char *str, char *fg_color, char *bg_color, char *str_style); /* PRINT WITH COLORS */
 
+#ifdef VN_WIDGET
 void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color); /* SET BACKGROUND COLOR */
 
 void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol); /* SET FRAME */
 
 void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char* text_style, char *str); /* SET LABEL */
+#endif /* VARIATION WIDGET SECTION */
 
 #endif /* SUMMARY SECTION */
 
@@ -151,6 +152,7 @@ void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
     printf("%s%s%s%s%s", fg_color, bg_color, str_style, str, esc_reset);
 } /* EXAMPLE: vn_print("temp", "", "", ""); */
 
+#ifdef VN_WIDGET
 void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
 {
     int x = 0, y = 0;
@@ -251,5 +253,6 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
     }
     else { vn_print(str, fg_color, bg_color, text_style); }
 }
+#endif /* VARITATION WIDGET SECTION */
 
 #endif /* MADE BY @hanilr */
