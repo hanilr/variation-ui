@@ -26,6 +26,7 @@
 #define cursor_invisible "\033[?25l"
 /* ----------------------------------- */
 
+#ifdef VN_COLOR
 struct vnc_color 
 { /* VARIATION CUSTOM COLOR */
     int is_fore; /* IS FOR FOREGROUND OR BACKGROUND */
@@ -33,6 +34,7 @@ struct vnc_color
 }; /* ONLY NEED HEX CODE */
 
 char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
+#endif /* COLOR SECTION */
 
 void vn_cursor_visibility(int boolean); /* SET CURSOR VISIBILITY */
 
@@ -99,6 +101,7 @@ int hex_letter(char letter, int left_side)
     return 0;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
+#ifdef VN_COLOR
 char *vn_color(char *hex_color, int is_fore)
 {
     if(strlen(hex_color) != 6)
@@ -136,6 +139,7 @@ char *vn_color(char *hex_color, int is_fore)
     if(is_fore == 0) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
     return rgb;
 }
+#endif /* COLOR SECTION */
 
 void vn_cursor_visibility(int boolean)
 {
