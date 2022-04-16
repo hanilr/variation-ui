@@ -26,6 +26,12 @@
 #define cursor_invisible "\033[?25l"
 /* ----------------------------------- */
 
+struct vn_init
+{ /* DEFINATION OF DEFAULT WINDOW SIZES */
+    int window_width; /* WIDTH SIZE SHORTCUT */
+    int window_height; /* HEIGHT SIZE SHORTCUT*/
+}; /* NOT NECESSARY */
+
 #ifdef VN_COLOR
 struct vnc_color 
 { /* VARIATION CUSTOM COLOR */
