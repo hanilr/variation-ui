@@ -42,6 +42,10 @@ struct vnc_color
 char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
 #endif /* COLOR SECTION */
 
+int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
+
+void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */
+
 void vn_cursor_visibility(int boolean); /* SET CURSOR VISIBILITY */
 
 void vn_clear(void); /* CLEAR SCREEN */
@@ -56,6 +60,10 @@ void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color); /* SET 
 void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol); /* SET FRAME */
 
 void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char* text_style, char *str); /* SET LABEL */
+
+void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* PROGRESS BAR */
+
+void vn_list(int pos_x, int pos_y, int width, int height, char *list_bg_color, char *list_fg_color, char *list_title, char *list_content); /* LIST LABEL */
 #endif /* VARIATION WIDGET SECTION */
 
 #endif /* SUMMARY SECTION */
@@ -65,6 +73,17 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
+int vnu_get_repeat(char *str, char chr)
+{ /* 'vnu' = VARIATION UTILITY */
+    int count = 0, i = 0;
+    while(strlen(str) > i)
+    {
+        if(str[i] == chr) { count+=1; }
+        i+=1;
+    }
+    return count;
+}
 
 int hex_number(int number, int left_side)
 {
@@ -106,6 +125,13 @@ int hex_letter(char letter, int left_side)
     }
     return 0;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
+
+void vn_end(struct vn_init vn)
+{ /* FOR ELEGANT UI */
+    vn_gotoxy(0, vn.window_height);
+    if(vn.cursor_visibility == 0) { vn_cursor_visibility(1); }
+} /* IF 'vn_cursor_visibility()' USED */
+
 
 #ifdef VN_COLOR
 char *vn_color(char *hex_color, int is_fore)
@@ -262,6 +288,63 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
         printf("%s", esc_reset);
     }
     else { vn_print(str, fg_color, bg_color, text_style); }
+}
+
+void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value)
+{ /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
+    int x = 0, y = 0;
+
+    while(height > y)
+    {
+        vn_gotoxy(pos_x, pos_y+y);
+        printf("%s%s[", progress_frame_color, text_bold);
+        while(progress_value > x)
+        {
+            printf("%s#", progress_color);
+            x+=1;
+        }
+        while(width > x)
+        {
+            printf("-");
+            x+=1;
+        }
+        printf("%s]%s", progress_frame_color, esc_reset);
+        x=0;
+        y+=1;
+    }
+}
+
+void vn_list(int pos_x, int pos_y, int width, int height, char *list_bg_color, char *list_fg_color, char *list_title, char *list_content)
+{
+    int i = 0, a = 0, content_number = vnu_get_repeat(list_content, '|');
+
+    vn_bg(pos_x, pos_y, width, height, list_bg_color);
+    vn_gotoxy(pos_x+width/2-strlen(list_title)/2, pos_y);
+
+    printf("%s%s%s[%s]%s", list_fg_color, list_bg_color, text_bold, list_title, esc_reset);
+    printf("%s%s", list_fg_color, list_bg_color);
+    while(content_number-1 > i)
+    {
+        vn_gotoxy(pos_x, pos_y+i+1);
+        if(list_content[a] == '|')
+        {
+            printf(" > ");
+            i+=1;
+            a+=1;
+        }
+        while(1)
+        {
+            if(list_content[a] == '|')
+            {
+                a-=1;
+                break;
+            }
+            printf("%c", list_content[a]);
+            a+=1;
+        }
+        a+=1;
+    }
+    printf("%s", esc_reset);
 }
 #endif /* VARITATION WIDGET SECTION */
 
