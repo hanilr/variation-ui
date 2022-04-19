@@ -111,4 +111,27 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
     else { vn_print(str, fg_color, bg_color, text_style); }
 }
 
+void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value)
+{
+    int x = 0, y = 0;
+
+    while(height > y)
+    {
+        vn_gotoxy(pos_x, pos_y+y);
+        printf("%s%s[", progress_frame_color, text_bold);
+        while(progress_value > x)
+        {
+            printf("%s#", progress_color);
+            x+=1;
+        }
+        while(width > x)
+        {
+            printf("-");
+            x+=1;
+        }
+        printf("%s]%s", progress_frame_color, esc_reset);
+        x=0;
+        y+=1;
+    }
+}
 /* MADE BY @hanilr */
