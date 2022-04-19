@@ -8,6 +8,7 @@
 
 /* DIY LIBRARY */
 #include "lib/vn_util.h"
+#include "lib/vn_ui.h"
 
 int hex_number(int number, int left_side)
 {
@@ -86,6 +87,12 @@ char *vn_color(char *hex_color, int is_fore)
     if(is_fore == 1) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
     if(is_fore == 0) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
     return rgb;
+}
+
+void vn_end(struct vn_init vn)
+{
+    vn_gotoxy(0, vn.window_height);
+    if(vn.cursor_visibility == 0) { vn_cursor_visibility(1); }
 }
 
 /* MADE BY @hanilr */

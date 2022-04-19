@@ -6,6 +6,7 @@ struct vn_init
 { /* DEFINATION OF DEFAULT WINDOW SIZES */
     int window_width; /* WIDTH SIZE SHORTCUT */
     int window_height; /* HEIGHT SIZE SHORTCUT*/
+    int cursor_visibility; /* 1 = VISIBLE, 0 = INVISIBLE */
 }; /* NOT NECESSARY */
 
 struct vnc_color 
@@ -15,5 +16,7 @@ struct vnc_color
 }; /* ONLY NEED HEX CODE */
 
 char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
+
+void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */
 
 #endif /* MADE BY @hanilr */
