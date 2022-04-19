@@ -15,6 +15,8 @@ struct vnc_color
     char* color; /* COLOR BUFFER NEED USE WITH 'vn_color()' FUNCTION */
 }; /* ONLY NEED HEX CODE */
 
+int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
+
 char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
 
 void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */

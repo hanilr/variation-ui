@@ -10,6 +10,17 @@
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
+int vnu_get_repeat(char *str, char chr)
+{ /* 'vnu' = VARIATION UTILITY */
+    int count = 0, i = 0;
+    while(strlen(str) > i)
+    {
+        if(str[i] == chr) { count+=1; }
+        i+=1;
+    }
+    return count;
+}
+
 int hex_number(int number, int left_side)
 {
     if(left_side == 0) { return number; }
@@ -90,9 +101,9 @@ char *vn_color(char *hex_color, int is_fore)
 }
 
 void vn_end(struct vn_init vn)
-{
+{ /* FOR ELEGANT UI */
     vn_gotoxy(0, vn.window_height);
     if(vn.cursor_visibility == 0) { vn_cursor_visibility(1); }
-}
+} /* IF 'vn_cursor_visibility()' USED */
 
 /* MADE BY @hanilr */
