@@ -8,6 +8,7 @@
 /* DIY LIBRARY */
 #include "lib/vn_widget.h"
 #include "lib/vn_conf.h"
+#include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
 void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
@@ -112,7 +113,7 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
 }
 
 void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value)
-{
+{ /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
     int x = 0, y = 0;
 
     while(height > y)
@@ -134,4 +135,38 @@ void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_fra
         y+=1;
     }
 }
+
+void vn_list(int pos_x, int pos_y, int width, int height, char *list_bg_color, char *list_fg_color, char *list_title, char *list_content)
+{
+    int i = 0, a = 0, content_number = vnu_get_repeat(list_content, '|');
+
+    vn_bg(pos_x, pos_y, width, height, list_bg_color);
+    vn_gotoxy(pos_x+width/2-strlen(list_title)/2, pos_y);
+
+    printf("%s%s%s[%s]%s", list_fg_color, list_bg_color, text_bold, list_title, esc_reset);
+    printf("%s%s", list_fg_color, list_bg_color);
+    while(content_number-1 > i)
+    {
+        vn_gotoxy(pos_x, pos_y+i+1);
+        if(list_content[a] == '|')
+        {
+            printf(" > ");
+            i+=1;
+            a+=1;
+        }
+        while(1)
+        {
+            if(list_content[a] == '|')
+            {
+                a-=1;
+                break;
+            }
+            printf("%c", list_content[a]);
+            a+=1;
+        }
+        a+=1;
+    }
+    printf("%s", esc_reset);
+}
+
 /* MADE BY @hanilr */
