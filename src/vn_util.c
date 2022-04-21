@@ -13,16 +13,16 @@
 int vnu_get_repeat(char *str, char chr)
 { /* 'vnu' = VARIATION UTILITY */
     int count = 0, i = 0;
-    while(strlen(str) > i)
-    {
-        if(str[i] == chr) { count+=1; }
+    while(strlen(str) > i) 
+    { /* LOOP TILL DETECT THE 'chr' */
+        if(str[i] == chr) { count+=1; } /* IF DETECTED THE 'chr' THEN INCREASE THE 'count' */
         i+=1;
     }
     return count;
 }
 
 int hex_number(int number, int left_side)
-{
+{ /* IF HEX IS NUMBER */
     if(left_side == 0) { return number; }
     else if(left_side == 1)
     {
@@ -40,7 +40,7 @@ int hex_number(int number, int left_side)
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN ORIGINAL NUMBER IF NOT THEN MULTIPLY WITH 16 */
 
 int hex_letter(char letter, int left_side)
-{
+{ /* IF HEX IS LETTER */
     if(left_side == 0)
     {
         if(letter == 'a') { return 10; }
@@ -95,6 +95,7 @@ char *vn_color(char *hex_color, int is_fore)
     green = green_x + green_y;
     blue = blue_x + blue_y;
 
+    /* CONVERT TO COLOR CODE */
     if(is_fore == 1) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
     if(is_fore == 0) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
     return rgb;
