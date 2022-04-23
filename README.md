@@ -1,16 +1,20 @@
-# VARIATION
-Single-header terminal user interface library. Written in ansi-c. Simple to use and keep updating. If you want to develope this project you can always use pull request section.
+# ![ vn](https://user-images.githubusercontent.com/77579421/164911621-a215c7ac-bd70-40f4-9c7a-c9435f774599.png) VARIATION UI ![ vn](https://user-images.githubusercontent.com/77579421/164911621-a215c7ac-bd70-40f4-9c7a-c9435f774599.png)
 
-## ` This project not finished yet but will be more feature in the future. Some examples or informations in wiki or readme page may not be up to date! `
+Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Just fork it then add or remove codes).
 
-## Build
+### ![vn_info](https://user-images.githubusercontent.com/77579421/164913730-eaf5649c-3b64-43c7-8d6f-6e25834ec242.png)  1.0v
+
+
+## ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png) Important Note ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png)
+
 You need to define ` #define VN_IMPLEMENTATION ` before ` #include "vn.h" `
 ```c
 #define VN_IMPLEMENTATION
 #include "vn.h"
 ```
 
-## Example
+## ![vn_example](https://user-images.githubusercontent.com/77579421/164912651-d86e1e6a-48ae-4578-b027-b73f865fd4ec.png) Example ![vn_example](https://user-images.githubusercontent.com/77579421/164912645-827d4d60-beae-4401-bee7-8ee097f30c0d.png)
+
 ```c
 #include <stdio.h>
 
@@ -21,6 +25,12 @@ You need to define ` #define VN_IMPLEMENTATION ` before ` #include "vn.h" `
 
 int main()
 {
+  struct vn_init vn;
+  vn.width = 60;
+  vn.height = 5;
+  vn.pos_x = 2;
+  vn.pos_y = 2;
+
   struct vnc_color white;
   struct vnc_color black;
   
@@ -32,23 +42,10 @@ int main()
   char* msg = "This is the example. If you had a trouble please leave an issue to https://github.com/hanilr/variation/issues have fun!";
   
   vn_clear();
-  vn_label(2, 2, 60, 5, black.color, white.color, text_italic, msg);
-  vn_gotoxy(0, 7);
+  vn_label(vn.pos_x, vn.pos_y, vn.width, vn.height, black.color, white.color, text_italic, msg);
+  vn_end(vn);
 
   return 0;
 }
 ```
-### If you want to learn more please take a look to [wiki](https://github.com/hanilr/variation/wiki) page.
-
-## TO DO LIST
-
-* There is no wiki page yet so prepare the first release the project then make a wiki page.
-* Need more widget. Research the tui widgets then make an optimized one.
-* Do some demos, examples and documentories.
-
-## NEED TO SOLVE
-* User need to use 'vn_gotoxy(pos_x, pos_y);' before finish the code.
-* Functions terminal sizes user dependent.
-> Solution: Making a terminal size getting function then make a struct to define the terminal sizes.
-> like ` vn_get_terminal_size(); ` and ` struct vn_start `
-> Then make ` vn_init(struct vn_start); ` and ` vn_end(struct vn_start); `
+### [![vn_wiki](https://user-images.githubusercontent.com/77579421/164913562-9a6c5bb6-91d4-4aff-80b5-47dd773eddd2.png)](https://github.com/hanilr/variation-ui/wiki) : ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png) Wiki page now under maintenance ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png)
