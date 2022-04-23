@@ -4,10 +4,12 @@
 
 struct vn_init
 { /* DEFINATION OF DEFAULT WINDOW SIZES */
-    int window_width; /* WIDTH SIZE SHORTCUT */
-    int window_height; /* HEIGHT SIZE SHORTCUT*/
+    int width; /* WIDTH SIZE SHORTCUT */
+    int height; /* HEIGHT SIZE SHORTCUT*/
+    int pos_x; /* WINDOW START ROW POSITION */
+    int pos_y; /* WINDOW START COLUMN POSITION */
     int cursor_visibility; /* 1 = VISIBLE, 0 = INVISIBLE */
-}; /* NOT NECESSARY */
+}; /* NOT NECESSARY (IN WIDGETS CAN USE MANUEL WAY) */
 
 struct vnc_color 
 { /* VARIATION CUSTOM COLOR */
