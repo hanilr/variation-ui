@@ -29,10 +29,12 @@
 
 struct vn_init
 { /* DEFINATION OF DEFAULT WINDOW SIZES */
-    int window_width; /* WIDTH SIZE SHORTCUT */
-    int window_height; /* HEIGHT SIZE SHORTCUT*/
+    int width; /* WIDTH SIZE SHORTCUT */
+    int height; /* HEIGHT SIZE SHORTCUT*/
+    int pos_x; /* WINDOW START ROW POSITION */
+    int pos_y; /* WINDOW START COLUMN POSITION */
     int cursor_visibility; /* 1 = VISIBLE, 0 = INVISIBLE */
-}; /* NOT NECESSARY */
+}; /* NOT NECESSARY (IN WIDGETS CAN USE MANUEL WAY) */
 
 void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */
 
@@ -185,7 +187,7 @@ char *vn_color(char *hex_color, int is_fore)
 
 void vn_end(struct vn_init vn)
 { /* FOR ELEGANT UI */
-    vn_gotoxy(0, vn.window_height);
+    vn_gotoxy(0, vn.height+vn.pos_y);
     if(vn.cursor_visibility == 0) { vn_cursor_visibility(1); }
 } /* IF 'vn_cursor_visibility()' USED */
 
