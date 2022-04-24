@@ -48,4 +48,4 @@ int main()
   return 0;
 }
 ```
-### [![vn_wiki](https://user-images.githubusercontent.com/77579421/164913562-9a6c5bb6-91d4-4aff-80b5-47dd773eddd2.png)](https://github.com/hanilr/variation-ui/wiki) : ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png) Wiki page now under maintenance ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png)
+### [![vn_wiki](https://user-images.githubusercontent.com/77579421/164913562-9a6c5bb6-91d4-4aff-80b5-47dd773eddd2.png)](https://github.com/hanilr/variation-ui/wiki) : ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png) You can take a look to wiki page if you want learn more! ![vn_warn](https://user-images.githubusercontent.com/77579421/164912332-2be5023b-f5e6-4329-9b0b-b3d545f62618.png)
