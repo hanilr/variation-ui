@@ -24,42 +24,21 @@ int vnu_get_repeat(char *str, char chr)
 int hex_number(int number, int left_side)
 { /* IF HEX IS NUMBER */
     if(left_side == 0) { return number; }
-    else if(left_side == 1)
-    {
-        if(number == 1) { return 16; }
-        else if(number == 2) { return 32; }
-        else if(number == 3) { return 48; }
-        else if(number == 4) { return 64; }
-        else if(number == 5) { return 80; }
-        else if(number == 6) { return 96; }
-        else if(number == 7) { return 112; }
-        else if(number == 8) { return 128; }
-        else if(number == 9) { return 144; }
-    }
+    else if(left_side == 1) { return number*16; }
     return 0;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN ORIGINAL NUMBER IF NOT THEN MULTIPLY WITH 16 */
 
 int hex_letter(char letter, int left_side)
 { /* IF HEX IS LETTER */
-    if(left_side == 0)
-    {
-        if(letter == 'a') { return 10; }
-        else if(letter == 'b') { return 11; }
-        else if(letter == 'c') { return 12; }
-        else if(letter == 'd') { return 13; }
-        else if(letter == 'e') { return 14; }
-        else if(letter == 'f') { return 15; }
-    }
-    else if(left_side == 1)
-    {
-        if(letter == 'a') { return 160; }
-        else if(letter == 'b') { return 176; }
-        else if(letter == 'c') { return 192; }
-        else if(letter == 'd') { return 208; }
-        else if(letter == 'e') { return 224; }
-        else if(letter == 'f') { return 240; }
-    }
-    return 0;
+    int result;
+    if(letter == 'a') { result = 10; }
+    else if(letter == 'b') { result = 11; }
+    else if(letter == 'c') { result = 12; }
+    else if(letter == 'd') { result = 13; }
+    else if(letter == 'e') { result = 14; }
+    else if(letter == 'f') { result = 15; }
+    if(left_side == 1) { result*=16; }
+    return result;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
 char *vn_color(char *hex_color, int is_fore)
