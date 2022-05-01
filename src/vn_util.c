@@ -21,6 +21,29 @@ int vnu_get_repeat(char *str, char chr)
     return count;
 }
 
+char vnu_get_char_instantly(void)
+{
+    #ifdef _WIN32
+        return getch(); /* WANTED FUNCTION EXIST IN WINDOWS */
+    #elif __linux__
+        system("stty raw"); /* TERMINAL 'raw' MODE */
+        char key = getchar();
+        system("stty cooked"); /* TERMINAL 'cooked' MODE */
+        return key;
+    #endif
+}
+
+#ifdef __linux__
+void vnu_get_terminal_size(struct vn_init vn)
+{
+    #include <sys/ioctl.h>
+    struct winsize terminal_size;
+    ioctl(0, TIOCGWINSZ, &terminal_size);
+    vn.width = terminal_size.ws_row;
+    vn.height = terminal_size.ws_col;
+} /* LINUX ONLY */
+#endif
+
 int hex_number(int number, int left_side)
 { /* IF HEX IS NUMBER */
     if(left_side == 0) { return number; }
