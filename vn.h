@@ -48,6 +48,7 @@ struct vnc_color
 char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
 #endif /* VN_COLOR */
 
+#ifdef VN_UTIL
 int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
 
 char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
@@ -55,6 +56,7 @@ char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 #ifdef __linux__
 void vnu_get_terminal_size(struct vn_init vn); /* GET TERMINAL SIZES TO 'vn_init' */
 #endif /* LINUX ONLY */
+#endif /* VN_UTIL */
 
 void vn_cursor_visibility(int boolean); /* SET CURSOR VISIBILITY */
 
@@ -98,6 +100,7 @@ void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
     printf("%s%s%s%s%s", fg_color, bg_color, str_style, str, esc_reset);
 } /* EXAMPLE: vn_print("temp", "", "", ""); */
 
+#ifdef VN_UTIL
 int vnu_get_repeat(char *str, char chr)
 { /* 'vnu' = VARIATION UTILITY */
     int count = 0, i = 0;
@@ -131,6 +134,7 @@ void vnu_get_terminal_size(struct vn_init vn)
     vn.height = terminal_size.ws_col;
 } /* LINUX ONLY */
 #endif
+#endif /* VN_UTIL */
 
 int hex_number(int number, int left_side)
 { /* IF HEX IS NUMBER */
