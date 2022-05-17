@@ -136,37 +136,4 @@ void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_fra
     }
 } /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
 
-void vn_list(int pos_x, int pos_y, int width, int height, char *list_fg_color, char *list_bg_color, char *list_title, char *list_content)
-{ /* 'list_fg_color' NEED TO BE 'is_fore = 1', 'list_bg_color' NEED TO BE 'is_fore = 0' */
-    int i = 0, a = 0, content_number = vnu_get_repeat(list_content, '|'); /* GET '|' REPEAT TIME */
-
-    vn_bg(pos_x, pos_y, width, height, list_bg_color); /* SET BACKGROUND COLOR */
-    vn_gotoxy(pos_x+width/2-strlen(list_title)/2, pos_y); /* GO TO TITLE POSITION */
-
-    printf("%s%s%s[%s]%s", list_fg_color, list_bg_color, text_bold, list_title, esc_reset); /* PRINT THE 'list_title' */
-    printf("%s%s", list_fg_color, list_bg_color); /* SET COLOR TO 'list_fg_color' AND 'list_bg_color' */
-    while(content_number-1 > i)
-    { /* '|' PARSER SECTION */
-        vn_gotoxy(pos_x, pos_y+i+1);
-        if(list_content[a] == '|')
-        { /* IF DETECT '|' */
-            printf(" > ");
-            i+=1;
-            a+=1;
-        }
-        while(1)
-        { /* PRINT CONTENT */
-            if(list_content[a] == '|')
-            {
-                a-=1;
-                break;
-            }
-            printf("%c", list_content[a]);
-            a+=1;
-        }
-        a+=1;
-    }
-    printf("%s", esc_reset); /* RESET THE COLOR */
-}
-
 /* MADE BY @hanilr */

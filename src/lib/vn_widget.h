@@ -10,6 +10,4 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
 
 void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* SET PROGRESS BAR */
 
-void vn_list(int pos_x, int pos_y, int width, int height, char *list_fg_color, char *list_bg_color, char *list_title, char *list_content); /* SET LIST LABEL */
-
 #endif /* MADE BY @hanilr */
