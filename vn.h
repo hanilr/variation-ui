@@ -56,6 +56,10 @@ char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 #ifdef __linux__
 void vnu_get_terminal_size(struct vn_init vn); /* GET TERMINAL SIZES TO 'vn_init' */
 #endif /* LINUX ONLY */
+
+int vnu_hex_number(int number, int left_side); /* NUMBER TO HEX */
+
+int vnu_hex_letter(char letter, int left_side); /* LETTER TO HEX */
 #endif /* VN_UTIL */
 
 void vn_cursor_visibility(int boolean); /* SET CURSOR VISIBILITY */
@@ -133,16 +137,15 @@ void vnu_get_terminal_size(struct vn_init vn)
     vn.height = terminal_size.ws_col;
 } /* LINUX ONLY */
 #endif
-#endif /* VN_UTIL */
 
-int hex_number(int number, int left_side)
+int vnu_hex_number(int number, int left_side)
 { /* IF HEX IS NUMBER */
     if(left_side == 0) { return number; }
     else if(left_side == 1) { return number*16; }
     return 0;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN ORIGINAL NUMBER IF NOT THEN MULTIPLY WITH 16 */
 
-int hex_letter(char letter, int left_side)
+int vnu_hex_letter(char letter, int left_side)
 { /* IF HEX IS LETTER */
     int result;
     if(letter == 'a') { result = 10; }
@@ -154,6 +157,7 @@ int hex_letter(char letter, int left_side)
     if(left_side == 1) { result*=16; }
     return result;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
+#endif /* VN_UTIL */
 
 #ifdef VN_COLOR
 char *vn_color(char *hex_color, int is_fore)
@@ -172,18 +176,18 @@ char *vn_color(char *hex_color, int is_fore)
     int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
     char *rgb = (char*) malloc(32);
 
-    if(isalpha(hex_color[0]) != 0) { red_x = hex_letter(hex_color[0], 1); }
-    else { red_x = hex_number(hex_color[0] - '0', 1); }
-    if(isalpha(hex_color[1]) != 0) { red_y = hex_letter(hex_color[1], 0); }
-    else { red_y = hex_number(hex_color[1] - '0', 0); }
-    if(isalpha(hex_color[2]) != 0) { green_x = hex_letter(hex_color[2], 1); }
-    else { green_x = hex_number(hex_color[2] - '0', 1); }
-    if(isalpha(hex_color[3]) != 0) { green_y = hex_letter(hex_color[3], 0); }
-    else { green_y = hex_number(hex_color[3] - '0', 0); }
-    if(isalpha(hex_color[4]) != 0) { blue_x = hex_letter(hex_color[4], 1); }
-    else { blue_x = hex_number(hex_color[4] - '0', 1); }
-    if(isalpha(hex_color[5]) != 0) { blue_y = hex_letter(hex_color[5], 0); }
-    else { blue_y = hex_number(hex_color[5] - '0', 0); }
+    if(isalpha(hex_color[0]) != 0) { red_x = vnu_hex_letter(hex_color[0], 1); }
+    else { red_x = vnu_hex_number(hex_color[0] - '0', 1); }
+    if(isalpha(hex_color[1]) != 0) { red_y = vnu_hex_letter(hex_color[1], 0); }
+    else { red_y = vnu_hex_number(hex_color[1] - '0', 0); }
+    if(isalpha(hex_color[2]) != 0) { green_x = vnu_hex_letter(hex_color[2], 1); }
+    else { green_x = vnu_hex_number(hex_color[2] - '0', 1); }
+    if(isalpha(hex_color[3]) != 0) { green_y = vnu_hex_letter(hex_color[3], 0); }
+    else { green_y = vnu_hex_number(hex_color[3] - '0', 0); }
+    if(isalpha(hex_color[4]) != 0) { blue_x = vnu_hex_letter(hex_color[4], 1); }
+    else { blue_x = vnu_hex_number(hex_color[4] - '0', 1); }
+    if(isalpha(hex_color[5]) != 0) { blue_y = vnu_hex_letter(hex_color[5], 0); }
+    else { blue_y = vnu_hex_number(hex_color[5] - '0', 0); }
 
     red = red_x + red_y;
     green = green_x + green_y;
