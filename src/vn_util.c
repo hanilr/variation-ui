@@ -44,14 +44,14 @@ void vnu_get_terminal_size(struct vn_init vn)
 } /* LINUX ONLY */
 #endif
 
-int vnu_hex_number(int number, int left_side)
+int vnc_hex_number(int number, int left_side)
 { /* IF HEX IS NUMBER */
     if(left_side == 0) { return number; }
     else if(left_side == 1) { return number*16; }
     return 0;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN ORIGINAL NUMBER IF NOT THEN MULTIPLY WITH 16 */
 
-int vnu_hex_letter(char letter, int left_side)
+int vnc_hex_letter(char letter, int left_side)
 { /* IF HEX IS LETTER */
     int result;
     if(letter == 'a') { result = 10; }
@@ -80,18 +80,18 @@ char *vn_color(char *hex_color, int is_fore)
     int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
     char *rgb = (char*) malloc(32);
 
-    if(isalpha(hex_color[0]) != 0) { red_x = vnu_hex_letter(hex_color[0], 1); }
-    else { red_x = vnu_hex_number(hex_color[0] - '0', 1); }
-    if(isalpha(hex_color[1]) != 0) { red_y = vnu_hex_letter(hex_color[1], 0); }
-    else { red_y = vnu_hex_number(hex_color[1] - '0', 0); }
-    if(isalpha(hex_color[2]) != 0) { green_x = vnu_hex_letter(hex_color[2], 1); }
-    else { green_x = vnu_hex_number(hex_color[2] - '0', 1); }
-    if(isalpha(hex_color[3]) != 0) { green_y = vnu_hex_letter(hex_color[3], 0); }
-    else { green_y = vnu_hex_number(hex_color[3] - '0', 0); }
-    if(isalpha(hex_color[4]) != 0) { blue_x = vnu_hex_letter(hex_color[4], 1); }
-    else { blue_x = vnu_hex_number(hex_color[4] - '0', 1); }
-    if(isalpha(hex_color[5]) != 0) { blue_y = vnu_hex_letter(hex_color[5], 0); }
-    else { blue_y = vnu_hex_number(hex_color[5] - '0', 0); }
+    if(isalpha(hex_color[0]) != 0) { red_x = vnc_hex_letter(hex_color[0], 1); }
+    else { red_x = vnc_hex_number(hex_color[0] - '0', 1); }
+    if(isalpha(hex_color[1]) != 0) { red_y = vnc_hex_letter(hex_color[1], 0); }
+    else { red_y = vnc_hex_number(hex_color[1] - '0', 0); }
+    if(isalpha(hex_color[2]) != 0) { green_x = vnc_hex_letter(hex_color[2], 1); }
+    else { green_x = vnc_hex_number(hex_color[2] - '0', 1); }
+    if(isalpha(hex_color[3]) != 0) { green_y = vnc_hex_letter(hex_color[3], 0); }
+    else { green_y = vnc_hex_number(hex_color[3] - '0', 0); }
+    if(isalpha(hex_color[4]) != 0) { blue_x = vnc_hex_letter(hex_color[4], 1); }
+    else { blue_x = vnc_hex_number(hex_color[4] - '0', 1); }
+    if(isalpha(hex_color[5]) != 0) { blue_y = vnc_hex_letter(hex_color[5], 0); }
+    else { blue_y = vnc_hex_number(hex_color[5] - '0', 0); }
 
     red = red_x + red_y;
     green = green_x + green_y;

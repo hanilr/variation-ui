@@ -25,9 +25,9 @@ char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 void vnu_get_terminal_size(struct vn_init vn); /* GET TERMINAL SIZES TO 'vn_init' */
 #endif /* LINUX ONLY */
 
-int vnu_hex_number(int number, int left_side); /* NUMBER TO HEX */
+int vnc_hex_number(int number, int left_side); /* NUMBER TO HEX */
 
-int vnu_hex_letter(char letter, int left_side); /* LETTER TO HEX */
+int vnc_hex_letter(char letter, int left_side); /* LETTER TO HEX */
 
 char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
 
