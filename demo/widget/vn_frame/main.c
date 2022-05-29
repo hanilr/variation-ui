@@ -3,7 +3,7 @@
 #define VN_IMPLEMENTATION /* DO NOT FORGET THIS */
 #define VN_COLOR /* FOR COLOR SECTION */
 #define VN_WIDGET /* FOR WIDGET SECTION */
-#include "vn.h" /* INCLUDE AFTER DEFINE */
+#include "../../vn.h" /* INCLUDE AFTER DEFINE */
 
 int main()
 {

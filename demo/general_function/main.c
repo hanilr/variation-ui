@@ -1,7 +1,7 @@
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
 #define VN_IMPLEMENTATION /* DO NOT FORGET THIS */
-#include "vn.h" /* INCLUDE AFTER DEFINE */
+#include "../../vn.h" /* INCLUDE AFTER DEFINE */
 
 int main()
 {
