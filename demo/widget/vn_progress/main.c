@@ -1,9 +1,9 @@
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
-#define VN_IMPLEMENTATION /* DO NOT FORGET THIS */
+#define VN_UI_IMPLEMENTATION /* DO NOT FORGET THIS */
 #define VN_COLOR /* FOR COLOR SECTION */
 #define VN_WIDGET /* FOR WIDGET SECTION */
-#include "../../../vn.h" /* INCLUDE AFTER DEFINE */
+#include "../../../vn_ui.h" /* INCLUDE AFTER DEFINE */
 
 int main()
 {
