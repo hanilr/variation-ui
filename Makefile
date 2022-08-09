@@ -4,9 +4,9 @@
 # ---------------------------------------------------- #
 
 CC = gcc
-lib = vn.h
-win_out = vn.dll
-uni_out = vn.so
+lib = vn_ui.h
+win_out = vn_ui.dll
+uni_out = vn_ui.so
 
 ifeq ($(OS),Windows_NT)
 	delete = del
