@@ -13,7 +13,7 @@ Variation-ui is single-header terminal user interface library. Written in ansi-c
 
 ## ![vn_warn](img/vn_warn.png) Important Note ![vn_warn](img/vn_warn.png)
 
-You need to define ` #define VN_IMPLEMENTATION ` before ` #include "vn.h" `
+You need to define ` #define VN_UI_IMPLEMENTATION ` before ` #include "vn_ui.h" `
 ```c
 #define VN_UI_IMPLEMENTATION
 #include "vn_ui.h"
