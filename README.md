@@ -8,15 +8,15 @@
 
 Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Just fork it then add or remove codes).
 
-### ![vn_info](img/vn_info.png)  1.1v
+### ![vn_info](img/vn_info.png)  1.2v
 
 
 ## ![vn_warn](img/vn_warn.png) Important Note ![vn_warn](img/vn_warn.png)
 
 You need to define ` #define VN_IMPLEMENTATION ` before ` #include "vn.h" `
 ```c
-#define VN_IMPLEMENTATION
-#include "vn.h"
+#define VN_UI_IMPLEMENTATION
+#include "vn_ui.h"
 ```
 
 ## ![vn_example](img/vn_example.png) Example ![vn_example](img/vn_example.png)
@@ -24,10 +24,10 @@ You need to define ` #define VN_IMPLEMENTATION ` before ` #include "vn.h" `
 ```c
 #include <stdio.h>
 
-#define VN_IMPLEMENTATION
+#define VN_UI_IMPLEMENTATION
 #define VN_COLOR
 #define VN_WIDGET
-#include "vn.h"
+#include "vn_ui.h"
 
 int main()
 {
