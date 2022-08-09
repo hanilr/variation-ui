@@ -82,7 +82,7 @@
     #endif /* VN_WIDGET */
 #endif /* SUMMARY SECTION */
 
-#ifdef VN_IMPLEMENTATION
+#ifdef VN_UI_IMPLEMENTATION
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
@@ -332,4 +332,4 @@
             }
         } /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
     #endif /* VN_WIDGET */
-#endif /* VN_IMPLEMENTATION */
+#endif /* VN_UI_IMPLEMENTATION */
