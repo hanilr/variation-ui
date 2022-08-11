@@ -29,4 +29,12 @@
     #define cursor_invisible "\033[?25l"
     /* ----------------------------------- */
 
+    /* ------------------------------ *
+    * VARIATION TUI FUNCTION SECURITY *
+    * ------------------------------- */
+    struct vn_uis /* '0' STOP FUNCTION WHEN ERROR RECEIVED */
+    { /* '1' DON'T STOP FUNCTION WHEN ERROR RECEIVED */
+        int ui_security; /* ONLY '0', '1' AND '2' CAN PROCESS */
+    }; /* '2' DON'T DO ANYTHING WHEN ERROR RECEIVED */
+    /* ------------------------------ */
 #endif /* MADE BY @hanilr */
