@@ -5,6 +5,9 @@
 
 int main()
 {
+   struct vn_uis vns; /* VARIATION TUI SECURITY */
+   vns.ui_security = 0; /* STOP FUNCTION WHEN ERROR RECEIVED */
+
    struct vn_init vn; /* FIRST OF ALL DEFINE WINDOW NAME */
    vn.width = 20; /* WINDOW WIDTH */
    vn.height = 2; /* WINDOW HEIGHT */
