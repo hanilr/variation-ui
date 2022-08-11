@@ -8,6 +8,7 @@
 
 /* DIY LIBRARY */
 #include "lib/vn_util.h"
+#include "lib/vn_conf.h"
 #include "lib/vn_ui.h"
 
 int vnu_get_repeat(char *str, char chr)
@@ -64,17 +65,17 @@ int vnc_hex_letter(char letter, int left_side)
     return result;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
-char *vn_color(char *hex_color, int is_fore)
+char *vn_color(char *hex_color, int is_fore, struct vn_uis vns)
 {
-    if(strlen(hex_color) != 6)
+    if(strlen(hex_color) != 6 && vns.ui_security !=2)
     {
         fprintf(stderr, "[ERROR] 'vn_color()' function argument not equal to 6 digit!");
-        exit(1);
+        if(vns.ui_security == 0) { exit(1); }
     } /* IF 'hex_color' ARGUMENT LENGTH NOT EQUAL TO 6 DIGIT THEN PRINT ERROR AND EXIT */
-    if(strcmp(hex_color, "#") == 0)
+    if(strcmp(hex_color, "#") == 0 && vns.ui_security !=2)
     {
         fprintf(stderr, "[ERROR] 'vn_color()' function argument has '#' symbol!");
-        exit(1);
+        if(vns.ui_security == 0) { exit(1); }
     } /* IF 'hex_color' ARGUMENT HAS '#' SYMBOL THEN PRINT ERROR AND EXIT */
 
     int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
