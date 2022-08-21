@@ -10,6 +10,11 @@ Variation-ui is single-header terminal user interface library. Written in ansi-c
 
 ### ![vn_info](img/vn_info.png)  1.2v
 
+### ![vn](img/vn.png) TO DO ![vn](img/vn.png)
+```diff
++ 'vn_color's algorithm will redesign. (Optimization)
++ Codebase functions pattern will be change to parameter block.
+```
 
 ## ![vn_warn](img/vn_warn.png) Important Note ![vn_warn](img/vn_warn.png)
 
