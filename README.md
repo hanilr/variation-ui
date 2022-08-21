@@ -31,9 +31,6 @@ You need to define ` #define VN_UI_IMPLEMENTATION ` before ` #include "vn_ui.h" 
 
 int main()
 {
-  struct vn_uis vns;
-  vns.ui_security = 0;
-
   struct vn_init vn;
   vn.width = 60;
   vn.height = 5;
@@ -44,9 +41,9 @@ int main()
   struct vnc_color black;
   
   white.is_fore = 0;
-  white.color = vn_color("e9e9e9", white.is_fore, vns);
+  white.color = vn_color("e9e9e9", white.is_fore);
   black.is_fore = 1;
-  black.color = vn_color("161616", black.is_fore, vns);
+  black.color = vn_color("161616", black.is_fore);
   
   char* msg = "This is the example. If you had a trouble please leave an issue to https://github.com/hanilr/variation/issues have fun!";
   

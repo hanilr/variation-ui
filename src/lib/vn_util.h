@@ -29,7 +29,7 @@
 
     int vnc_hex_letter(char letter, int left_side); /* LETTER TO HEX */
 
-    char *vn_color(char *hex_color, int is_fore, struct vn_uis vns); /* FOR CUSTOM COLORS */
+    char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
 
     void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */
 

@@ -27,15 +27,6 @@
     #define cursor_invisible "\033[?25l"
     /* ----------------------------------- */
 
-    /* ------------------------------ *
-    * VARIATION TUI FUNCTION SECURITY *
-    * ------------------------------- */
-    struct vn_uis /* '0' STOP FUNCTION WHEN ERROR RECEIVED */
-    { /* '1' DON'T STOP FUNCTION WHEN ERROR RECEIVED */
-        int ui_security; /* ONLY '0', '1' AND '2' CAN PROCESS */
-    }; /* '2' DON'T DO ANYTHING WHEN ERROR RECEIVED */
-    /* ------------------------------ */
-
     struct vn_init
     { /* DEFINATION OF DEFAULT WINDOW SIZES */
         int width; /* WIDTH SIZE SHORTCUT */
@@ -58,7 +49,7 @@
 
         int vnc_hex_letter(char letter, int left_side); /* LETTER TO HEX */
 
-        char *vn_color(char *hex_color, int is_fore, struct vn_uis vns); /* FOR CUSTOM COLORS */
+        char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
     #endif /* VN_COLOR */
 
     #ifdef VN_UTIL
@@ -169,17 +160,17 @@
             return result;
         } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
-        char *vn_color(char *hex_color, int is_fore, struct vn_uis vns)
+        char *vn_color(char *hex_color, int is_fore)
         {
-            if(strlen(hex_color) != 6 && vns.ui_security !=2)
+            if(strlen(hex_color) != 6)
             {
                 fprintf(stderr, "[ERROR] 'vn_color()' function argument not equal to 6 digit!");
-                if(vns.ui_security == 0) { exit(1); }
+                exit(1);
             } /* IF 'hex_color' ARGUMENT LENGTH NOT EQUAL TO 6 DIGIT THEN PRINT ERROR AND EXIT */
-            if(strcmp(hex_color, "#") == 0 && vns.ui_security !=2)
+            if(strcmp(hex_color, "#") == 0)
             {
                 fprintf(stderr, "[ERROR] 'vn_color()' function argument has '#' symbol!");
-                if(vns.ui_security == 0) { exit(1); }
+                exit(1);
             } /* IF 'hex_color' ARGUMENT HAS '#' SYMBOL THEN PRINT ERROR AND EXIT */
 
             int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
