@@ -66,17 +66,6 @@ int vnc_hex_letter(char letter, int left_side)
 
 char *vn_color(char *hex_color, int is_fore)
 {
-    if(strlen(hex_color) != 6)
-    {
-        fprintf(stderr, "[ERROR] 'vn_color()' function argument not equal to 6 digit!");
-        exit(1);
-    } /* IF 'hex_color' ARGUMENT LENGTH NOT EQUAL TO 6 DIGIT THEN PRINT ERROR AND EXIT */
-    if(strcmp(hex_color, "#") == 0)
-    {
-        fprintf(stderr, "[ERROR] 'vn_color()' function argument has '#' symbol!");
-        exit(1);
-    } /* IF 'hex_color' ARGUMENT HAS '#' SYMBOL THEN PRINT ERROR AND EXIT */
-
     int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
     char *rgb = (char*) malloc(32);
 
