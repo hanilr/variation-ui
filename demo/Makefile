@@ -44,7 +44,7 @@ win_clean: $(_all_out)
 
 uni_run: $(_all)
 	$(CC) $(ANSI) $(_color) -o _color
-	$(CC) $(ANSI) $(_general) -o _general_function
+	$(CC) $(ANSI) $(_general) -o _general
 	$(CC) $(ANSI) $(_bg) -o _bg
 	$(CC) $(ANSI) $(_frame) -o _frame
 	$(CC) $(ANSI) $(_label) -o _label
