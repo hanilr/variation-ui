@@ -52,7 +52,7 @@ uni_run: $(_all)
 
 uni_clean: $(_all_out)
 	$(delete) _color
-	$(delete) _general_function
+	$(delete) _general
 	$(delete) _bg
 	$(delete) _frame
 	$(delete) _label
