@@ -10,13 +10,13 @@
 
 void vn_cursor_visibility(int boolean)
 {
-    if(boolean == 1) { printf("%s", cursor_visible); }
-    else { printf("%s", cursor_invisible); }
+    if(boolean == 1) { printf("%s", cursor_visible); } /* SET TERMINAL CURSOR TO VISIBLE */
+    else { printf("%s", cursor_invisible); } /* SET TERMINAL CURSOR TO INVISIBLE */
 }
 
-void vn_clear(void) { printf("%s", clear_screen); }
+void vn_clear(void) { printf("%s", clear_screen); } /* CLEAR TERMINAL SCREEN */
 
-void vn_gotoxy(int pos_x, int pos_y) { printf("\033[%d;%dH", pos_y, pos_x); }
+void vn_gotoxy(int pos_x, int pos_y) { printf("\033[%d;%dH", pos_y, pos_x); } /* SET TERMINAL CURRENT CURSOR TO 'pos_x' AND 'pos_y' POSITION */
 
 void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
 { /* IF YOU DON'T WANT TO USE ARGUMENTS THEN ENTER  IN DOUBLE QUOTATION MARKS WITH GAP */
