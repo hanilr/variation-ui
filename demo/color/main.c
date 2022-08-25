@@ -13,11 +13,11 @@ int main()
    vn.pos_y = 2; /* START COLUMN POSITION */
 
    struct vnc_color white; /* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */
-   white.is_fore = 1; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 1' THEN YES FOR FOREGROUND, IF 'is_fore = 0' THEN FOR BACKGROUND */
+   white.is_fore = 0; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */
    white.color = vn_color("ffffff", white.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */   
    
    struct vnc_color black;
-   black.is_fore = 0; /* FOR BACKGROUND */
+   black.is_fore = 1; /* FOR BACKGROUND */
    black.color = vn_color("000000", black.is_fore);
 
    vn_clear(); /* CLEAR THE TERMINAL SCREEN */
