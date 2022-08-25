@@ -17,10 +17,8 @@ _progress = widget/vn_progress/main.c
 _all = $(_color) $(_general) $(_bg) $(_frame) $(label) $(_progress)
 
 ifeq ($(OS),Windows_NT)
-	_all_out = _color.exe _general.exe _bg.exe _frame.exe _label.exe _progress.exe
 	delete = del
 else
-	_all_out = _color _general _bg _frame _label _progress
 	delete = rm
 endif
 
@@ -34,13 +32,8 @@ win_run: $(_all)
 	$(CC) $(ANSI) $(_label) -o _label.exe
 	$(CC) $(ANSI) $(_progress) -o _progress.exe
 
-win_clean: $(_all_out)
-	$(delete) _color.exe
-	$(delete) _general.exe
-	$(delete) _bg.exe
-	$(delete) _frame.exe
-	$(delete) _label.exe
-	$(delete) _progress.exe
+win_clean: _color.exe _general.exe _bg.exe _frame.exe _label.exe _progress.exe
+	$(delete) *.exe
 
 uni_run: $(_all)
 	$(CC) $(ANSI) $(_color) -o _color
@@ -50,12 +43,7 @@ uni_run: $(_all)
 	$(CC) $(ANSI) $(_label) -o _label
 	$(CC) $(ANSI) $(_progress) -o _progress
 
-uni_clean: $(_all_out)
-	$(delete) _color
-	$(delete) _general
-	$(delete) _bg
-	$(delete) _frame
-	$(delete) _label
-	$(delete) _progress
+uni_clean: _color _general _bg _frame _label _progress
+	$(delete) _*
 
 # MADE BY @hanilr #
