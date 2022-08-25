@@ -78,7 +78,6 @@
         void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char* text_style, char *str); /* SET LABEL */
 
         void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* SET PROGRESS BAR */
-
     #endif /* VN_WIDGET */
 #endif /* SUMMARY SECTION */
 
@@ -183,8 +182,8 @@
             blue = blue_x + blue_y;
 
             /* CONVERT TO COLOR CODE */
-            if(is_fore == 1) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
-            if(is_fore == 0) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
+            if(is_fore == 0) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
+            if(is_fore == 1) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
             return rgb;
         }
     #endif /* VN_COLOR */

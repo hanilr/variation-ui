@@ -87,8 +87,8 @@ char *vn_color(char *hex_color, int is_fore)
     blue = blue_x + blue_y;
 
     /* CONVERT TO COLOR CODE */
-    if(is_fore == 1) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
-    if(is_fore == 0) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
+    if(is_fore == 0) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
+    if(is_fore == 1) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
     return rgb;
 }
 
