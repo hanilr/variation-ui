@@ -8,6 +8,14 @@
 
 Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Look [license](#license) if you want to know more).
 
+### ![vn_info](img/vn_info.png) Dependencies:
+
+__Windows & Linux:__
+* ` gcc ` > [MinGW](https://sourceforge.net/projects/mingw/)
+* ` make ` > [Make For Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
+
+> You can install with package managers for linux.
+
 ## ![vn_warn](img/vn_warn.png) Important Note ![vn_warn](img/vn_warn.png)
 
 You need to define ` #define VN_UI_IMPLEMENTATION ` before ` #include "vn_ui.h" `
