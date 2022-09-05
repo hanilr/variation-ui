@@ -38,9 +38,9 @@ int main()
   struct vnc_color black;
   
   white.is_fore = 0;
-  white.color = vn_color("e9e9e9", white.is_fore);
+  white.color = vn_hex_color("e9e9e9", white.is_fore);
   black.is_fore = 1;
-  black.color = vn_color("161616", black.is_fore);
+  black.color = vn_rgb_color(22, 22, 22, black.is_fore);
   
   char* msg = "This is the example. If you had a trouble please leave an issue to https://github.com/hanilr/variation/issues have fun!";
   
