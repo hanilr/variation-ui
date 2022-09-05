@@ -15,7 +15,7 @@ int main()
 
    struct vnc_color white; /* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */
    white.is_fore = 1; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */
-   white.color = vn_color("ffffff", white.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */   
+   white.color = vn_hex_color("ffffff", white.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */   
 
    vn_clear(); /* CLEAR THE TERMINAL SCREEN */
    vn_gotoxy(vn.pos_x, vn.pos_y); /* GO TO CERTAIN POSITION */
