@@ -64,7 +64,7 @@ int vnc_hex_letter(char letter, int left_side)
     return result;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
-char *vn_color(char *hex_color, int is_fore)
+char *vn_hex_color(char *hex_color, int is_fore)
 {
     int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
     char *rgb = (char*) malloc(32);
@@ -87,6 +87,14 @@ char *vn_color(char *hex_color, int is_fore)
     blue = blue_x + blue_y;
 
     /* CONVERT TO COLOR CODE */
+    if(is_fore == 0) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
+    if(is_fore == 1) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
+    return rgb;
+}
+
+char *vn_rgb_color(int red, int green, int blue, int is_fore)
+{
+    char *rgb = (char*) malloc(32);
     if(is_fore == 0) { sprintf(rgb, "\033[38;2;%d;%d;%dm", red, green, blue); }
     if(is_fore == 1) { sprintf(rgb, "\033[48;2;%d;%d;%dm", red, green, blue); }
     return rgb;

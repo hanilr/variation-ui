@@ -29,7 +29,9 @@
 
     int vnc_hex_letter(char letter, int left_side); /* LETTER TO HEX */
 
-    char *vn_color(char *hex_color, int is_fore); /* FOR CUSTOM COLORS */
+    char *vn_hex_color(char *hex_color, int is_fore); /* HEX COLOR CODE FOR CUSTOM COLORS */
+
+    char *vn_rgb_color(int red, int green, int blue, int is_fore); /* RGB COLOR CODE FOR CUSTOM COLORS */
 
     void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */
 
