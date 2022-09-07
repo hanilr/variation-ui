@@ -60,24 +60,25 @@ int main()
 }
 ```
 
-# ![vn](img/vn.png) Compiling as shared-library ![vn](img/vn.png)
+# ![vn](img/vn.png) Compiling as shared-library or Using as default ![vn](img/vn.png)
 
 ![vn_warn](img/vn_warn.png) You can compile as shared-library and develope os specific projects. ![vn_warn](img/vn_warn.png)
 
 ![vn_example](img/vn_example.png) How should I compile? ![vn_example](img/vn_example.png)
 ```
-  make win_run 
+  make run
 ```
-> Windows shared-library (.dll)
+> Windows shared-library (.dll) or Unix shared-library (.so)
 >
-> If you want to delete this file you can use ` make win_clean `
+> If you want to delete this file you can use ` make clean `
 
+![vn_example](img/vn_example.png) What if I want to use as default? ![vn_example](img/vn_example.png)
 ```
-  make uni_run 
+  make install
 ```
-> Unix shared-library (.so)
+> Installing section now run only in unix. (You can find in ` /usr/include/vn/ `)
 >
-> If you want to delete this file you can use ` make uni_clean `
+> If you want to uninstall you can use ` make uninstall `
 
 ### [![vn_wiki](img/vn_wiki.png)](https://github.com/hanilr/variation-ui/wiki) : ![vn_warn](img/vn_warn.png) You can take a look to wiki page if you want learn more! ![vn_warn](img/vn_warn.png)
 
