@@ -10,24 +10,36 @@ lib = vn_ui.h
 win_out = vn_ui.dll
 uni_out = vn_ui.so
 
+.PHONY: run clean install uninstall
+
+run: $(lib)
 ifeq ($(OS),Windows_NT)
-	delete = del
+	$(CC) $(ANSI) -shared -fPIC $(lib) -o $(win_out)
 else
-	delete = rm
+	$(CC) $(ANSI) -shared -fPIC $(lib) -o $(uni_out)
 endif
 
-.PHONY: win_run win_clean uni_run uni_clean
+clean:
+ifeq ($(OS),Windows_NT)
+	del $(win_out)
+else
+	rm $(uni_out)
+endif
 
-win_run: $(lib)
-	$(CC) $(ANSI) -shared -fPIC $(lib) -o $(win_out)
+install: $(lib)
+ifeq ($(OS),Windows_NT)
+# INSTALL FOR WINDOWS SECTION
+else
+	sudo mkdir /usr/include/vn
+	sudo cp vn_ui.h /usr/include/vn
+	sudo chmod -x /usr/include/vn/vn_ui.h
+endif
 
-win_clean: $(win_out)
-	$(delete) $(win_out)
-
-uni_run: $(lib)
-	$(CC) $(ANSI) -shared -fPIC $(lib) -o $(uni_out)
-
-uni_clean:
-	$(delete) $(uni_out)
+uninstall:
+ifeq ($(OS),Windows_NT)
+# UNINSTALL FOR WINDOWS SECTION
+else
+	sudo rm -rf /usr/include/vn
+endif
 
 # MADE BY @hanilr #
