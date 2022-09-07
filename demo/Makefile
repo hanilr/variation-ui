@@ -16,34 +16,30 @@ _progress = widget/vn_progress/main.c
 
 _all = $(_color) $(_general) $(_bg) $(_frame) $(label) $(_progress)
 
+.PHONY: run clean 
+
+run: $(_all)
 ifeq ($(OS),Windows_NT)
-	delete = del
-else
-	delete = rm
-endif
-
-.PHONY: win_run win_clean uni_run uni_clean 
-
-win_run: $(_all)
 	$(CC) $(ANSI) $(_color) -o _color.exe
 	$(CC) $(ANSI) $(_general) -o _general.exe
 	$(CC) $(ANSI) $(_bg) -o _bg.exe
 	$(CC) $(ANSI) $(_frame) -o _frame.exe
 	$(CC) $(ANSI) $(_label) -o _label.exe
-	$(CC) $(ANSI) $(_progress) -o _progress.exe
-
-win_clean: _color.exe _general.exe _bg.exe _frame.exe _label.exe _progress.exe
-	$(delete) *.exe
-
-uni_run: $(_all)
+	$(CC) $(ANSI) $(_progress) -o _progress.exe	
+else
 	$(CC) $(ANSI) $(_color) -o _color
 	$(CC) $(ANSI) $(_general) -o _general
 	$(CC) $(ANSI) $(_bg) -o _bg
 	$(CC) $(ANSI) $(_frame) -o _frame
 	$(CC) $(ANSI) $(_label) -o _label
-	$(CC) $(ANSI) $(_progress) -o _progress
+	$(CC) $(ANSI) $(_progress) -o _progress	
+endif
 
-uni_clean: _color _general _bg _frame _label _progress
-	$(delete) _*
+clean:
+ifeq ($(OS),Windows_NT)
+	del *.exe
+else
+	rm _*
+endif
 
 # MADE BY @hanilr #
