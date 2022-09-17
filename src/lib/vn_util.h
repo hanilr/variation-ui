@@ -22,7 +22,7 @@
     char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 
     #ifdef __linux__
-        void vnu_get_terminal_size(struct vn_init vn); /* GET TERMINAL SIZES TO 'vn_init' */
+        void vnu_get_terminal_size(struct vn_init *vn); /* GET TERMINAL SIZES TO 'vn_init' */
     #endif /* LINUX ONLY */
 
     int vnc_hex_number(int number, int left_side); /* NUMBER TO HEX */

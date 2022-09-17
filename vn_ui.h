@@ -60,7 +60,7 @@
         char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 
         #ifdef __linux__
-            void vnu_get_terminal_size(struct vn_init vn); /* GET TERMINAL SIZES TO 'vn_init' */
+            void vnu_get_terminal_size(struct vn_init *vn); /* GET TERMINAL SIZES TO 'vn_init' */
         #endif /* LINUX ONLY */
     #endif /* VN_UTIL */
 
@@ -129,13 +129,13 @@
         }
 
         #ifdef __linux__
-            void vnu_get_terminal_size(struct vn_init vn)
+            void vnu_get_terminal_size(struct vn_init *vn)
             {
                 #include <sys/ioctl.h>
                 struct winsize terminal_size;
                 ioctl(0, TIOCGWINSZ, &terminal_size);
-                vn.width = terminal_size.ws_row;
-                vn.height = terminal_size.ws_col;
+                vn->width = terminal_size.ws_row;
+                vn->height = terminal_size.ws_col;
             } /* LINUX ONLY */
         #endif
     #endif /* VN_UTIL */

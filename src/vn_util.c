@@ -34,13 +34,13 @@ char vnu_get_char_instantly(void)
 }
 
 #ifdef __linux__
-void vnu_get_terminal_size(struct vn_init vn)
+void vnu_get_terminal_size(struct vn_init *vn) 
 {
     #include <sys/ioctl.h>
     struct winsize terminal_size;
     ioctl(0, TIOCGWINSZ, &terminal_size);
-    vn.width = terminal_size.ws_row;
-    vn.height = terminal_size.ws_col;
+    vn->width = terminal_size.ws_row;
+    vn->height = terminal_size.ws_col;
 } /* LINUX ONLY */
 #endif
 
