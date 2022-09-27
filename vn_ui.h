@@ -209,7 +209,9 @@
     #ifdef VN_WIDGET
         void vn_line(int pos_x, int pos_y, int width, char *bg_color)
         {
+            vn_gotoxy(pos_x, pos_y);
             printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
+            
             int x = 0;
             while(width > x)
             {
