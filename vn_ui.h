@@ -73,6 +73,8 @@
     void vn_print(char *str, char *fg_color, char *bg_color, char *str_style); /* PRINT WITH COLORS */
 
     #ifdef VN_WIDGET
+        void vn_line(int pos_x, int pos_y, int width, char *bg_color); /* DRAW SIMPLE LINE */
+
         void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color); /* SET BACKGROUND COLOR */
 
         void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol); /* SET WINDOW FRAME */
@@ -205,6 +207,18 @@
     } /* IF 'vn_cursor_visibility()' USED */
 
     #ifdef VN_WIDGET
+        void vn_line(int pos_x, int pos_y, int width, char *bg_color)
+        {
+            printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
+            int x = 0;
+            while(width > x)
+            {
+                printf(" ");
+                x+=1;
+            }
+            printf("%s", esc_reset); /* RESET THE COLOR */
+        }
+
         void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
         { /* 'bg_color' NEED TO BE 'is_fore = 0' */
             int x = 0, y = 0;

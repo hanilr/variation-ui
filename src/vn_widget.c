@@ -11,6 +11,18 @@
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
+void vn_line(int pos_x, int pos_y, int width, char *bg_color)
+{
+    printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
+    int x = 0;
+    while(width > x)
+    {
+        printf(" ");
+        x+=1;
+    }
+    printf("%s", esc_reset); /* RESET THE COLOR */
+}
+
 void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
 { /* 'bg_color' NEED TO BE 'is_fore = 0' */
     int x = 0, y = 0;
