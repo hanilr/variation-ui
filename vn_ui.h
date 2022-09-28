@@ -70,6 +70,10 @@
 
     void vn_gotoxy(int pos_x, int pos_y); /* SET CURSOR TO X AND Y POSITIONS */
 
+    void vn_savexy(void); /* SAVE CURSOR POSITION */
+
+    void vn_restorexy(void); /* RESTORE SAVED CURSOR POSITION */
+
     void vn_print(char *str, char *fg_color, char *bg_color, char *str_style); /* PRINT WITH COLORS */
 
     #ifdef VN_WIDGET
@@ -100,6 +104,10 @@
     void vn_clear(void) { printf("%s", clear_screen); }
 
     void vn_gotoxy(int pos_x, int pos_y) { printf("\033[%d;%dH", pos_y, pos_x); }
+
+    void vn_savexy(void) { printf("\033[s"); }
+
+    void vn_restorexy(void) { printf("\033[u"); }
 
     void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
     { /* IF YOU DON'T WANT TO USE ARGUMENTS THEN ENTER  IN DOUBLE QUOTATION MARKS WITH GAP */
@@ -209,9 +217,7 @@
     #ifdef VN_WIDGET
         void vn_line(int pos_x, int pos_y, int width, char *bg_color)
         {
-            vn_gotoxy(pos_x, pos_y);
             printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
-            
             int x = 0;
             while(width > x)
             {

@@ -8,6 +8,10 @@
 
     void vn_gotoxy(int pos_x, int pos_y); /* SET CURSOR TO X AND Y POSITIONS */
 
+    void vn_savexy(void); /* SAVE CURSOR POSITION */
+
+    void vn_restorexy(void); /* RESTORE SAVED CURSOR POSITION */
+
     void vn_print(char *str, char *fg_color, char *bg_color, char *str_style); /* PRINT WITH COLORS */
 
 #endif /* MADE BY @hanilr */

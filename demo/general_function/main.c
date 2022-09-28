@@ -13,7 +13,16 @@ int main()
 
    vn_clear(); /* CLEAR THE TERMINAL SCREEN */
    vn_gotoxy(vn.pos_x, vn.pos_y); /* GO TO CERTAIN POSITION */
-   printf("I'm going to %d and %d!", vn.pos_x, vn.pos_y);
+   printf("I'm going to %d and %d! [1]", vn.pos_x, vn.pos_y);
+   
+   vn_savexy();
+   vn.pos_x = 5;
+   vn.pos_y = 5;
+   vn_gotoxy(vn.pos_x, vn.pos_y);
+   printf("I saved my location and moved here! [2]");
+   
+   vn_restorexy();
+   printf(" | I restored my location and moved a new line! [3]");
 
    vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
    return 0;
