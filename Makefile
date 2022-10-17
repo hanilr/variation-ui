@@ -39,7 +39,7 @@ uninstall:
 ifeq ($(OS),Windows_NT)
 # UNINSTALL FOR WINDOWS SECTION
 else
-	sudo rm -rf /usr/include/vn
+	sudo rm /usr/include/vn/vn_ui.h
 endif
 
 # MADE BY @hanilr #
