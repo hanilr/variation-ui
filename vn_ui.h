@@ -57,9 +57,9 @@
     #ifdef VN_UTIL
         int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
 
-        char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
-
         #ifdef __linux__
+            char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
+
             void vnu_get_terminal_size(struct vn_init *vn); /* GET TERMINAL SIZES TO 'vn_init' */
         #endif /* LINUX ONLY */
     #endif /* VN_UTIL */
@@ -126,28 +126,24 @@
             return count;
         }
 
-        char vnu_get_char_instantly(void)
-        {
-            #ifdef _WIN32
-                return getch(); /* WANTED FUNCTION EXIST IN WINDOWS */
-            #elif __linux__
+        #ifdef __linux__
+            char vnu_get_char_instantly(void)
+            {
                 system("stty raw"); /* TERMINAL 'raw' MODE */
                 char key = getchar();
                 system("stty cooked"); /* TERMINAL 'cooked' MODE */
                 return key;
-            #endif
-        }
+            }
 
-        #ifdef __linux__
-            void vnu_get_terminal_size(struct vn_init *vn)
+            void vnu_get_terminal_size(struct vn_init *vn) 
             {
                 #include <sys/ioctl.h>
                 struct winsize terminal_size;
                 ioctl(0, TIOCGWINSZ, &terminal_size);
                 vn->width = terminal_size.ws_row;
                 vn->height = terminal_size.ws_col;
-            } /* LINUX ONLY */
-        #endif
+            }
+        #endif /* LINUX ONLY */
     #endif /* VN_UTIL */
 
     #ifdef VN_COLOR
