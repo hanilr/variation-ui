@@ -30,7 +30,7 @@ install: $(lib)
 ifeq ($(OS),Windows_NT)
 # INSTALL FOR WINDOWS SECTION
 else
-	sudo mkdir /usr/include/vn
+	sudo mkdir -p /usr/include/vn
 	sudo cp vn_ui.h /usr/include/vn
 	sudo chmod -x /usr/include/vn/vn_ui.h
 endif
@@ -40,6 +40,7 @@ ifeq ($(OS),Windows_NT)
 # UNINSTALL FOR WINDOWS SECTION
 else
 	sudo rm /usr/include/vn/vn_ui.h
+	if [ "$(ls -A "/usr/include/vn/" 2> /dev/null)" = "" ]; then sudo rm -rf /usr/include/vn/; fi
 endif
 
 # MADE BY @hanilr #
