@@ -76,6 +76,10 @@ int main()
 ```
   make install
 ```
+> If you only want to download library with terminal then use curl tool
+```sh
+curl -fLo /usr/include/vn/vn_ui.h --create-dirs https://raw.githubusercontent.com/hanilr/variation-ui/master/vn_ui.h
+```
 > Installing section now run only in unix. (You can find in ` /usr/include/vn/ `)
 >
 > If you want to uninstall you can use ` make uninstall `
