@@ -11,16 +11,28 @@
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
-void vn_line(int pos_x, int pos_y, int width, char *bg_color)
+void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format)
 {
     vn_gotoxy(pos_x, pos_y);
     printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
     
     int x = 0;
-    while(width > x)
+    if(!strcmp(format, "horizontal"))
     {
-        printf(" ");
-        x+=1;
+        while(length > x)
+        {
+            printf(" ");
+            x+=1;
+        }
+    }
+    else if(!strcmp(format, "vertical"))
+    {
+        while(length > x)
+        {
+            printf(" ");
+            x+=1;
+            vn_gotoxy(pos_x, pos_y+x);
+        }
     }
     printf("%s", esc_reset); /* RESET THE COLOR */
 }

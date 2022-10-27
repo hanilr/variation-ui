@@ -2,7 +2,7 @@
 #ifndef _VN_WIDGET_H
 #define _VN_WIDGET_H
 
-    void vn_line(int pos_x, int pos_y, int width, char *bg_color); /* DRAW SIMPLE LINE */
+    void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format); /* DRAW SIMPLE LINE */
 
     void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color); /* SET BACKGROUND COLOR */
 
