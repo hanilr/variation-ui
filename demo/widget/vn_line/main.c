@@ -19,7 +19,9 @@ int main()
 
    vn_clear(); /* CLEAR THE TERMINAL SCREEN */
    vn_gotoxy(vn.pos_x, vn.pos_y); /* GO TO CERTAIN POSITION */
-   vn_line(vn.pos_x, vn.pos_y, vn.width, white.color);
+   vn_line(vn.pos_x, vn.pos_y, vn.width, white.color, "horizontal");
+   vn.pos_y = 4;
+   vn_line(vn.pos_x, vn.pos_y, vn.width, white.color, "vertical");
 
    vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
    return 0;
