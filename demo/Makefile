@@ -17,7 +17,7 @@ _progress = widget/vn_progress/main.c
 
 _all = $(_color) $(_general) $(_bg) $(_frame) $(_label) $(_line) $(_progress)
 
-.PHONY: run clean 
+.PHONY: run test clean 
 
 run: $(_all)
 ifeq ($(OS),Windows_NT)
@@ -33,8 +33,46 @@ else
 	$(CC) $(ANSI) $(_general) -o _general
 	$(CC) $(ANSI) $(_bg) -o _bg
 	$(CC) $(ANSI) $(_frame) -o _frame
+	$(CC) $(ANSI) $(_label) -o _label
 	$(CC) $(ANSI) $(_line) -o _line
-	$(CC) $(ANSI) $(_progress) -o _progress	
+	$(CC) $(ANSI) $(_progress) -o _progress
+endif
+
+test:
+ifeq ($(OS),Windows_NT)
+	_color.exe
+	timeout 5
+	_general.exe
+	timeout 5
+	_bg.exe
+	timeout 5
+	_frame.exe
+	timeout 5
+	_label.exe
+	timeout 5
+	_line.exe
+	timeout 5
+	_progress.exe
+	timeout 5
+	cls
+	echo "Test finished!"
+else
+	./_color
+	sleep 5
+	./_general
+	sleep 5 
+	./_bg
+	sleep 5
+	./_frame
+	sleep 5
+	./_label
+	sleep 5
+	./_line
+	sleep 5
+	./_progress
+	sleep 5
+	clear
+	echo "Test finished!"
 endif
 
 clean:
