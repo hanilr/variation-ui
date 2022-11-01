@@ -80,6 +80,8 @@ int main()
 ```sh
 curl -fLo /usr/include/vn/vn_ui.h --create-dirs https://raw.githubusercontent.com/hanilr/variation-ui/master/vn_ui.h
 ```
+> If you use curl tool then you need to compile with sudo.
+>
 > Installing section now run only in unix. (You can find in ` /usr/include/vn/ `)
 >
 > If you want to uninstall you can use ` make uninstall `
