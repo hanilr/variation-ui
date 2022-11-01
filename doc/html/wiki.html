@@ -1,0 +1,383 @@
+<!-- ![vn](../../img/vn.png) -->
+<!-- ![vn_info](../../img/vn_info.png) -->
+<!-- ![vn_warn](../../img/vn_warn.png) -->
+<!-- ![vn_example](../../img/vn_example.png) -->
+
+<!-- CONFIGURATION -->
+<button id="theme" onclick="switch_theme()">Switch Theme</button>
+<style>
+    body {
+        background-color: #e9e9e9;
+        color: #161616;
+        font-size: 20px;
+    }
+    .dark-mode {
+        background-color: #161616;
+        color: #e9e9e9;
+        font-size: 20px;
+    }
+    #theme {
+        background-color: #c83737;
+        color: #e9e9e9;
+        border-color: #161616;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-right: 10px;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+</style>
+<script> function switch_theme() { document.body.classList.toggle("dark-mode"); } </script>
+<!-- CONFIGURATION -->
+
+<!-- CODE -->
+<h1 id="-vn-img-vn-png-about-the-library-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> About the library <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Just fork it then add or remove codes).</p>
+<h1 id="-vn-img-vn-png-topics-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Topics <img src="../../img/vn.png" alt="vn"></h1>
+<ul>
+<li><strong>Basics</strong></li>
+<li><strong>General functions</strong></li>
+<li><strong>Utils</strong></li>
+<li><strong>Colors</strong></li>
+<li><strong>Widgets</strong></li>
+</ul>
+<p><img src="../../img/vn_info.png" alt="vn_info"> On the basics page, telling you pre informations about single-header files. Also giving you information about security system.</p>
+<p><img src="../../img/vn_info.png" alt="vn_info"> On the general functions page, giving you informations about simple functions.</p>
+<p><img src="../../img/vn_info.png" alt="vn_info"> On the utilities page, giving you some informations of utilities (You don&#39;t need this).</p>
+<p><img src="../../img/vn_info.png" alt="vn_info"> On the colors page, telling you about where come colors and how to use.</p>
+<p><img src="../../img/vn_info.png" alt="vn_info"> On the widgets page, telling you how many widgets are they and how to use they.</p>
+<hr>
+<h2 id="-vn-img-vn-png-working-with-a-single-header-library-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Working with a single-header library <img src="../../img/vn.png" alt="vn"></h2>
+<p><img src="../../img/vn_warn.png" alt="vn_warn"> You need to define <code>#define VN_UI_IMPLEMENTATION</code> before <code>#include &quot;vn_ui.h&quot;</code></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">"vn_ui.h"</span></span>
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Because in header file codes are locked and when you define this name you unlock the code. This information is important, because generally if you want to use single-header library you need to use this method.</p>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Lets try this method <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* UNLOCK THE CODE */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"vn_ui.h"</span> <span class="hljs-comment">/* INCLUDING THE LIBRARY */</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+   vn_clear(); <span class="hljs-comment">/* TERMINAL SCREEN CLEAR */</span>
+
+   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> In this code you included the library then used terminal screen clear function.</p>
+<h2 id="-vn-img-vn-png-information-about-sections-of-this-library-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Information about sections of this library <img src="../../img/vn.png" alt="vn"></h2>
+<p><img src="../../img/vn_warn.png" alt="vn_warn"> You can use 3 more of them for this library</p>
+<ul>
+<li><strong>&#39;VN_UI_IMPEMENTATION&#39;:</strong> <em>Unlock the variation-ui code</em></li>
+<li><strong>&#39;VN_UTIL&#39;:</strong> <em>Unlock the utility section</em></li>
+<li><strong>&#39;VN_COLOR&#39;:</strong> <em>Unlock the color section</em></li>
+<li><strong>&#39;VN_WIDGET&#39;:</strong> <em>Unlock the widget section</em></li>
+</ul>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Basically they all have the same meaning, each section in the library is divided into categories and you have to define the name of that section to use it.</p>
+<ul>
+<li><p><strong>&#39;VN_UTIL&#39;:</strong> <em>If you want to use library exclusive functions you need to define this name.</em></p>
+</li>
+<li><p><strong>&#39;VN_COLOR&#39;:</strong> <em>If you want to use custom colors you need to define this name.</em></p>
+</li>
+<li><p><strong>&#39;VN_WIDGET&#39;:</strong> _If you need more basic but effective ui functions you need to define this name. (Require &#39;VN<em>COLOR&#39; for colors)</em></p>
+</li>
+</ul>
+<blockquote>
+<p>You can find informations about this sections in the wiki.</p>
+</blockquote>
+<hr>
+<h1 id="-vn-img-vn-png-how-colors-work-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> How colors work <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Did you ever heard the tragedy of darth Plagueis? If you heard, good for you, but its out of context. But if you heard the ascii escape sequence you would understand what I&#39;m talking about. Yes, this library made completely with ascii escape sequence. So, what is ascii escape sequence? You can find out <a href="https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797">here</a>. So your terminal must support to ascii escape sequence to using this library.</p>
+<p><img src="../../img/vn_warn.png" alt="vn_warn"> Some terminals may not support or not completely support ascii escape sequence.</p>
+<h1 id="-vn-img-vn-png-example-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Example <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_info.png" alt="vn_info"> So, how can we use colors? No need to explain anything, you can clearly understand with take a look to code.</p>
+<blockquote>
+<p>You can use 2 type of function: &#39;vn_hex_color()&#39; and &#39;vn_rgb_color()&#39; for use hex or rgb color codes to make strings colourful.</p>
+</blockquote>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Let&#39;s do it! <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_COLOR <span class="hljs-comment">/* FOR COLOR SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-keyword">int</span> main()
+{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.<span class="hljs-built_in">width</span> = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.<span class="hljs-built_in">height</span> = <span class="hljs-number">2</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color white; <span class="hljs-comment">/* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */</span>
+   white.is_fore = <span class="hljs-number">0</span>; <span class="hljs-comment">/* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */</span>
+   white.color = vn_hex_color(<span class="hljs-string">"ffffff"</span>, white.is_fore); <span class="hljs-comment">/* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */</span>   
+
+   <span class="hljs-keyword">struct</span> vnc_color black;
+   black.is_fore = <span class="hljs-number">1</span>; <span class="hljs-comment">/* FOR BACKGROUND */</span>
+   black.color = vn_rgb_color(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, black.is_fore);
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   vn_print(<span class="hljs-string">"Hey is this text with color?"</span>, white.color, black.color, text_bold); <span class="hljs-comment">/* YOU CAN FIND TEXT STYLES IN 'src/lib/vn_conf.h' or 'vn.h' */</span>
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-built_in">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Did you see? Its that simple. If you need information about how to convert hex to color you can take a look in &#39;src/vn_util.c&#39; or &#39;vn.h&#39;.</p>
+<hr>
+<h1 id="-vn-img-vn-png-terminal-ui-functions-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Terminal UI Functions <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_warn.png" alt="vn_warn"> Only you need &#39;VN_UI_IMPLEMENTATION&#39; to use this functions.</p>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Functions:</p>
+<ul>
+<li><strong>vn_cursor_visibility(int boolean);</strong> <em>Set visibility of the terminal cursor. If &#39;boolean&#39; is 1 then cursor is visible, if &#39;boolean&#39; is 0 then cursor is invisible.</em><blockquote>
+<p>&#39;boolean&#39; has int data type because not mixed up ansi-c to c++.</p>
+</blockquote>
+</li>
+<li><strong>vn_clear();</strong> <em>Clear terminal screen.</em></li>
+<li><strong>void vn_gotoxy(int pos_x, int pos_y);</strong> <em>Go to certain positions in terminal.</em></li>
+<li><strong>void vn_savexy();</strong> <em>Save current terminal cursor position.</em></li>
+<li><strong>void vn_restorexy();</strong> <em>Restore saved terminal cursor position.</em></li>
+<li><strong>void vn_print(char</strong> <strong>*str, char</strong> <strong>*fg_color, char</strong> <strong>*bg_color, char</strong> <strong>*str_style);</strong> <em>Print with color and text style</em><blockquote>
+<p>Need &#39;VN_COLOR&#39; to use &#39;fg_color&#39; and &#39;bg_color&#39;, but you can find text styles in <code>src/lib/vn_conf.h</code> or &#39;vn.h&#39; for &#39;str_style&#39;.</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="-vn-img-vn-png-starting-and-ending-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Starting and ending <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_info.png" alt="vn_info"> For starting I&#39;m highly recommend to use &#39;vn_init&#39; struct for define window start positions, width and heights. And also I&#39;m highly recommend to use &#39;vn_end&#39; function to end of the code. Because when &#39;vn_gotoxy&#39; functions used cursor going to certain position but not come back you can use &#39;vn_gotoxy&#39; function to go to end of the terminal line but that method may confuse you and can be bad for readable code. If you used &#39;vn_init&#39; struct to define you only need to use &#39;vn_end&#39; function.</p>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Let&#39;s try <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"../../vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.width = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.height = <span class="hljs-number">2</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">"I'm going to %d and %d! [1]"</span>, vn.pos_x, vn.pos_y);
+
+   vn_savexy();
+   vn.pos_x = <span class="hljs-number">5</span>;
+   vn.pos_y = <span class="hljs-number">5</span>;
+   vn_gotoxy(vn.pos_x, vn.pos_y);
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">"I saved my location and moved here! [2]"</span>);
+
+   vn_restorexy();
+   <span class="hljs-built_in">printf</span>(<span class="hljs-string">" | I restored my location and moved a new line! [3]"</span>);
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> As you can see this code pretty readable and simple.</p>
+<hr>
+<h1 id="-vn-img-vn-png-about-utilies-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> About Utilies <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_info.png" alt="vn_info"> In this library utilities uses for functions in library. But if you want to use this section you are able to use these functions.</p>
+<p><img src="../../img/vn_example.png" alt="vn_example"> What you need to do? <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* UNLOCK THE CODE */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UTIL <span class="hljs-comment">/* UNLOCK THE UTIL SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"vn_ui.h"</span> <span class="hljs-comment">/* INCLUDING THE LIBRARY */</span></span>
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> As you can see there is no difference between &#39;VN_UI_IMPLEMENTATION&#39;. Only you need to do same thing.</p>
+<p><img src="../../img/vn_warn.png" alt="vn_warn"> You don&#39;t need to use this section, only if you want to use. <img src="../../img/vn_warn.png" alt="vn_warn"></p>
+<h1 id="-vn-img-vn-png-functions-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Functions <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_info.png" alt="vn_info"> So what you have this section?</p>
+<ul>
+<li><strong>vnu_get_repeat(char</strong> <strong>*str, char chr);</strong> <em>Get character repeat times in a string.</em></li>
+<li><strong>vnu_get_char_instantly();</strong> <em>Get character without &#39;<Return>&#39; key. (Only for linux)</em></li>
+<li><strong>vnu_get_terminal_size(struct vn_init vn);</strong> _Get terminal sizes to &#39;vn<em>init&#39;. (Only for linux)</em></li>
+</ul>
+<hr>
+<p><img src="../../img/vn_info.png" alt="vn_info"> Do you need convenience widgets? If you do need, this library has 4 of pre-prepared function!</p>
+<ul>
+<li><strong>vn_line(int pos_x, int pos_y, int width, char</strong> <strong>*bg_color);</strong> <em>Draw simple line</em></li>
+<li><strong>vn_bg(int pos_x, int pos_y, int width, int height, char</strong> <strong>*bg_color);</strong> <em>Set background</em></li>
+<li><strong>vn_frame(int pos_x, int pos_y, int width, int height, char</strong> <strong>*fg_color, char</strong> <strong>*bg_color, char vertical_symbol, char horizontal_symbol);</strong> <em>Set frame</em></li>
+<li><strong>vn_label(int pos_x, int pos_y, int width, int height, char</strong> <strong>*fg_color, char</strong> <strong>*bg_color, char</strong> <strong>*text_style, char</strong> <strong>*str);</strong> <em>Set label</em></li>
+<li><strong>vn_progress(int pos_x, int pos_y, int width, int height, char</strong> <strong>*progress_frame_color, char</strong> <strong>*progress_color, int progress_value);</strong> <em>Set progress bar</em></li>
+</ul>
+<p><img src="../../img/vn_info.png" alt="vn_info"> So how can we use? Apparently you need to use &#39;VN_COLOR&#39; again (Because of colors). </p>
+<p><img src="../../img/vn_warn.png" alt="vn_warn"> But if you don&#39;t want to use color you can simply skip arguments with like <code>vn_label(1, 1, 20, 10, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;It&#39;s a label!&quot;)</code></p>
+<h1 id="-vn-img-vn-png-draw-simple-line-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Draw Simple Line <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Example <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_COLOR <span class="hljs-comment">/* FOR COLOR SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_WIDGET <span class="hljs-comment">/* FOR WIDGET SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"../../../vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-keyword">int</span> main()
+{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.<span class="hljs-built_in">width</span> = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.<span class="hljs-built_in">height</span> = <span class="hljs-number">10</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color white; <span class="hljs-comment">/* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */</span>
+   white.is_fore = <span class="hljs-number">1</span>; <span class="hljs-comment">/* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */</span>
+   white.color = vn_hex_color(<span class="hljs-string">"ffffff"</span>, white.is_fore); <span class="hljs-comment">/* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */</span>   
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   vn_line(vn.pos_x, vn.pos_y, vn.<span class="hljs-built_in">width</span>, white.color, <span class="hljs-string">"horizontal"</span>);
+   vn.pos_y = <span class="hljs-number">4</span>;
+   vn_line(vn.pos_x, vn.pos_y, vn.<span class="hljs-built_in">width</span>, white.color, <span class="hljs-string">"vertical"</span>);
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-built_in">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h1 id="-vn-img-vn-png-set-background-color-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Set background color <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Example <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_COLOR <span class="hljs-comment">/* FOR COLOR SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_WIDGET <span class="hljs-comment">/* FOR WIDGET SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"../../../vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-keyword">int</span> main()
+{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.<span class="hljs-built_in">width</span> = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.<span class="hljs-built_in">height</span> = <span class="hljs-number">10</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color white; <span class="hljs-comment">/* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */</span>
+   white.is_fore = <span class="hljs-number">1</span>; <span class="hljs-comment">/* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */</span>
+   white.color = vn_hex_color(<span class="hljs-string">"ffffff"</span>, white.is_fore); <span class="hljs-comment">/* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */</span>   
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   vn_bg(vn.pos_x, vn.pos_y, <span class="hljs-number">20</span>, <span class="hljs-number">10</span>, white.color);
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-built_in">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> This function only do set background color.</p>
+<h1 id="-vn-img-vn-png-frame-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Frame <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Example <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_COLOR <span class="hljs-comment">/* FOR COLOR SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_WIDGET <span class="hljs-comment">/* FOR WIDGET SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"../../../vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-keyword">int</span> main()
+{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.<span class="hljs-built_in">width</span> = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.<span class="hljs-built_in">height</span> = <span class="hljs-number">10</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color white; <span class="hljs-comment">/* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */</span>
+   white.is_fore = <span class="hljs-number">1</span>; <span class="hljs-comment">/* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */</span>
+   white.color = vn_hex_color(<span class="hljs-string">"ffffff"</span>, white.is_fore); <span class="hljs-comment">/* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color gray;
+   gray.is_fore = <span class="hljs-number">0</span>; <span class="hljs-comment">/* FOR FOREGROUND */</span>
+   gray.color = vn_hex_color(<span class="hljs-string">"303030"</span>, gray.is_fore);
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   vn_frame(vn.pos_x, vn.pos_y, <span class="hljs-number">20</span>, <span class="hljs-number">10</span>, gray.color, white.color, <span class="hljs-string">'|'</span>, <span class="hljs-string">'-'</span>);
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-built_in">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> This function only do make a frame with or without color.</p>
+<h1 id="-vn-img-vn-png-label-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Label <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Example <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_COLOR <span class="hljs-comment">/* FOR COLOR SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_WIDGET <span class="hljs-comment">/* FOR WIDGET SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"../../../vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-keyword">int</span> main()
+{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.<span class="hljs-built_in">width</span> = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.<span class="hljs-built_in">height</span> = <span class="hljs-number">10</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color white; <span class="hljs-comment">/* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */</span>
+   white.is_fore = <span class="hljs-number">1</span>; <span class="hljs-comment">/* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */</span>
+   white.color = vn_hex_color(<span class="hljs-string">"ffffff"</span>, white.is_fore); <span class="hljs-comment">/* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color gray;
+   gray.is_fore = <span class="hljs-number">0</span>; <span class="hljs-comment">/* FOR FOREGROUND */</span>
+   gray.color = vn_hex_color(<span class="hljs-string">"303030"</span>, gray.is_fore);
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   vn_label(vn.pos_x, vn.pos_y, <span class="hljs-number">20</span>, <span class="hljs-number">10</span>, gray.color, white.color, text_italic, <span class="hljs-string">"This is a label with or without colors!"</span>);
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-built_in">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> If a word can&#39;t fit to certain line will move new line. If string too long (as height) for label then last 3 character will be &#39;...&#39;</p>
+<h1 id="-vn-img-vn-png-progress-bar-vn-img-vn-png-"><img src="../../img/vn.png" alt="vn"> Progress bar <img src="../../img/vn.png" alt="vn"></h1>
+<p><img src="../../img/vn_example.png" alt="vn_example"> Example <img src="../../img/vn_example.png" alt="vn_example"></p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> <span class="hljs-comment">/* STANDARD INPUT/OUTPUT LIBRARY */</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_UI_IMPLEMENTATION <span class="hljs-comment">/* DO NOT FORGET THIS */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_COLOR <span class="hljs-comment">/* FOR COLOR SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VN_WIDGET <span class="hljs-comment">/* FOR WIDGET SECTION */</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"../../../vn_ui.h"</span> <span class="hljs-comment">/* INCLUDE AFTER DEFINE */</span></span>
+
+<span class="hljs-keyword">int</span> main()
+{
+   <span class="hljs-keyword">struct</span> vn_init vn; <span class="hljs-comment">/* FIRST OF ALL DEFINE WINDOW NAME */</span>
+   vn.<span class="hljs-built_in">width</span> = <span class="hljs-number">20</span>; <span class="hljs-comment">/* WINDOW WIDTH */</span>
+   vn.<span class="hljs-built_in">height</span> = <span class="hljs-number">10</span>; <span class="hljs-comment">/* WINDOW HEIGHT */</span>
+   vn.pos_x = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START ROW POSITION */</span>
+   vn.pos_y = <span class="hljs-number">2</span>; <span class="hljs-comment">/* START COLUMN POSITION */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color white; <span class="hljs-comment">/* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */</span>
+   white.is_fore = <span class="hljs-number">1</span>; <span class="hljs-comment">/* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */</span>
+   white.color = vn_hex_color(<span class="hljs-string">"ffffff"</span>, white.is_fore); <span class="hljs-comment">/* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */</span>
+
+   <span class="hljs-keyword">struct</span> vnc_color gray;
+   gray.is_fore = <span class="hljs-number">0</span>; <span class="hljs-comment">/* FOR FOREGROUND */</span>
+   gray.color = vn_hex_color(<span class="hljs-string">"303030"</span>, gray.is_fore);
+
+   vn_clear(); <span class="hljs-comment">/* CLEAR THE TERMINAL SCREEN */</span>
+   vn_gotoxy(vn.pos_x, vn.pos_y); <span class="hljs-comment">/* GO TO CERTAIN POSITION */</span>
+   vn_progress(vn.pos_x, vn.pos_y, <span class="hljs-number">20</span>, <span class="hljs-number">10</span>, white.color, gray.color, <span class="hljs-number">10</span>);
+
+   vn_end(vn); <span class="hljs-comment">/* ONLY NEED TO USE 'vn_init' */</span>
+   <span class="hljs-built_in">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p><img src="../../img/vn_info.png" alt="vn_info"> This function also work with loops.</p>
+<pre><code class="lang-c">   int i = <span class="hljs-number">0</span>;
+   while(i &gt; <span class="hljs-number">10</span>)
+   {
+      <span class="hljs-comment">/* DO SOMETHING */</span>
+      vn_progress(vn.pos_x, vn.pos_y, <span class="hljs-number">20</span>, <span class="hljs-number">10</span>, white.color, gray.color, i);
+      i+=<span class="hljs-number">2</span>;
+   }
+</code></pre>
+<!-- CODE -->
