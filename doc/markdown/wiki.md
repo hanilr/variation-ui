@@ -1,13 +1,13 @@
-<!-- ![vn](img/vn.png) -->
-<!-- ![vn_info](img/vn_info.png) -->
-<!-- ![vn_warn](img/vn_warn.png) -->
-<!-- ![vn_example](img/vn_example.png) -->
+<!-- ![vn](../../img/vn.png) -->
+<!-- ![vn_info](../../img/vn_info.png) -->
+<!-- ![vn_warn](../../img/vn_warn.png) -->
+<!-- ![vn_example](../../img/vn_example.png) -->
 
-# ![vn](img/vn.png) About the library ![vn](img/vn.png)
+# ![vn](../../img/vn.png) About the library ![vn](../../img/vn.png)
 
-![vn_info](img/vn_info.png) Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Just fork it then add or remove codes).
+![vn_info](../../img/vn_info.png) Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Just fork it then add or remove codes).
 
-# ![vn](img/vn.png) Topics ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Topics ![vn](../../img/vn.png)
 
 * **Basics**
 * **General functions**
@@ -15,28 +15,28 @@
 * **Colors**
 * **Widgets**
 
-![vn_info](img/vn_info.png) On the basics page, telling you pre informations about single-header files. Also giving you information about security system.
+![vn_info](../../img/vn_info.png) On the basics page, telling you pre informations about single-header files. Also giving you information about security system.
 
-![vn_info](img/vn_info.png) On the general functions page, giving you informations about simple functions.
+![vn_info](../../img/vn_info.png) On the general functions page, giving you informations about simple functions.
 
-![vn_info](img/vn_info.png) On the utilities page, giving you some informations of utilities (You don't need this).
+![vn_info](../../img/vn_info.png) On the utilities page, giving you some informations of utilities (You don't need this).
 
-![vn_info](img/vn_info.png) On the colors page, telling you about where come colors and how to use.
+![vn_info](../../img/vn_info.png) On the colors page, telling you about where come colors and how to use.
 
-![vn_info](img/vn_info.png) On the widgets page, telling you how many widgets are they and how to use they.
+![vn_info](../../img/vn_info.png) On the widgets page, telling you how many widgets are they and how to use they.
 
 ---
 
-## ![vn](img/vn.png) Working with a single-header library ![vn](img/vn.png)
+## ![vn](../../img/vn.png) Working with a single-header library ![vn](../../img/vn.png)
 
-![vn_warn](img/vn_warn.png) You need to define ` #define VN_UI_IMPLEMENTATION ` before ` #include "vn_ui.h" `
+![vn_warn](../../img/vn_warn.png) You need to define ` #define VN_UI_IMPLEMENTATION ` before ` #include "vn_ui.h" `
 ```c
 #define VN_UI_IMPLEMENTATION
 #include "vn_ui.h"
 ```
-![vn_info](img/vn_info.png) Because in header file codes are locked and when you define this name you unlock the code. This information is important, because generally if you want to use single-header library you need to use this method.
+![vn_info](../../img/vn_info.png) Because in header file codes are locked and when you define this name you unlock the code. This information is important, because generally if you want to use single-header library you need to use this method.
 
-![vn_example](img/vn_example.png) Lets try this method ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Lets try this method ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -50,17 +50,17 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) In this code you included the library then used terminal screen clear function.
+![vn_info](../../img/vn_info.png) In this code you included the library then used terminal screen clear function.
 
-## ![vn](img/vn.png) Information about sections of this library ![vn](img/vn.png)
+## ![vn](../../img/vn.png) Information about sections of this library ![vn](../../img/vn.png)
 
-![vn_warn](img/vn_warn.png) You can use 3 more of them for this library
+![vn_warn](../../img/vn_warn.png) You can use 3 more of them for this library
 * **'VN_UI_IMPEMENTATION':** _Unlock the variation-ui code_
 * **'VN_UTIL':** _Unlock the utility section_
 * **'VN_COLOR':** _Unlock the color section_
 * **'VN_WIDGET':** _Unlock the widget section_
 
-![vn_info](img/vn_info.png) Basically they all have the same meaning, each section in the library is divided into categories and you have to define the name of that section to use it.
+![vn_info](../../img/vn_info.png) Basically they all have the same meaning, each section in the library is divided into categories and you have to define the name of that section to use it.
 * **'VN_UTIL':** _If you want to use library exclusive functions you need to define this name._
 
 * **'VN_COLOR':** _If you want to use custom colors you need to define this name._
@@ -71,18 +71,18 @@ int main()
 
 ---
 
-# ![vn](img/vn.png) How colors work ![vn](img/vn.png)
+# ![vn](../../img/vn.png) How colors work ![vn](../../img/vn.png)
 
-![vn_info](img/vn_info.png) Did you ever heard the tragedy of darth Plagueis? If you heard, good for you, but its out of context. But if you heard the ascii escape sequence you would understand what I'm talking about. Yes, this library made completely with ascii escape sequence. So, what is ascii escape sequence? You can find out [here](https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797). So your terminal must support to ascii escape sequence to using this library.
+![vn_info](../../img/vn_info.png) Did you ever heard the tragedy of darth Plagueis? If you heard, good for you, but its out of context. But if you heard the ascii escape sequence you would understand what I'm talking about. Yes, this library made completely with ascii escape sequence. So, what is ascii escape sequence? You can find out [here](https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797). So your terminal must support to ascii escape sequence to using this library.
 
-![vn_warn](img/vn_warn.png) Some terminals may not support or not completely support ascii escape sequence.
+![vn_warn](../../img/vn_warn.png) Some terminals may not support or not completely support ascii escape sequence.
 
-# ![vn](img/vn.png) Example ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Example ![vn](../../img/vn.png)
 
-![vn_info](img/vn_info.png) So, how can we use colors? No need to explain anything, you can clearly understand with take a look to code.
+![vn_info](../../img/vn_info.png) So, how can we use colors? No need to explain anything, you can clearly understand with take a look to code.
 > You can use 2 type of function: 'vn_hex_color()' and 'vn_rgb_color()' for use hex or rgb color codes to make strings colourful.
 
-![vn_example](img/vn_example.png) Let's do it! ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Let's do it! ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -114,15 +114,15 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) Did you see? Its that simple. If you need information about how to convert hex to color you can take a look in 'src/vn_util.c' or 'vn.h'.
+![vn_info](../../img/vn_info.png) Did you see? Its that simple. If you need information about how to convert hex to color you can take a look in 'src/vn_util.c' or 'vn.h'.
 
 ---
 
-# ![vn](img/vn.png) Terminal UI Functions ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Terminal UI Functions ![vn](../../img/vn.png)
 
-![vn_warn](img/vn_warn.png) Only you need 'VN_UI_IMPLEMENTATION' to use this functions.
+![vn_warn](../../img/vn_warn.png) Only you need 'VN_UI_IMPLEMENTATION' to use this functions.
 
-![vn_info](img/vn_info.png) Functions:
+![vn_info](../../img/vn_info.png) Functions:
 * **vn_cursor_visibility(int boolean);** _Set visibility of the terminal cursor. If 'boolean' is 1 then cursor is visible, if 'boolean' is 0 then cursor is invisible._
 > 'boolean' has int data type because not mixed up ansi-c to c++.
 * **vn_clear();** _Clear terminal screen._
@@ -132,11 +132,11 @@ int main()
 * **void vn_print(char** ***str, char** ***fg_color, char** ***bg_color, char** ***str_style);** _Print with color and text style_
 > Need 'VN_COLOR' to use 'fg_color' and 'bg_color', but you can find text styles in `src/lib/vn_conf.h` or 'vn.h' for 'str_style'.
 
-# ![vn](img/vn.png) Starting and ending ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Starting and ending ![vn](../../img/vn.png)
 
-![vn_info](img/vn_info.png) For starting I'm highly recommend to use 'vn_init' struct for define window start positions, width and heights. And also I'm highly recommend to use 'vn_end' function to end of the code. Because when 'vn_gotoxy' functions used cursor going to certain position but not come back you can use 'vn_gotoxy' function to go to end of the terminal line but that method may confuse you and can be bad for readable code. If you used 'vn_init' struct to define you only need to use 'vn_end' function.
+![vn_info](../../img/vn_info.png) For starting I'm highly recommend to use 'vn_init' struct for define window start positions, width and heights. And also I'm highly recommend to use 'vn_end' function to end of the code. Because when 'vn_gotoxy' functions used cursor going to certain position but not come back you can use 'vn_gotoxy' function to go to end of the terminal line but that method may confuse you and can be bad for readable code. If you used 'vn_init' struct to define you only need to use 'vn_end' function.
 
-![vn_example](img/vn_example.png) Let's try ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Let's try ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -168,34 +168,34 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) As you can see this code pretty readable and simple.
+![vn_info](../../img/vn_info.png) As you can see this code pretty readable and simple.
 
 ---
 
-# ![vn](img/vn.png) About Utilies ![vn](img/vn.png)
+# ![vn](../../img/vn.png) About Utilies ![vn](../../img/vn.png)
 
-![vn_info](img/vn_info.png) In this library utilities uses for functions in library. But if you want to use this section you are able to use these functions.
+![vn_info](../../img/vn_info.png) In this library utilities uses for functions in library. But if you want to use this section you are able to use these functions.
 
-![vn_example](img/vn_example.png) What you need to do? ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) What you need to do? ![vn_example](../../img/vn_example.png)
 ```c
 #define VN_UI_IMPLEMENTATION /* UNLOCK THE CODE */
 #define VN_UTIL /* UNLOCK THE UTIL SECTION */
 #include "vn_ui.h" /* INCLUDING THE LIBRARY */
 ```
-![vn_info](img/vn_info.png) As you can see there is no difference between 'VN_UI_IMPLEMENTATION'. Only you need to do same thing.
+![vn_info](../../img/vn_info.png) As you can see there is no difference between 'VN_UI_IMPLEMENTATION'. Only you need to do same thing.
 
-![vn_warn](img/vn_warn.png) You don't need to use this section, only if you want to use. ![vn_warn](img/vn_warn.png)
+![vn_warn](../../img/vn_warn.png) You don't need to use this section, only if you want to use. ![vn_warn](../../img/vn_warn.png)
 
-# ![vn](img/vn.png) Functions ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Functions ![vn](../../img/vn.png)
 
-![vn_info](img/vn_info.png) So what you have this section?
+![vn_info](../../img/vn_info.png) So what you have this section?
 * **vnu_get_repeat(char** ***str, char chr);** _Get character repeat times in a string._
 * **vnu_get_char_instantly();** _Get character without '<Return>' key. (Only for linux)_
 * **vnu_get_terminal_size(struct vn_init vn);** _Get terminal sizes to 'vn_init'. (Only for linux)_
 
 ---
 
-![vn_info](img/vn_info.png) Do you need convenience widgets? If you do need, this library has 4 of pre-prepared function!
+![vn_info](../../img/vn_info.png) Do you need convenience widgets? If you do need, this library has 4 of pre-prepared function!
 
 * **vn_line(int pos_x, int pos_y, int width, char** ***bg_color);** _Draw simple line_
 * **vn_bg(int pos_x, int pos_y, int width, int height, char** ***bg_color);** _Set background_
@@ -203,16 +203,16 @@ int main()
 * **vn_label(int pos_x, int pos_y, int width, int height, char** ***fg_color, char** ***bg_color, char** ***text_style, char** ***str);** _Set label_
 * **vn_progress(int pos_x, int pos_y, int width, int height, char** ***progress_frame_color, char** ***progress_color, int progress_value);** _Set progress bar_
 
-![vn_info](img/vn_info.png) So how can we use? Apparently you need to use 'VN_COLOR' again (Because of colors). 
+![vn_info](../../img/vn_info.png) So how can we use? Apparently you need to use 'VN_COLOR' again (Because of colors). 
 
-![vn_warn](img/vn_warn.png) But if you don't want to use color you can simply skip arguments with like `vn_label(1, 1, 20, 10, "", "", "", "It's a label!")`
-
-
-
-# ![vn](img/vn.png) Draw Simple Line ![vn](img/vn.png)
+![vn_warn](../../img/vn_warn.png) But if you don't want to use color you can simply skip arguments with like `vn_label(1, 1, 20, 10, "", "", "", "It's a label!")`
 
 
-![vn_example](img/vn_example.png) Example ![vn_example](img/vn_example.png)
+
+# ![vn](../../img/vn.png) Draw Simple Line ![vn](../../img/vn.png)
+
+
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
 
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
@@ -245,10 +245,10 @@ int main()
 }
 ```
 
-# ![vn](img/vn.png) Set background color ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Set background color ![vn](../../img/vn.png)
 
 
-![vn_example](img/vn_example.png) Example ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -277,11 +277,11 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) This function only do set background color.
+![vn_info](../../img/vn_info.png) This function only do set background color.
 
-# ![vn](img/vn.png) Frame ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Frame ![vn](../../img/vn.png)
 
-![vn_example](img/vn_example.png) Example ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -314,11 +314,11 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) This function only do make a frame with or without color.
+![vn_info](../../img/vn_info.png) This function only do make a frame with or without color.
 
-# ![vn](img/vn.png) Label ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Label ![vn](../../img/vn.png)
 
-![vn_example](img/vn_example.png) Example ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -351,11 +351,11 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) If a word can't fit to certain line will move new line. If string too long (as height) for label then last 3 character will be '...'
+![vn_info](../../img/vn_info.png) If a word can't fit to certain line will move new line. If string too long (as height) for label then last 3 character will be '...'
 
-# ![vn](img/vn.png) Progress bar ![vn](img/vn.png)
+# ![vn](../../img/vn.png) Progress bar ![vn](../../img/vn.png)
 
-![vn_example](img/vn_example.png) Example ![vn_example](img/vn_example.png)
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
 ```c
 #include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
 
@@ -388,7 +388,7 @@ int main()
    return 0;
 }
 ```
-![vn_info](img/vn_info.png) This function also work with loops.
+![vn_info](../../img/vn_info.png) This function also work with loops.
 ```c
    int i = 0;
    while(i > 10)
