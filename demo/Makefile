@@ -21,65 +21,121 @@ _all = $(_color) $(_general) $(_bg) $(_frame) $(_label) $(_line) $(_progress)
 
 run: $(_all)
 ifeq ($(OS),Windows_NT)
-	$(CC) $(ANSI) $(_color) -o _color.exe
-	$(CC) $(ANSI) $(_general) -o _general.exe
-	$(CC) $(ANSI) $(_bg) -o _bg.exe
-	$(CC) $(ANSI) $(_frame) -o _frame.exe
-	$(CC) $(ANSI) $(_label) -o _label.exe
-	$(CC) $(ANSI) $(_line) -o _line.exe
-	$(CC) $(ANSI) $(_progress) -o _progress.exe	
+	@$(CC) $(ANSI) $(_color) -o _color.exe
+	@$(CC) $(ANSI) $(_general) -o _general.exe
+	@$(CC) $(ANSI) $(_bg) -o _bg.exe
+	@$(CC) $(ANSI) $(_frame) -o _frame.exe
+	@$(CC) $(ANSI) $(_label) -o _label.exe
+	@$(CC) $(ANSI) $(_line) -o _line.exe
+	@$(CC) $(ANSI) $(_progress) -o _progress.exe
+
+	@echo ""
+	@echo "[Compilation successfully completed!]"
 else
-	$(CC) $(ANSI) $(_color) -o _color
-	$(CC) $(ANSI) $(_general) -o _general
-	$(CC) $(ANSI) $(_bg) -o _bg
-	$(CC) $(ANSI) $(_frame) -o _frame
-	$(CC) $(ANSI) $(_label) -o _label
-	$(CC) $(ANSI) $(_line) -o _line
-	$(CC) $(ANSI) $(_progress) -o _progress
+	@$(CC) $(ANSI) $(_color) -o _color
+	@$(CC) $(ANSI) $(_general) -o _general
+	@$(CC) $(ANSI) $(_bg) -o _bg
+	@$(CC) $(ANSI) $(_frame) -o _frame
+	@$(CC) $(ANSI) $(_label) -o _label
+	@$(CC) $(ANSI) $(_line) -o _line
+	@$(CC) $(ANSI) $(_progress) -o _progress
+
+	@echo "\033[38;2;55;200;55m"
+	@echo "\033[1m\033[4m[Compilation successfully completed!]"
+	@echo "\033[0m"
 endif
 
 test:
 ifeq ($(OS),Windows_NT)
-	_color.exe
-	timeout 5
-	_general.exe
-	timeout 5
-	_bg.exe
-	timeout 5
-	_frame.exe
-	timeout 5
-	_label.exe
-	timeout 5
-	_line.exe
-	timeout 5
-	_progress.exe
-	timeout 5
-	cls
-	echo "Test finished!"
+	@_color.exe
+	@echo "[Testing]"
+	@timeout 5
+
+	@_general.exe
+	@echo "[Testing.]"
+	@timeout 5
+
+	@_bg.exe
+	@echo "[Testing..]"
+	@timeout 5
+
+	@_frame.exe
+	@echo "[Testing...]"
+	@timeout 5
+
+	@_label.exe
+	@echo "[Testing....]"
+	@timeout 5
+
+	@_line.exe
+	@echo "[Testing.....]"
+	@timeout 5
+
+	@_progress.exe
+	@echo "[Testing......]"
+	@timeout 5
+
+	@cls
+	@echo "[...Test completed...]"
 else
-	./_color
-	sleep 5
-	./_general
-	sleep 5 
-	./_bg
-	sleep 5
-	./_frame
-	sleep 5
-	./_label
-	sleep 5
-	./_line
-	sleep 5
-	./_progress
-	sleep 5
-	clear
-	echo "Test finished!"
+	@./_color
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing]"
+	@sleep 5
+	@echo "\033[0m"
+	
+	@./_general
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing.]"
+	@sleep 5
+	@echo "\033[0m"
+
+	@./_bg
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing..]"
+	@sleep 5
+	@echo "\033[0m"
+
+	@./_frame
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing...]"
+	@sleep 5
+	@echo "\033[0m"
+
+	@./_label
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing....]"
+	@sleep 5
+	@echo "\033[0m"
+
+	@./_line
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing.....]"
+	@sleep 5
+	@echo "\033[0m"
+
+	@./_progress
+	@echo "\033[38;2;55;55;200m\033[1m"
+	@echo "\n[Testing......]"
+	@sleep 5
+	@echo "\033[0m"
+	@clear
+
+	@echo "\033[38;2;55;200;55m"
+	@echo "[...Test completed...]"
+	@echo "\033[0m"
 endif
 
 clean:
 ifeq ($(OS),Windows_NT)
-	del *.exe
+	@del *.exe
+	@echo ""
+	@echo "[All test files deleted!]"
 else
-	rm _*
+	@rm _*
+	@echo "\033[38;2;55;200;55m"
+	@echo "\033[1m\033[4m[All test files deleted!]"
+	@echo "\033[0m"
 endif
 
 # MADE BY @hanilr #
