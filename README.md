@@ -86,7 +86,7 @@ curl -fLo /usr/include/vn/vn_ui.h --create-dirs https://raw.githubusercontent.co
 >
 > If you want to uninstall you can use ` make uninstall `
 
-### [![vn_wiki](img/vn_wiki.png)](https://github.com/hanilr/variation-ui/wiki) : ![vn_warn](img/vn_warn.png) You can take a look to wiki page if you want learn more! ![vn_warn](img/vn_warn.png)
+### [![vn_wiki](img/vn_wiki.png)](doc/markdown/wiki.md) : ![vn_warn](img/vn_warn.png) You can take a look to wiki page if you want learn more! ![vn_warn](img/vn_warn.png)
 
 ### License
 ```
