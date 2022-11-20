@@ -24,6 +24,14 @@ int main()
    vn_restorexy();
    printf(" | I restored my location and moved a new line! [3]");
 
+   vn_savescr();
+   vn_clear();
+   vn.pos_x = 3;
+   vn.pos_y = 3;
+   vn_gotoxy(vn.pos_x, vn.pos_y);
+   printf("If you can you see this text then your terminal doesn't support screen save/restore feature!");
+   vn_restorescr();
+
    vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
    return 0;
 }

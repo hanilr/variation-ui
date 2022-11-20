@@ -12,6 +12,10 @@
 
     void vn_restorexy(void); /* RESTORE SAVED CURSOR POSITION */
 
+    void vn_savescr(void); /* SAVE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+
+    void vn_restorescr(void); /* RESTORE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+
     void vn_print(char *str, char *fg_color, char *bg_color, char *str_style); /* PRINT WITH COLORS */
 
 #endif /* MADE BY @hanilr */

@@ -22,6 +22,10 @@ void vn_savexy(void) { printf("\033[s"); } /* SAVE CURSOR POSITION */
 
 void vn_restorexy(void) { printf("\033[u"); } /* RESTORE SAVED CURSOR POSITION */
 
+void vn_savescr(void) { printf("\033[?47h"); }
+
+void vn_restorescr(void) { printf("\033[?47l"); }
+
 void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
 { /* IF YOU DON'T WANT TO USE ARGUMENTS THEN ENTER  IN DOUBLE QUOTATION MARKS WITH GAP */
     printf("%s%s%s%s%s", fg_color, bg_color, str_style, str, esc_reset);
