@@ -23,6 +23,7 @@ int main()
    vn.pos_y = 4;
    vn_line(vn.pos_x, vn.pos_y, vn.width, white.color, "vertical");
 
+   vn.height = 21;
    vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
    return 0;
 }

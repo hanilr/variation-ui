@@ -13,25 +13,24 @@
 
 void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format)
 {
-    vn_gotoxy(pos_x, pos_y);
     printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
-    
     int x = 0;
     if(!strcmp(format, "horizontal"))
     {
+        vn_gotoxy(pos_x, pos_y);
         while(length > x)
         {
             printf(" ");
             x+=1;
         }
     }
-    else if(!strcmp(format, "vertical"))
+    if(!strcmp(format, "vertical"))
     {
         while(length > x)
         {
+            vn_gotoxy(pos_x, pos_y+x);
             printf(" ");
             x+=1;
-            vn_gotoxy(pos_x, pos_y+x);
         }
     }
     printf("%s", esc_reset); /* RESET THE COLOR */
