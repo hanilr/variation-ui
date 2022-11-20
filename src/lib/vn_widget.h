@@ -12,4 +12,6 @@
 
     void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* SET PROGRESS BAR */
 
+    void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text); /* NOTIFICATION POP-UP/SCREEN (NEED TO DEFINE 'VN_UTIL' BEFORE USING) */
+
 #endif /* MADE BY @hanilr */

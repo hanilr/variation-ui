@@ -92,6 +92,8 @@
         void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char* text_style, char *str); /* SET LABEL */
 
         void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* SET PROGRESS BAR */
+
+        void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text); /* NOTIFICATION POP-UP/SCREEN (NEED TO DEFINE 'VN_UTIL' BEFORE USING) */
     #endif /* VN_WIDGET */
 #endif /* SUMMARY SECTION */
 
@@ -376,5 +378,18 @@
                 y+=1;
             }
         } /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
+
+        void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text)
+        {
+            vn_bg(pos_x, pos_y, width, height, notif_bg);
+            vn_frame(pos_x, pos_y, width, height, notif_frame_fg, notif_frame_bg, notif_frame_vertical_symbol, notif_frame_horizontal_symbol);
+
+            vn_gotoxy(pos_x+width/2-strlen(notif_title)/2, pos_y+1);
+            printf("%s%s%s", text_bold, notif_title_fg, notif_bg);
+            printf("%s", notif_title);
+            printf("%s", esc_reset);
+
+            vn_label(pos_x+2, pos_y+3, width-4, height-4, notif_fg, notif_bg, notif_text_style, notif_text);
+        }
     #endif /* VN_WIDGET */
 #endif /* VN_UI_IMPLEMENTATION */
