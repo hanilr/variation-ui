@@ -10,6 +10,12 @@
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
+int vnu_half_divider(int number)
+{
+    if(number%2 == 0) { return number/2; }
+    else { return (number-1)/2; }
+}
+
 int vnu_get_repeat(char *str, char chr)
 { /* 'vnu' = VARIATION UTILITY */
     int count = 0, i = 0;

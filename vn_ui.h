@@ -55,6 +55,8 @@
     #endif /* VN_COLOR */
 
     #ifdef VN_UTIL
+        int vnu_half_divider(int number); /* DIVIDE AN INTEGER TO HALF */
+
         int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
 
         #ifdef __linux__
@@ -123,6 +125,12 @@
     } /* EXAMPLE: vn_print("temp", "", "", ""); */
 
     #ifdef VN_UTIL
+        int vnu_half_divider(int number)
+        {
+            if(number%2 == 0) { return number/2; }
+            else { return (number-1)/2; }
+        }
+
         int vnu_get_repeat(char *str, char chr)
         { /* 'vnu' = VARIATION UTILITY */
             int count = 0, i = 0;

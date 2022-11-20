@@ -17,6 +17,8 @@
         char* color; /* COLOR BUFFER NEED USE WITH 'vn_color()' FUNCTION */
     }; /* ONLY NEED HEX CODE */
 
+    int vnu_half_divider(int number); /* DIVIDE AN INTEGER TO HALF */
+
     int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
 
     #ifdef __linux__
