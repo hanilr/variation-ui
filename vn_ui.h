@@ -59,6 +59,8 @@
 
         int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
 
+        char *vnu_get_time(void); /* GET TIME AS STRING */
+
         #ifdef __linux__
             char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 
@@ -142,6 +144,16 @@
                 i+=1;
             }
             return count;
+        }
+
+        char *vnu_get_time(void)
+        {
+            time_t t = time(NULL);
+            struct tm tm = *localtime(&t);
+            char *time = (char*) malloc(16);
+        
+            sprintf(time, "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
+            return time;
         }
 
         #ifdef __linux__

@@ -21,6 +21,8 @@
 
     int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
 
+    char *vnu_get_time(void); /* GET TIME AS STRING */
+
     #ifdef __linux__
         char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 

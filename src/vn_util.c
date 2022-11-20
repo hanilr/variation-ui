@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <ctype.h>
 
 /* DIY LIBRARY */
@@ -25,6 +26,16 @@ int vnu_get_repeat(char *str, char chr)
         i+=1;
     }
     return count;
+}
+
+char *vnu_get_time(void)
+{
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    char *time = (char*) malloc(16);
+
+    sprintf(time, "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
+    return time;
 }
 
 #ifdef __linux__
