@@ -96,6 +96,8 @@
         void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* SET PROGRESS BAR */
 
         void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text); /* NOTIFICATION POP-UP/SCREEN (NEED TO DEFINE 'VN_UTIL' BEFORE USING) */
+    
+        void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm); /* TIME COUNTER */
     #endif /* VN_WIDGET */
 #endif /* SUMMARY SECTION */
 
@@ -104,6 +106,7 @@
     #include <stdlib.h>
     #include <string.h>
     #include <ctype.h>
+    #include <time.h>
 
     void vn_cursor_visibility(int boolean)
     {
@@ -151,7 +154,7 @@
             time_t t = time(NULL);
             struct tm tm = *localtime(&t);
             char *time = (char*) malloc(16);
-        
+
             sprintf(time, "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
             return time;
         }
@@ -402,6 +405,57 @@
             printf("%s", esc_reset);
 
             vn_label(pos_x+2, pos_y+3, width-4, height-4, notif_fg, notif_bg, notif_text_style, notif_text);
+        }
+
+        void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm)
+        {
+            #ifdef _WIN32
+                #include <windows.h>
+            #else
+                #include <unistd.h>
+            #endif
+
+            int time_hour = 0, time_minute = 0, time_second = 0, time_buffer = time;
+
+            if(time > 3600)
+            {
+                time_hour = time/3600;
+                time = time%3600;
+            }
+            if(time > 60)
+            {
+                time_minute = time/60;
+                time = time%60;
+            }
+            time_second = time;
+
+            printf("%s%s%s", timer_fg, timer_bg, timer_style);
+            while(1)
+            {
+                vn_gotoxy(pos_x, pos_y);
+                if(time_second < 10) { printf("%d:%d:0%d\n", time_hour, time_minute, time_second); }
+                else { printf("%d:%d:%d\n", time_hour, time_minute, time_second); }
+
+                if(time_second == 0)
+                {
+                    if(time_minute == 0)
+                    {
+                        if(time_hour == 0) { break; }
+                        time_hour-=1;
+                        time_minute=59;
+                        time_second=60;
+                    }
+                    else
+                    {
+                        time_minute-=1;
+                        time_second=60;
+                    }
+                }
+                time_second-=1;
+                sleep(1);
+            }
+            printf("%s", esc_reset);
+            if(is_alarm == 0) { printf("\a"); }
         }
     #endif /* VN_WIDGET */
 #endif /* VN_UI_IMPLEMENTATION */

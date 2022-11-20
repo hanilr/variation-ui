@@ -15,6 +15,7 @@ _label = widget/vn_label/main.c
 _line = widget/vn_line/main.c
 _progress = widget/vn_progress/main.c
 _notification = widget/vn_notif/main.c
+_timer = widget/vn_timer/main.c
 
 _all = $(_color) $(_general) $(_bg) $(_frame) $(_label) $(_line) $(_progress)
 
@@ -30,6 +31,7 @@ ifeq ($(OS),Windows_NT)
 	@$(CC) $(ANSI) $(_line) -o _line.exe
 	@$(CC) $(ANSI) $(_progress) -o _progress.exe
 	@$(CC) $(ANSI) $(_notification) -o _notification.exe
+	@$(CC) $(ANSI) $(_timer) -o _timer.exe
 
 	@echo ""
 	@echo "[Compilation successfully completed!]"
@@ -42,6 +44,7 @@ else
 	@$(CC) $(ANSI) $(_line) -o _line
 	@$(CC) $(ANSI) $(_progress) -o _progress
 	@$(CC) $(ANSI) $(_notification) -o _notification
+	@$(CC) $(ANSI) $(_timer) -o _timer
 
 	@echo "\033[38;2;55;200;55m"
 	@echo "\033[1m\033[4m[Compilation successfully completed!]"
@@ -80,6 +83,10 @@ ifeq ($(OS),Windows_NT)
 
 	@_notification.exe
 	@echo "[Testing.......]"
+	@timeout 5
+
+	@_timer.exe
+	@echo "[Testing........]"
 	@timeout 5
 
 	@cls
@@ -133,6 +140,9 @@ else
 	@echo "\n[Testing.......]"
 	@sleep 5
 	@echo "\033[0m"
+	@clear
+
+	@./_timer
 	@clear
 
 	@echo "\033[38;2;55;200;55m"
