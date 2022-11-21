@@ -7,6 +7,12 @@
 #include <time.h>
 #include <ctype.h>
 
+#ifdef _WIN32
+    #include <windows.h>
+#else
+    #include <unistd.h>
+#endif
+
 /* DIY LIBRARY */
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
@@ -37,6 +43,14 @@ char *vnu_get_time(void)
     sprintf(time, "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
     return time;
 }
+
+void vnu_sleep(char *sleep_type, int sleep_time)
+{ /* 'sleep_time' MUST BE IN ITs OWN UNIT */
+    if(!strcmp(sleep_type, "hour")) { sleep(sleep_time*3600); }
+    if(!strcmp(sleep_type, "minute")) { sleep(sleep_time*60); }
+    if(!strcmp(sleep_type, "second")) { sleep(sleep_time); }
+    if(!strcmp(sleep_type, "millisecond")) { sleep(sleep_time/1000); }
+} /* EXAMPLE: 'vnu_sleep("hour", 1);' IT MEAN SLEEP 1 HOUR */
 
 #ifdef __linux__
     char vnu_get_char_instantly(void)

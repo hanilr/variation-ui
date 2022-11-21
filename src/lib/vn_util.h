@@ -23,6 +23,8 @@
 
     char *vnu_get_time(void); /* GET TIME AS STRING */
 
+    void vnu_sleep(char *sleep_type, int sleep_time); /* WAIT TIME */
+
     #ifdef __linux__
         char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 
