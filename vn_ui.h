@@ -61,6 +61,8 @@
 
         char *vnu_get_time(void); /* GET TIME AS STRING */
 
+        void vnu_sleep(char *sleep_type, int sleep_time); /* WAIT TIME */
+
         #ifdef __linux__
             char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 
@@ -107,6 +109,12 @@
     #include <string.h>
     #include <ctype.h>
     #include <time.h>
+
+    #ifdef _WIN32
+        #include <windows.h>
+    #else
+        #include <unistd.h>
+    #endif
 
     void vn_cursor_visibility(int boolean)
     {
@@ -158,6 +166,14 @@
             sprintf(time, "%02d:%02d:%02d", tm.tm_hour, tm.tm_min, tm.tm_sec);
             return time;
         }
+
+        void vnu_sleep(char *sleep_type, int sleep_time)
+        { /* 'sleep_time' MUST BE IN ITs OWN UNIT */
+            if(!strcmp(sleep_type, "hour")) { sleep(sleep_time*3600); }
+            if(!strcmp(sleep_type, "minute")) { sleep(sleep_time*60); }
+            if(!strcmp(sleep_type, "second")) { sleep(sleep_time); }
+            if(!strcmp(sleep_type, "millisecond")) { sleep(sleep_time/1000); }
+        } /* EXAMPLE: 'vnu_sleep("hour", 1);' IT MEAN SLEEP 1 HOUR */
 
         #ifdef __linux__
             char vnu_get_char_instantly(void)
@@ -409,12 +425,6 @@
 
         void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm)
         {
-            #ifdef _WIN32
-                #include <windows.h>
-            #else
-                #include <unistd.h>
-            #endif
-
             int time_hour = 0, time_minute = 0, time_second = 0, time_buffer = time;
 
             if(time > 3600)
@@ -452,7 +462,7 @@
                     }
                 }
                 time_second-=1;
-                sleep(1);
+                vnu_sleep("second", 1);
             }
             printf("%s", esc_reset);
             if(is_alarm == 0) { printf("\a"); }
