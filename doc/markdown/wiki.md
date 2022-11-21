@@ -194,6 +194,7 @@ int main()
 * **vnu_half_divider(int number);** _Divide an integer to half._
 * **vnu_get_repeat(char** ***str, char chr);** _Get character repeat times in a string._
 * **vnu_get_time(void);** _Get time as string._
+* **vnu_sleep(char** ***sleep_type, int sleep_time)** _Wait time._
 * **vnu_get_char_instantly(void);** _Get character without '<Return>' key. (Only for linux)_
 * **vnu_get_terminal_size(struct vn_init vn);** _Get terminal sizes to 'vn_init'. (Only for linux)_
 
