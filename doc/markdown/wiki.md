@@ -130,6 +130,8 @@ int main()
 * **void vn_savexy();** _Save current terminal cursor position._
 * **void vn_restorexy();** _Restore saved terminal cursor position._
 * **void vn_print(char** ***str, char** ***fg_color, char** ***bg_color, char** ***str_style);** _Print with color and text style_
+* **void vn_savescr();** _Save current terminal screen. (Only for supported terminals)_
+* **void vn_restorescr();** _Restore saved terminal screen. (Only for supported terminals)_
 > Need 'VN_COLOR' to use 'fg_color' and 'bg_color', but you can find text styles in `src/lib/vn_conf.h` or 'vn.h' for 'str_style'.
 
 # ![vn](../../img/vn.png) Starting and ending ![vn](../../img/vn.png)
@@ -189,8 +191,10 @@ int main()
 # ![vn](../../img/vn.png) Functions ![vn](../../img/vn.png)
 
 ![vn_info](../../img/vn_info.png) So what you have this section?
+* **vnu_half_divider(int number);** _Divide an integer to half._
 * **vnu_get_repeat(char** ***str, char chr);** _Get character repeat times in a string._
-* **vnu_get_char_instantly();** _Get character without '<Return>' key. (Only for linux)_
+* **vnu_get_time(void);** _Get time as string._
+* **vnu_get_char_instantly(void);** _Get character without '<Return>' key. (Only for linux)_
 * **vnu_get_terminal_size(struct vn_init vn);** _Get terminal sizes to 'vn_init'. (Only for linux)_
 
 ---
@@ -202,6 +206,8 @@ int main()
 * **vn_frame(int pos_x, int pos_y, int width, int height, char** ***fg_color, char** ***bg_color, char vertical_symbol, char horizontal_symbol);** _Set frame_
 * **vn_label(int pos_x, int pos_y, int width, int height, char** ***fg_color, char** ***bg_color, char** ***text_style, char** ***str);** _Set label_
 * **vn_progress(int pos_x, int pos_y, int width, int height, char** ***progress_frame_color, char** ***progress_color, int progress_value);** _Set progress bar_
+* **vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char** ***notif_frame_fg, char** ***notif_frame_bg, char** ***notif_fg, char** ***notif_bg, char** ***notif_title_fg, char** ***notif_title, char** ***notif_text_style, char** ***notif_text);** _Notification pop-up/screen (Need to define 'VN_UTIL' before using)_
+* **vn_timer(int pos_x, int pos_y, char** ***timer_fg, char** ***timer_bg, char** ***timer_style, int time, int is_alarm);** _Time counter_
 
 ![vn_info](../../img/vn_info.png) So how can we use? Apparently you need to use 'VN_COLOR' again (Because of colors). 
 
@@ -397,4 +403,87 @@ int main()
       vn_progress(vn.pos_x, vn.pos_y, 20, 10, white.color, gray.color, i);
       i+=2;
    }
+```
+
+# ![vn](../../img/vn.png) Notification Pop-up/Screen ![vn](../../img/vn.png)
+
+
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
+
+```c
+#include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
+
+#define VN_UI_IMPLEMENTATION /* DO NOT FORGET THIS */
+#define VN_COLOR /* FOR COLOR SECTION */
+#define VN_UTIL /* FOR UTILITIES */
+#define VN_WIDGET /* FOR WIDGET SECTION */
+#include "../../../vn_ui.h" /* INCLUDE AFTER DEFINE */
+
+int main()
+{
+    struct vn_init vn; /* FIRST OF ALL DEFINE WINDOW NAME */
+    vn.width = 20; /* WINDOW WIDTH */
+    vn.height = 10; /* WINDOW HEIGHT */
+    vn.pos_x = 2; /* START ROW POSITION */
+    vn.pos_y = 2; /* START COLUMN POSITION */
+
+    struct vnc_color white; /* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */
+    white.is_fore = 1; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */
+    white.color = vn_hex_color("ffffff", white.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */   
+
+    struct vnc_color blue;
+    blue.is_fore = 1;
+    blue.color = vn_hex_color("3838c7", blue.is_fore);
+
+    struct vnc_color green;
+    green.is_fore = 0;
+    green.color = vn_hex_color("38c738", green.is_fore);
+
+    struct vnc_color red;
+    red.is_fore = 0;
+    red.color = vn_hex_color("c73838", red.is_fore);
+
+    vn_clear(); /* CLEAR THE TERMINAL SCREEN */
+    vn_notif(vn.pos_x, vn.pos_y, vn.width, vn.height, '|', '-', green.color, blue.color, green.color, white.color, red.color, "TEST", text_italic, "If this work then 'vn_notif' widget working!");
+
+    vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
+    return 0;
+}
+```
+
+# ![vn](../../img/vn.png) Timer ![vn](../../img/vn.png)
+
+
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
+
+```c
+#include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
+
+#define VN_UI_IMPLEMENTATION /* DO NOT FORGET THIS */
+#define VN_COLOR /* FOR COLOR SECTION */
+#define VN_WIDGET /* FOR WIDGET SECTION */
+#include "../../../vn_ui.h" /* INCLUDE AFTER DEFINE */
+
+int main()
+{
+   struct vn_init vn; /* FIRST OF ALL DEFINE WINDOW NAME */
+   vn.width = 20; /* WINDOW WIDTH */
+   vn.height = 10; /* WINDOW HEIGHT */
+   vn.pos_x = 2; /* START ROW POSITION */
+   vn.pos_y = 2; /* START COLUMN POSITION */
+
+   struct vnc_color white; /* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */
+   white.is_fore = 1; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */
+   white.color = vn_hex_color("ffffff", white.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */
+
+   struct vnc_color black;
+   black.is_fore = 0; /* FOR FOREGROUND */
+   black.color = vn_hex_color("161616", black.is_fore);
+
+   vn_clear(); /* CLEAR THE TERMINAL SCREEN */
+   vn_timer(vn.pos_x, vn.pos_y, black.color, white.color, text_italic, 5, 0);
+
+   vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
+   return 0;
+}
 ```
