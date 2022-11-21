@@ -5,6 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _WIN32
+    #include <windows.h>
+#else
+    #include <unistd.h>
+#endif
+
 /* DIY LIBRARY */
 #include "lib/vn_widget.h"
 #include "lib/vn_conf.h"
@@ -176,12 +182,6 @@ void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vert
 
 void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm)
 {
-    #ifdef _WIN32
-        #include <windows.h>
-    #else
-        #include <unistd.h>
-    #endif
-
     int time_hour = 0, time_minute = 0, time_second = 0, time_buffer = time;
     if(time > 3600)
     {
@@ -216,7 +216,7 @@ void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_
             }
         }
         time_second-=1;
-        sleep(1);
+        vnu_sleep("second", 1);
     }
     printf("%s", esc_reset);
     if(is_alarm == 0) { printf("\a"); }
