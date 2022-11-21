@@ -462,7 +462,7 @@
                     }
                 }
                 time_second-=1;
-                vnu_sleep("second", 1);
+                sleep(1);
             }
             printf("%s", esc_reset);
             if(is_alarm == 0) { printf("\a"); }
