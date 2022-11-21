@@ -2,7 +2,6 @@
 
 #define VN_UI_IMPLEMENTATION /* DO NOT FORGET THIS */
 #define VN_COLOR /* FOR COLOR SECTION */
-#define VN_UTIL /* FOR UTILITIES */
 #define VN_WIDGET /* FOR WIDGET SECTION */
 #include "../../../vn_ui.h" /* INCLUDE AFTER DEFINE */
 
