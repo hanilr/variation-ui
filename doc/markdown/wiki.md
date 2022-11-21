@@ -207,7 +207,7 @@ int main()
 * **vn_frame(int pos_x, int pos_y, int width, int height, char** ***fg_color, char** ***bg_color, char vertical_symbol, char horizontal_symbol);** _Set frame_
 * **vn_label(int pos_x, int pos_y, int width, int height, char** ***fg_color, char** ***bg_color, char** ***text_style, char** ***str);** _Set label_
 * **vn_progress(int pos_x, int pos_y, int width, int height, char** ***progress_frame_color, char** ***progress_color, int progress_value);** _Set progress bar_
-* **vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char** ***notif_frame_fg, char** ***notif_frame_bg, char** ***notif_fg, char** ***notif_bg, char** ***notif_title_fg, char** ***notif_title, char** ***notif_text_style, char** ***notif_text);** _Notification pop-up/screen (Need to define 'VN_UTIL' before using)_
+* **vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char** ***notif_frame_fg, char** ***notif_frame_bg, char** ***notif_fg, char** ***notif_bg, char** ***notif_title_fg, char** ***notif_title, char** ***notif_text_style, char** ***notif_text);** _Notification pop-up/screen_
 * **vn_timer(int pos_x, int pos_y, char** ***timer_fg, char** ***timer_bg, char** ***timer_style, int time, int is_alarm);** _Time counter_
 
 ![vn_info](../../img/vn_info.png) So how can we use? Apparently you need to use 'VN_COLOR' again (Because of colors). 
