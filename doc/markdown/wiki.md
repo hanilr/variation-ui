@@ -209,6 +209,7 @@ int main()
 * **vn_progress(int pos_x, int pos_y, int width, int height, char** ***progress_frame_color, char** ***progress_color, int progress_value);** _Set progress bar_
 * **vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char** ***notif_frame_fg, char** ***notif_frame_bg, char** ***notif_fg, char** ***notif_bg, char** ***notif_title_fg, char** ***notif_title, char** ***notif_text_style, char** ***notif_text);** _Notification pop-up/screen_
 * **vn_timer(int pos_x, int pos_y, char** ***timer_fg, char** ***timer_bg, char** ***timer_style, int time, int is_alarm);** _Time counter_
+* **vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char** ***fg_color, char** ***bg_color, char cursor_symbol, char draw_symbol);** _Draw freedomly_
 
 ![vn_info](../../img/vn_info.png) So how can we use? Apparently you need to use 'VN_COLOR' again (Because of colors). 
 
@@ -488,3 +489,44 @@ int main()
    return 0;
 }
 ```
+
+
+# ![vn](../../img/vn.png) Draw ![vn](../../img/vn.png)
+
+
+![vn_example](../../img/vn_example.png) Example ![vn_example](../../img/vn_example.png)
+
+```c
+#include <stdio.h> /* STANDARD INPUT/OUTPUT LIBRARY */
+
+#define VN_UI_IMPLEMENTATION /* DO NOT FORGET THIS */
+#define VN_COLOR /* FOR COLOR SECTION */
+#define VN_UTIL /* FOR UTILITY SECTION */
+#define VN_WIDGET /* FOR WIDGET SECTION */
+#include "../../../vn_ui.h" /* INCLUDE AFTER DEFINE */
+
+int main()
+{
+    struct vn_init vn; /* FIRST OF ALL DEFINE WINDOW NAME */
+    vn.width = 20; /* WINDOW WIDTH */
+    vn.height = 10; /* WINDOW HEIGHT */
+    vn.pos_x = 2; /* START ROW POSITION */
+    vn.pos_y = 2; /* START COLUMN POSITION */
+
+    struct vnc_color white; /* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */
+    white.is_fore = 1; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */
+    white.color = vn_hex_color("ffffff", white.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */   
+
+    struct vnc_color black; /* IF STRUCT NAME WAS A NAME OF THE COLOR THEN YOU CAN UNDERSTAND MUCH EASIER */
+    black.is_fore = 0; /* 'is_fore' FOR IS FOREGROUND OR BACKGROUND. IF 'is_fore = 0' THEN YES FOR FOREGROUND, IF 'is_fore = 1' THEN FOR BACKGROUND */
+    black.color = vn_hex_color("161616", black.is_fore); /* YOU ONLY NEED A HEX CODE TO DEFINE A COLOR */ 
+
+    vn_clear(); /* CLEAR THE TERMINAL SCREEN */
+    vn_draw(vn.pos_x, vn.pos_y, vn.width, vn.height, vn.pos_x+vnu_half_divider(vn.width), vn.pos_y+vnu_half_divider(vn.height), black.color, white.color, 'x', '.');
+
+    vn_end(vn); /* ONLY NEED TO USE 'vn_init' */
+    return 0;
+}
+```
+
+![vn_info](../../img/vn_info.png) You can move with `wasd`. Also you can change foreground and background colors! For changing the color just press `c` key. Then write `fg` or `bg` to change. Finally you can type a hex color code then color will change! You want to quit? Just press `q` key!
