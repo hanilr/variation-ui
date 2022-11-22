@@ -16,4 +16,6 @@
 
     void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm); /* TIME COUNTER */
 
+    void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char *fg_color, char *bg_color, char cursor_symbol, char draw_symbol); /* DRAW FREEDOMLY */
+
 #endif /* MADE BY @hanilr */

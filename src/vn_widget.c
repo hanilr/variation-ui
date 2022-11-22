@@ -222,4 +222,86 @@ void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_
     if(is_alarm == 0) { printf("\a"); }
 }
 
+void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char *fg_color, char *bg_color, char cursor_symbol, char draw_symbol)
+{
+    int i = 0, j = 0;
+    char key = 0;
+
+    vn_bg(pos_x, pos_y, width, height, bg_color);
+    printf("%s%s", fg_color, bg_color);
+
+    while(1)
+    {
+        vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
+        printf("%c", cursor_symbol);
+
+        vn_gotoxy(pos_x, pos_y+height);
+        system("stty raw");
+        char key = getchar();
+        system("stty cooked");
+        vn_gotoxy(pos_x, pos_y+height);
+        printf("%s", esc_reset);
+        int x = 0;
+        while(width > x)
+        {
+            printf(" ");
+            x+=1;
+        }
+        printf("%s%s", fg_color, bg_color);
+
+        vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
+        printf("%c", draw_symbol);
+        
+        if(key == 'w') { j-=1; }
+        if(key == 's') { j+=1; }
+        if(key == 'd') { i+=1; }
+        if(key == 'a') { i-=1; }
+        if(key == 'q') { break; }
+        if(key == 'c')
+        {
+            char *com = (char*) malloc(2);
+            printf("%s", esc_reset);
+
+            vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
+            vn_gotoxy(pos_x, pos_y+height);
+            printf("%s%s", fg_color, bg_color);
+            printf(":");
+            scanf("%s", com);
+            printf("%s", esc_reset);
+
+            if(strcmp(com, "q"))
+            {
+                char *color_hex = (char*) malloc(6);
+
+                vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
+                vn_gotoxy(pos_x, pos_y+height);
+                printf("%s%s", fg_color, bg_color);
+                if(!strcmp(com, "fg")) { printf("fg: "); }
+                if(!strcmp(com, "bg")) { printf("bg: "); }
+                scanf("%s", color_hex);
+                if(strcmp(color_hex, "q"))
+                {
+                    printf("%s", esc_reset);
+                    vn_line(pos_x, pos_y+height, width, "", "horizontal");
+                    printf("%s%s", fg_color, bg_color);
+
+                    if(!strcmp(com, "fg")) { fg_color = vn_hex_color(color_hex, 0); }
+                    if(!strcmp(com, "bg")) { bg_color = vn_hex_color(color_hex, 1); }
+                }
+                free(color_hex);
+            }
+
+            free(com);
+            printf("%s%s", fg_color, bg_color);
+        }
+        
+        if(i+cursor_pos_x >= width+pos_x) { i-=1; }
+        if(i+cursor_pos_x < pos_x) { i+=1; }
+        if(j+cursor_pos_y >= height+pos_y) { j-=1; }
+        if(j+cursor_pos_y < pos_y) { j+=1; }
+    }
+        
+    printf("%s", esc_reset);
+}
+
 /* MADE BY @hanilr */
