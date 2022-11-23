@@ -201,6 +201,8 @@ void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_
     {
         vn_gotoxy(pos_x, pos_y);
         if(time_second < 10) { printf("%d:%d:0%d\n", time_hour, time_minute, time_second); }
+        else if(time_minute < 10) { printf("%d:0%d:%d\n", time_hour, time_minute, time_second); }
+        else if(time_hour < 10) { printf("0%d:%d:%d\n", time_hour, time_minute, time_second); }
         else { printf("%d:%d:%d\n", time_hour, time_minute, time_second); }
 
         if(time_second == 0)
