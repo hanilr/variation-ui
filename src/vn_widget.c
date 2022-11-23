@@ -161,7 +161,8 @@ void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_fra
             printf("-");
             x+=1;
         }
-        printf("%s]%s", progress_frame_color, esc_reset); /* PROGRESS BAR ENDING SYMBOL */
+        printf("%s", esc_reset); /* RESETTING */
+        printf("%s%s]%s", progress_frame_color, text_bold, esc_reset); /* PROGRESS BAR ENDING SYMBOL */
         x=0;
         y+=1;
     }
