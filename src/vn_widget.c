@@ -310,4 +310,16 @@ void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int 
     printf("%s", esc_reset);
 }
 
+void vn_shell(int pos_x, int pos_y, char *fg_color, char *bg_color, char *text_style)
+{
+    char *shell_buffer = (char*) malloc(1024);
+
+    vn_gotoxy(pos_x, pos_y);
+    printf("%s%s%s", fg_color, bg_color, text_style);
+    scanf("%[^\n]s", shell_buffer);
+
+    system(shell_buffer);
+    printf("%s", esc_reset);
+}
+
 /* MADE BY @hanilr */

@@ -18,4 +18,6 @@
 
     void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char *fg_color, char *bg_color, char cursor_symbol, char draw_symbol); /* DRAW FREEDOMLY */
 
+    void vn_shell(int pos_x, int pos_y, char *fg_color, char *bg_color, char *text_style); /* TO ACCESS TO SHELL */
+
 #endif /* MADE BY @hanilr */
