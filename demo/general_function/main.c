@@ -25,7 +25,7 @@ int main()
    vnu_sleep("second", 2);
    
    vn_restorexy();
-   printf(" | I restored my location and moved a new line! [3]\n");
+   printf("I restored my location and moved a new line! [3]\n");
    vnu_sleep("second", 2);
 
    vn_savescr();
