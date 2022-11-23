@@ -172,17 +172,18 @@ void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vert
     vn_bg(pos_x, pos_y, width, height, notif_bg);
     vn_frame(pos_x, pos_y, width, height, notif_frame_fg, notif_frame_bg, notif_frame_vertical_symbol, notif_frame_horizontal_symbol);
 
-    vn_gotoxy(pos_x+width/2-strlen(notif_title)/2, pos_y+1);
+    vn_gotoxy(pos_x+width/2-strlen(notif_title)/2, pos_y+1); /* TITLE POSITION */
     printf("%s%s%s", text_bold, notif_title_fg, notif_bg);
     printf("%s", notif_title);
     printf("%s", esc_reset);
 
-    vn_label(pos_x+2, pos_y+3, width-4, height-4, notif_fg, notif_bg, notif_text_style, notif_text);
+    vn_label(pos_x+2, pos_y+3, width-4, height-4, notif_fg, notif_bg, notif_text_style, notif_text); /* TEXT */
 }
 
 void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm)
 {
     int time_hour = 0, time_minute = 0, time_second = 0, time_buffer = time;
+
     if(time > 3600)
     {
         time_hour = time/3600;
@@ -195,11 +196,13 @@ void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_
     }
     time_second = time;
     printf("%s%s%s", timer_fg, timer_bg, timer_style);
+
     while(1)
     {
         vn_gotoxy(pos_x, pos_y);
         if(time_second < 10) { printf("%d:%d:0%d\n", time_hour, time_minute, time_second); }
         else { printf("%d:%d:%d\n", time_hour, time_minute, time_second); }
+
         if(time_second == 0)
         {
             if(time_minute == 0)
@@ -235,6 +238,7 @@ void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int 
         vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
         printf("%c", cursor_symbol);
 
+        /* GET WHICH KEY PRESSED */
         vn_gotoxy(pos_x, pos_y+height);
         system("stty raw");
         char key = getchar();
@@ -252,12 +256,13 @@ void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int 
         vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
         printf("%c", draw_symbol);
         
+        /* KEYS AND MEANINGS */
         if(key == 'w') { j-=1; }
         if(key == 's') { j+=1; }
         if(key == 'd') { i+=1; }
         if(key == 'a') { i-=1; }
         if(key == 'q') { break; }
-        if(key == 'c')
+        if(key == 'c') /* COMMAND PANEL */
         {
             char *com = (char*) malloc(2);
             printf("%s", esc_reset);
@@ -269,15 +274,15 @@ void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int 
             scanf("%s", com);
             printf("%s", esc_reset);
 
-            if(strcmp(com, "q"))
+            if(strcmp(com, "q")) /* IF 'com' NOT QUIT */
             {
                 char *color_hex = (char*) malloc(6);
 
                 vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
                 vn_gotoxy(pos_x, pos_y+height);
                 printf("%s%s", fg_color, bg_color);
-                if(!strcmp(com, "fg")) { printf("fg: "); }
-                if(!strcmp(com, "bg")) { printf("bg: "); }
+                if(!strcmp(com, "fg")) { printf("fg: "); } /* FOREGROUND */
+                if(!strcmp(com, "bg")) { printf("bg: "); } /* BACKGROUND */
                 scanf("%s", color_hex);
                 if(strcmp(color_hex, "q"))
                 {
@@ -285,6 +290,7 @@ void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int 
                     vn_line(pos_x, pos_y+height, width, "", "horizontal");
                     printf("%s%s", fg_color, bg_color);
 
+                    /* COLOR CHANGING SECTION */
                     if(!strcmp(com, "fg")) { fg_color = vn_hex_color(color_hex, 0); }
                     if(!strcmp(com, "bg")) { bg_color = vn_hex_color(color_hex, 1); }
                 }
