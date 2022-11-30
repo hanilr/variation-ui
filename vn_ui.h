@@ -55,19 +55,13 @@
     #endif /* VN_COLOR */
 
     #ifdef VN_UTIL
-        int vnu_half_divider(int number); /* DIVIDE AN INTEGER TO HALF */
-
-        int vnu_get_repeat(char *str, char chr); /* GET CHAR REPEAT TIMES IN A STRING */
-
         char *vnu_get_time(void); /* GET TIME AS STRING */
 
         void vnu_sleep(char *sleep_type, int sleep_time); /* WAIT TIME */
 
-        #ifdef __linux__
-            char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
+        char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
 
-            void vnu_get_terminal_size(struct vn_init *vn); /* GET TERMINAL SIZES TO 'vn_init' */
-        #endif /* LINUX ONLY */
+        void vnu_get_terminal_size(struct vn_init *vn); /* GET TERMINAL SIZES TO 'vn_init' */
     #endif /* VN_UTIL */
 
     void vn_cursor_visibility(int boolean); /* SET CURSOR VISIBILITY */
@@ -100,10 +94,6 @@
         void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text); /* NOTIFICATION POP-UP/SCREEN (NEED TO DEFINE 'VN_UTIL' BEFORE USING) */
     
         void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm); /* TIME COUNTER */
-    
-        void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char *fg_color, char *bg_color, char cursor_symbol, char draw_symbol); /* DRAW FREEDOMLY */
-    
-        void vn_shell(int pos_x, int pos_y, char *fg_color, char *bg_color, char *text_style); /* TO ACCESS TO SHELL */
     #endif /* VN_WIDGET */
 #endif /* SUMMARY SECTION */
 
@@ -113,12 +103,8 @@
     #include <string.h>
     #include <ctype.h>
     #include <time.h>
-
-    #ifdef _WIN32
-        #include <windows.h>
-    #else
-        #include <unistd.h>
-    #endif
+    #include <unistd.h>
+    #include <sys/ioctl.h>
 
     void vn_cursor_visibility(int boolean)
     {
@@ -144,23 +130,6 @@
     } /* EXAMPLE: vn_print("temp", "", "", ""); */
 
     #ifdef VN_UTIL
-        int vnu_half_divider(int number)
-        {
-            if(number%2 == 0) { return number/2; }
-            else { return (number-1)/2; }
-        }
-
-        int vnu_get_repeat(char *str, char chr)
-        { /* 'vnu' = VARIATION UTILITY */
-            int count = 0, i = 0;
-            while(strlen(str) > i) 
-            { /* LOOP TILL DETECT THE 'chr' */
-                if(str[i] == chr) { count+=1; } /* IF DETECTED THE 'chr' THEN INCREASE THE 'count' */
-                i+=1;
-            }
-            return count;
-        }
-
         char *vnu_get_time(void)
         {
             time_t t = time(NULL);
@@ -179,24 +148,21 @@
             if(!strcmp(sleep_type, "millisecond")) { sleep(sleep_time/1000); }
         } /* EXAMPLE: 'vnu_sleep("hour", 1);' IT MEAN SLEEP 1 HOUR */
 
-        #ifdef __linux__
-            char vnu_get_char_instantly(void)
-            {
-                system("stty raw"); /* TERMINAL 'raw' MODE */
-                char key = getchar();
-                system("stty cooked"); /* TERMINAL 'cooked' MODE */
-                return key;
-            }
+        char vnu_get_char_instantly(void)
+        {
+            system("stty raw"); /* TERMINAL 'raw' MODE */
+            char key = getchar();
+            system("stty cooked"); /* TERMINAL 'cooked' MODE */
+            return key;
+        }
 
-            void vnu_get_terminal_size(struct vn_init *vn) 
-            {
-                #include <sys/ioctl.h>
-                struct winsize terminal_size;
-                ioctl(0, TIOCGWINSZ, &terminal_size);
-                vn->width = terminal_size.ws_row;
-                vn->height = terminal_size.ws_col;
-            }
-        #endif /* LINUX ONLY */
+        void vnu_get_terminal_size(struct vn_init *vn) 
+        {
+            struct winsize terminal_size;
+            ioctl(0, TIOCGWINSZ, &terminal_size);
+            vn->width = terminal_size.ws_row;
+            vn->height = terminal_size.ws_col;
+        }
     #endif /* VN_UTIL */
 
     #ifdef VN_COLOR
@@ -394,11 +360,11 @@
         { /* 'progress_frame_color' NEED TO BE 'is_fore = 1', 'progress_color' NEED TO BE 'is_fore = 1' */
             int x = 0, y = 0;
 
-            while(height > y)
+            while(height >= y)
             { /* COLUMN */
                 vn_gotoxy(pos_x, pos_y+y); /* GO TO START POSITION */
                 printf("%s%s[", progress_frame_color, text_bold); /* PROGRESS BAR STARTING SYMBOL */
-                while(progress_value > x)
+                while(progress_value >= x)
                 { /* COMPLETED PROGRESS SECTION */
                     printf("%s#", progress_color);
                     x+=1;
@@ -473,103 +439,6 @@
             }
             printf("%s", esc_reset);
             if(is_alarm == 0) { printf("\a"); }
-        }
-        
-        void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char *fg_color, char *bg_color, char cursor_symbol, char draw_symbol)
-        {
-            int i = 0, j = 0;
-            char key = 0;
-        
-            vn_bg(pos_x, pos_y, width, height, bg_color);
-            printf("%s%s", fg_color, bg_color);
-        
-            while(1)
-            {
-                vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
-                printf("%c", cursor_symbol);
-        
-                /* GET WHICH KEY PRESSED */
-                vn_gotoxy(pos_x, pos_y+height);
-                system("stty raw");
-                char key = getchar();
-                system("stty cooked");
-                vn_gotoxy(pos_x, pos_y+height);
-                printf("%s", esc_reset);
-                int x = 0;
-                while(width > x)
-                {
-                    printf(" ");
-                    x+=1;
-                }
-                printf("%s%s", fg_color, bg_color);
-        
-                vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
-                printf("%c", draw_symbol);
-                
-                /* KEYS AND MEANINGS */
-                if(key == 'w') { j-=1; }
-                if(key == 's') { j+=1; }
-                if(key == 'd') { i+=1; }
-                if(key == 'a') { i-=1; }
-                if(key == 'q') { break; }
-                if(key == 'c') /* COMMAND PANEL */
-                {
-                    char *com = (char*) malloc(2);
-                    printf("%s", esc_reset);
-        
-                    vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
-                    vn_gotoxy(pos_x, pos_y+height);
-                    printf("%s%s", fg_color, bg_color);
-                    printf(":");
-                    scanf("%s", com);
-                    printf("%s", esc_reset);
-        
-                    if(strcmp(com, "q")) /* IF 'com' NOT QUIT */
-                    {
-                        char *color_hex = (char*) malloc(6);
-        
-                        vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
-                        vn_gotoxy(pos_x, pos_y+height);
-                        printf("%s%s", fg_color, bg_color);
-                        if(!strcmp(com, "fg")) { printf("fg: "); } /* FOREGROUND */
-                        if(!strcmp(com, "bg")) { printf("bg: "); } /* BACKGROUND */
-                        scanf("%s", color_hex);
-                        if(strcmp(color_hex, "q"))
-                        {
-                            printf("%s", esc_reset);
-                            vn_line(pos_x, pos_y+height, width, "", "horizontal");
-                            printf("%s%s", fg_color, bg_color);
-        
-                            /* COLOR CHANGING SECTION */
-                            if(!strcmp(com, "fg")) { fg_color = vn_hex_color(color_hex, 0); }
-                            if(!strcmp(com, "bg")) { bg_color = vn_hex_color(color_hex, 1); }
-                        }
-                        free(color_hex);
-                    }
-        
-                    free(com);
-                    printf("%s%s", fg_color, bg_color);
-                }
-                
-                if(i+cursor_pos_x >= width+pos_x) { i-=1; }
-                if(i+cursor_pos_x < pos_x) { i+=1; }
-                if(j+cursor_pos_y >= height+pos_y) { j-=1; }
-                if(j+cursor_pos_y < pos_y) { j+=1; }
-            }
-                
-            printf("%s", esc_reset);
-        }
-
-        void vn_shell(int pos_x, int pos_y, char *fg_color, char *bg_color, char *text_style)
-        {
-            char *shell_buffer = (char*) malloc(1024);
-
-            vn_gotoxy(pos_x, pos_y);
-            printf("%s%s%s", fg_color, bg_color, text_style);
-            scanf("%[^\n]s", shell_buffer);
-
-            system(shell_buffer);
-            printf("%s", esc_reset);
         }
     #endif /* VN_WIDGET */
 #endif /* VN_UI_IMPLEMENTATION */

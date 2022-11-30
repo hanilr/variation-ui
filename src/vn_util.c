@@ -1,4 +1,4 @@
-/* VARIATION TUI (UTILITY) */
+/* VARIATION UI (UTILITY) */
 
 /*  STANDARD LIBRARY */
 #include <stdio.h>
@@ -6,33 +6,12 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-
-#ifdef _WIN32
-    #include <windows.h>
-#else
-    #include <unistd.h>
-#endif
+#include <unistd.h>
+#include <sys/ioctl.h>
 
 /* DIY LIBRARY */
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
-
-int vnu_half_divider(int number)
-{
-    if(number%2 == 0) { return number/2; }
-    else { return (number-1)/2; }
-}
-
-int vnu_get_repeat(char *str, char chr)
-{ /* 'vnu' = VARIATION UTILITY */
-    int count = 0, i = 0;
-    while(strlen(str) > i) 
-    { /* LOOP TILL DETECT THE 'chr' */
-        if(str[i] == chr) { count+=1; } /* IF DETECTED THE 'chr' THEN INCREASE THE 'count' */
-        i+=1;
-    }
-    return count;
-}
 
 char *vnu_get_time(void)
 {
@@ -52,24 +31,21 @@ void vnu_sleep(char *sleep_type, int sleep_time)
     if(!strcmp(sleep_type, "millisecond")) { sleep(sleep_time/1000); }
 } /* EXAMPLE: 'vnu_sleep("hour", 1);' IT MEAN SLEEP 1 HOUR */
 
-#ifdef __linux__
-    char vnu_get_char_instantly(void)
-    {
-        system("stty raw"); /* TERMINAL 'raw' MODE */
-        char key = getchar();
-        system("stty cooked"); /* TERMINAL 'cooked' MODE */
-        return key;
-    }
+char vnu_get_char_instantly(void)
+{
+    system("stty raw"); /* TERMINAL 'raw' MODE */
+    char key = getchar();
+    system("stty cooked"); /* TERMINAL 'cooked' MODE */
+    return key;
+}
 
-    void vnu_get_terminal_size(struct vn_init *vn) 
-    {
-        #include <sys/ioctl.h>
-        struct winsize terminal_size;
-        ioctl(0, TIOCGWINSZ, &terminal_size);
-        vn->width = terminal_size.ws_row;
-        vn->height = terminal_size.ws_col;
-    }
-#endif /* LINUX ONLY */
+void vnu_get_terminal_size(struct vn_init *vn) 
+{
+    struct winsize terminal_size;
+    ioctl(0, TIOCGWINSZ, &terminal_size);
+    vn->width = terminal_size.ws_row;
+    vn->height = terminal_size.ws_col;
+}
 
 int vnc_hex_number(int number, int left_side)
 { /* IF HEX IS NUMBER */

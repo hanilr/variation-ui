@@ -10,9 +10,8 @@ Variation-ui is single-header terminal user interface library. Written in ansi-c
 
 ### ![vn_info](img/vn_info.png) Dependencies:
 
-__Windows & Linux:__
-* ` gcc ` > [MinGW](https://sourceforge.net/projects/mingw/)
-* ` make ` > [Make For Windows](http://gnuwin32.sourceforge.net/packages/make.htm)
+* ` gcc ` _> Gnu Compiler Collection_
+* ` make ` _> Gnu Make_
 
 > You can install with package managers for linux.
 
@@ -68,7 +67,7 @@ int main()
 ```
   make run
 ```
-> Windows shared-library (.dll) or Unix shared-library (.so)
+> Unix shared-library (.so)
 >
 > If you want to delete this file you can use ` make clean `
 
@@ -82,7 +81,7 @@ curl -fLo /usr/include/vn/vn_ui.h --create-dirs https://raw.githubusercontent.co
 ```
 > If you use curl tool then you need to compile with sudo.
 >
-> Installing section now run only in unix. (You can find in ` /usr/include/vn/ `)
+> You can find in ` /usr/include/vn/ `
 >
 > If you want to uninstall you can use ` make uninstall `
 

@@ -1,4 +1,4 @@
-/* VARIATION TUI (USER INTERFACE) */
+/* VARIATION UI (USER INTERFACE) */
 
 /* STANDARD LIBRARY */
 #include <stdio.h>
@@ -22,9 +22,9 @@ void vn_savexy(void) { printf("\033[s"); } /* SAVE CURSOR POSITION */
 
 void vn_restorexy(void) { printf("\033[u"); } /* RESTORE SAVED CURSOR POSITION */
 
-void vn_savescr(void) { printf("\033[?47h"); }
+void vn_savescr(void) { printf("\033[?47h"); } /* SAVE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
 
-void vn_restorescr(void) { printf("\033[?47l"); }
+void vn_restorescr(void) { printf("\033[?47l"); } /* RESTORE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
 
 void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
 { /* IF YOU DON'T WANT TO USE ARGUMENTS THEN ENTER  IN DOUBLE QUOTATION MARKS WITH GAP */

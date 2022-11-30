@@ -1,15 +1,10 @@
-/* VARIATION TUI (WIDGET) */
+/* VARIATION UI (WIDGET) */
 
 /*  STANDARD LIBRARY */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#ifdef _WIN32
-    #include <windows.h>
-#else
-    #include <unistd.h>
-#endif
+#include <unistd.h>
 
 /* DIY LIBRARY */
 #include "lib/vn_widget.h"
@@ -226,103 +221,6 @@ void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_
     }
     printf("%s", esc_reset);
     if(is_alarm == 0) { printf("\a"); }
-}
-
-void vn_draw(int pos_x, int pos_y, int width, int height, int cursor_pos_x, int cursor_pos_y, char *fg_color, char *bg_color, char cursor_symbol, char draw_symbol)
-{
-    int i = 0, j = 0;
-    char key = 0;
-
-    vn_bg(pos_x, pos_y, width, height, bg_color);
-    printf("%s%s", fg_color, bg_color);
-
-    while(1)
-    {
-        vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
-        printf("%c", cursor_symbol);
-
-        /* GET WHICH KEY PRESSED */
-        vn_gotoxy(pos_x, pos_y+height);
-        system("stty raw");
-        char key = getchar();
-        system("stty cooked");
-        vn_gotoxy(pos_x, pos_y+height);
-        printf("%s", esc_reset);
-        int x = 0;
-        while(width > x)
-        {
-            printf(" ");
-            x+=1;
-        }
-        printf("%s%s", fg_color, bg_color);
-
-        vn_gotoxy(cursor_pos_x+i, cursor_pos_y+j);
-        printf("%c", draw_symbol);
-        
-        /* KEYS AND MEANINGS */
-        if(key == 'w') { j-=1; }
-        if(key == 's') { j+=1; }
-        if(key == 'd') { i+=1; }
-        if(key == 'a') { i-=1; }
-        if(key == 'q') { break; }
-        if(key == 'c') /* COMMAND PANEL */
-        {
-            char *com = (char*) malloc(2);
-            printf("%s", esc_reset);
-
-            vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
-            vn_gotoxy(pos_x, pos_y+height);
-            printf("%s%s", fg_color, bg_color);
-            printf(":");
-            scanf("%s", com);
-            printf("%s", esc_reset);
-
-            if(strcmp(com, "q")) /* IF 'com' NOT QUIT */
-            {
-                char *color_hex = (char*) malloc(6);
-
-                vn_line(pos_x, pos_y+height, width, bg_color, "horizontal");
-                vn_gotoxy(pos_x, pos_y+height);
-                printf("%s%s", fg_color, bg_color);
-                if(!strcmp(com, "fg")) { printf("fg: "); } /* FOREGROUND */
-                if(!strcmp(com, "bg")) { printf("bg: "); } /* BACKGROUND */
-                scanf("%s", color_hex);
-                if(strcmp(color_hex, "q"))
-                {
-                    printf("%s", esc_reset);
-                    vn_line(pos_x, pos_y+height, width, "", "horizontal");
-                    printf("%s%s", fg_color, bg_color);
-
-                    /* COLOR CHANGING SECTION */
-                    if(!strcmp(com, "fg")) { fg_color = vn_hex_color(color_hex, 0); }
-                    if(!strcmp(com, "bg")) { bg_color = vn_hex_color(color_hex, 1); }
-                }
-                free(color_hex);
-            }
-
-            free(com);
-            printf("%s%s", fg_color, bg_color);
-        }
-        
-        if(i+cursor_pos_x >= width+pos_x) { i-=1; }
-        if(i+cursor_pos_x < pos_x) { i+=1; }
-        if(j+cursor_pos_y >= height+pos_y) { j-=1; }
-        if(j+cursor_pos_y < pos_y) { j+=1; }
-    }
-        
-    printf("%s", esc_reset);
-}
-
-void vn_shell(int pos_x, int pos_y, char *fg_color, char *bg_color, char *text_style)
-{
-    char *shell_buffer = (char*) malloc(1024);
-
-    vn_gotoxy(pos_x, pos_y);
-    printf("%s%s%s", fg_color, bg_color, text_style);
-    scanf("%[^\n]s", shell_buffer);
-
-    system(shell_buffer);
-    printf("%s", esc_reset);
 }
 
 /* MADE BY @hanilr */

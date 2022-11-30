@@ -1,5 +1,5 @@
 /* --------------------------------- *
-/*   VARIATION TUI (CONFIGURATION)   *
+/*   VARIATION UI (CONFIGURATION)   *
  * [CONTAINS ONLY ASCII DEFINATIONS] *
  * --------------------------------- */
 #ifndef _VN_CONF_H

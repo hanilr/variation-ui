@@ -1,4 +1,4 @@
-/* VARIATION TUI (USER INTERFACE) */
+/* VARIATION UI (USER INTERFACE) */
 #ifndef _VN_UI_H
 #define _VN_UI_H
 
