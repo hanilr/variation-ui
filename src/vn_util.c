@@ -13,6 +13,7 @@
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
+/* GET CURRENT TIME AND RETURN AS STRING */
 char *vnu_get_time(void)
 {
     time_t t = time(NULL);
@@ -23,6 +24,7 @@ char *vnu_get_time(void)
     return time;
 }
 
+/* 'sleep_type' => 'hour', 'minute', 'second' or 'millisecond', 'sleep_time' => INTEGER */
 void vnu_sleep(char *sleep_type, int sleep_time)
 { /* 'sleep_time' MUST BE IN ITs OWN UNIT */
     if(!strcmp(sleep_type, "hour")) { sleep(sleep_time*3600); }
@@ -31,6 +33,7 @@ void vnu_sleep(char *sleep_type, int sleep_time)
     if(!strcmp(sleep_type, "millisecond")) { sleep(sleep_time/1000); }
 } /* EXAMPLE: 'vnu_sleep("hour", 1);' IT MEAN SLEEP 1 HOUR */
 
+/* GET USER INPUT WITHOUT '<Return>' KEY */
 char vnu_get_char_instantly(void)
 {
     system("stty raw"); /* TERMINAL 'raw' MODE */
@@ -39,6 +42,7 @@ char vnu_get_char_instantly(void)
     return key;
 }
 
+/* GET TERMINAL SIZE, REQUIRED 'vn_init' STRUCT */
 void vnu_get_terminal_size(struct vn_init *vn) 
 {
     struct winsize terminal_size;
@@ -67,6 +71,7 @@ int vnc_hex_letter(char letter, int left_side)
     return result;
 } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
+/* 'hex_color' => HEX COLOR CODE, 'is_fore' => NEED 'self.is_fore' JUST REPLACE 'self' WITH STRUCT NAME */
 char *vn_hex_color(char *hex_color, int is_fore)
 {
     int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
@@ -95,6 +100,7 @@ char *vn_hex_color(char *hex_color, int is_fore)
     return rgb;
 }
 
+/* RGB COLOR CODE, 'is_fore' => NEED 'self.is_fore' JUST REPLACE 'self' WITH STRUCT NAME */
 char *vn_rgb_color(int red, int green, int blue, int is_fore)
 {
     char *rgb = (char*) malloc(32);
@@ -103,6 +109,7 @@ char *vn_rgb_color(int red, int green, int blue, int is_fore)
     return rgb;
 }
 
+/* END VN SUCCESSFULLY, REQUIRED 'vn_init' STRUCT */
 void vn_end(struct vn_init vn)
 { /* FOR ELEGANT UI */
     vn_gotoxy(0, vn.height+vn.pos_y);

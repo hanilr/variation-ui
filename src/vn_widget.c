@@ -12,6 +12,7 @@
 #include "lib/vn_util.h"
 #include "lib/vn_ui.h"
 
+/* DRAW A LINE AS HORIZONTAL OR VERTICAL */
 void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format)
 {
     printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
@@ -37,6 +38,7 @@ void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format)
     printf("%s", esc_reset); /* RESET THE COLOR */
 }
 
+/* SET BACKGROUND SIZE AND A COLOR */
 void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
 { /* 'bg_color' NEED TO BE 'is_fore = 0' */
     int x = 0, y = 0;
@@ -55,6 +57,7 @@ void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
     printf("%s", esc_reset); /* RESET THE COLOR */
 }
 
+/* SET A FRAME AND A COLOR */
 void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol)
 { /* 'fg_color' NEED TO BE 'is_fore = 1', 'bg_color' NEED TO BE 'is_fore = 0' */
     int x = 0, y = 0;
@@ -83,6 +86,7 @@ void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char 
     printf("%s", esc_reset); /* RESET THE COLOR */
 } /* 'vertical_symbol' AND 'horizontal_symbol' IS NOT NECESSARY */
 
+/* MAKE A LABEL WITH CHANGABLE SIZE, COLOR AND TEXT */
 void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char *text_style, char *str)
 { /* 'fg_color' NEED TO BE 'is_fore = 1', 'bg_color' NEED TO BE 'is_fore = 0'. 'text_style' CAN FOUND IN 'src/lib/vn_conf.h' */
     vn_bg(pos_x, pos_y, width, height, bg_color); /* SET BACKGROUND COLOR */
@@ -138,6 +142,7 @@ void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char 
     else { vn_print(str, fg_color, bg_color, text_style); } /* IF 'str' NOT LONGER THAN THE 'width' */
 }
 
+/* MAKE A PROGRESS BAR WITH CHANGABLE SIZE AND COLOR */
 void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value)
 { /* 'progress_frame_color' NEED TO BE 'is_fore = 1', 'progress_color' NEED TO BE 'is_fore = 1' */
     int x = 0, y = 0;
@@ -163,6 +168,7 @@ void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_fra
     }
 } /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
 
+/* POP-UP/NOTIFICATION SCREEN */
 void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text)
 {
     vn_bg(pos_x, pos_y, width, height, notif_bg);
@@ -176,6 +182,7 @@ void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vert
     vn_label(pos_x+2, pos_y+3, width-4, height-4, notif_fg, notif_bg, notif_text_style, notif_text); /* TEXT */
 }
 
+/* COUNT TO SPECIFIC TIME. A TIMER */
 void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm)
 {
     int time_hour = 0, time_minute = 0, time_second = 0, time_buffer = time;

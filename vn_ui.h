@@ -1,31 +1,21 @@
-/* VARIATION TUI (LIBRARY) */
+/* VARIATION UI (LIBRARY) */
 /*     MADE BY @hanilr     */
 #ifndef _VN_UI_H
 #define _VN_UI_H
-    /* -------------------------------- *
-    * ASCII ESCAPE SEQUENCE RESET CODE *
-    * -------------------------------- */
-    #define esc_reset "\033[0m" 
-    /* -------------------------------- *
-    *  MUST BE USED AFTER COLOR CODES  */
+    /* ASCII ESCAPE SEQUENCE RESET CODE */
+    #define esc_reset "\033[0m" /* MUST BE USED AFTER COLOR CODES */
 
-    /* --------------------------------- *
-    * ASCII ESCAPE SEQUENCE TEXT STYLES *
-    * --------------------------------- */
-    #define text_bold "\033[1m"
-    #define text_italic "\033[3m"
-    #define text_underline "\033[4m"
-    #define text_blink "\033[5m"
-    #define text_strikethrough "\033[9m"
-    /* --------------------------------- */
+    /* ASCII ESCAPE SEQUENCE TEXT STYLES */
+    #define text_bold "\033[1m" /* BOLD */
+    #define text_italic "\033[3m" /* ITALIC */
+    #define text_underline "\033[4m" /* UNDERLINE */
+    #define text_blink "\033[5m" /* BLINK */
+    #define text_strikethrough "\033[9m" /* STRIKETHROUGH */
 
-    /* ----------------------------------- *
-    * ASCII ESCAPE SEQUENCE UTILITY CODES *
-    * ----------------------------------- */
-    #define clear_screen "\033[2J\033[H"
-    #define cursor_visible "\033[?25h"
-    #define cursor_invisible "\033[?25l"
-    /* ----------------------------------- */
+    /* ASCII ESCAPE SEQUENCE UTILITY CODES */
+    #define clear_screen "\033[2J\033[H" /* CLEAR SCREEN */
+    #define cursor_visible "\033[?25h" /* SET CURSOR VISIBLE */
+    #define cursor_invisible "\033[?25l" /* SET CURSOR INVISIBLE */
 
     struct vn_init
     { /* DEFINATION OF DEFAULT WINDOW SIZES */
@@ -36,7 +26,8 @@
         int cursor_visibility; /* 1 = VISIBLE, 0 = INVISIBLE */
     }; /* NOT NECESSARY (IN WIDGETS CAN USE MANUEL WAY) */
 
-    void vn_end(struct vn_init vn); /* GO TO END OF THE WINDOW */
+    /* END VN SUCCESSFULLY, REQUIRED 'vn_init' STRUCT */
+    void vn_end(struct vn_init vn);
 
     #ifdef VN_COLOR
         struct vnc_color 
@@ -45,55 +36,76 @@
             char* color; /* COLOR BUFFER NEED USE WITH 'vn_color()' FUNCTION */
         }; /* ONLY NEED HEX CODE */
 
-        int vnc_hex_number(int number, int left_side); /* NUMBER TO HEX */
+        int vnc_hex_number(int number, int left_side);
 
-        int vnc_hex_letter(char letter, int left_side); /* LETTER TO HEX */
+        int vnc_hex_letter(char letter, int left_side);
 
-        char *vn_hex_color(char *hex_color, int is_fore); /* HEX COLOR CODE FOR CUSTOM COLORS */
+        /* 'hex_color' => HEX COLOR CODE, 'is_fore' => NEED 'self.is_fore' JUST REPLACE 'self' WITH STRUCT NAME */
+        char *vn_hex_color(char *hex_color, int is_fore);
 
-        char *vn_rgb_color(int red, int green, int blue, int is_fore); /* RGB COLOR CODE FOR CUSTOM COLORS */
+        /* RGB COLOR CODE, 'is_fore' => NEED 'self.is_fore' JUST REPLACE 'self' WITH STRUCT NAME */
+        char *vn_rgb_color(int red, int green, int blue, int is_fore);
     #endif /* VN_COLOR */
 
     #ifdef VN_UTIL
-        char *vnu_get_time(void); /* GET TIME AS STRING */
+        /* GET CURRENT TIME AND RETURN AS STRING */
+        char *vnu_get_time(void);
 
-        void vnu_sleep(char *sleep_type, int sleep_time); /* WAIT TIME */
+        /* 'sleep_type' => 'hour', 'minute', 'second' or 'millisecond', 'sleep_time' => INTEGER */
+        void vnu_sleep(char *sleep_type, int sleep_time);
 
-        char vnu_get_char_instantly(void); /* GET CHAR WITHOUT '<Return>' KEY */
+        /* GET USER INPUT WITHOUT '<Return>' KEY */
+        char vnu_get_char_instantly(void);
 
-        void vnu_get_terminal_size(struct vn_init *vn); /* GET TERMINAL SIZES TO 'vn_init' */
+        /* GET TERMINAL SIZE, REQUIRED 'vn_init' STRUCT */
+        void vnu_get_terminal_size(struct vn_init *vn);
     #endif /* VN_UTIL */
 
-    void vn_cursor_visibility(int boolean); /* SET CURSOR VISIBILITY */
+    /* SET CURSOR VISIBILITY */
+    void vn_cursor_visibility(int boolean);
 
-    void vn_clear(void); /* CLEAR SCREEN */
+    /* CLEAR TERMINAL SCREEN */
+    void vn_clear(void);
 
-    void vn_gotoxy(int pos_x, int pos_y); /* SET CURSOR TO X AND Y POSITIONS */
+    /* SET CURSOR TO X AND Y POSITIONS */
+    void vn_gotoxy(int pos_x, int pos_y);
 
-    void vn_savexy(void); /* SAVE CURSOR POSITION */
+    /* SAVE CURSOR POSITION */
+    void vn_savexy(void);
 
-    void vn_restorexy(void); /* RESTORE SAVED CURSOR POSITION */
+    /* RESTORE SAVED CURSOR POSITION */
+    void vn_restorexy(void);
 
-    void vn_savescr(void); /* SAVE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+    /* SAVE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+    void vn_savescr(void);
 
-    void vn_restorescr(void); /* RESTORE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+    /* RESTORE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+    void vn_restorescr(void);
 
-    void vn_print(char *str, char *fg_color, char *bg_color, char *str_style); /* PRINT WITH COLORS */
+    /* PRINT WITH COLORS */
+    void vn_print(char *str, char *fg_color, char *bg_color, char *str_style);
 
     #ifdef VN_WIDGET
-        void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format); /* DRAW SIMPLE LINE */
+        /* DRAW A LINE AS HORIZONTAL OR VERTICAL */
+        void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format);
 
-        void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color); /* SET BACKGROUND COLOR */
+        /* SET BACKGROUND SIZE AND A COLOR */
+        void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color);
 
-        void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol); /* SET WINDOW FRAME */
+        /* SET A FRAME AND A COLOR */
+        void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol);
 
-        void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char* text_style, char *str); /* SET LABEL */
+        /* MAKE A LABEL WITH CHANGABLE SIZE, COLOR AND TEXT */
+        void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char* text_style, char *str);
 
-        void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value); /* SET PROGRESS BAR */
+        /* MAKE A PROGRESS BAR WITH CHANGABLE SIZE AND COLOR */
+        void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value);
 
-        void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text); /* NOTIFICATION POP-UP/SCREEN (NEED TO DEFINE 'VN_UTIL' BEFORE USING) */
-    
-        void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm); /* TIME COUNTER */
+        /* POP-UP/NOTIFICATION SCREEN */
+        void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text);
+
+        /* COUNT TO SPECIFIC TIME. A TIMER */
+        void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm);
     #endif /* VN_WIDGET */
 #endif /* SUMMARY SECTION */
 
@@ -106,30 +118,39 @@
     #include <unistd.h>
     #include <sys/ioctl.h>
 
+    /* 'boolean' => 1-> VISIBLE | 0 -> INVISIBLE */
     void vn_cursor_visibility(int boolean)
     {
-        if(boolean == 1) { printf("%s", cursor_visible); }
-        else { printf("%s", cursor_invisible); }
+        if(boolean == 1) { printf("%s", cursor_visible); } /* SET TERMINAL CURSOR TO VISIBLE */
+        else { printf("%s", cursor_invisible); } /* SET TERMINAL CURSOR TO INVISIBLE */
     }
 
+    /* CLEAR TERMINAL SCREEN */
     void vn_clear(void) { printf("%s", clear_screen); }
 
+    /* SET TERMINAL CURRENT CURSOR TO 'pos_x' AND 'pos_y' POSITION */
     void vn_gotoxy(int pos_x, int pos_y) { printf("\033[%d;%dH", pos_y, pos_x); }
 
+    /* SAVE CURSOR POSITION */
     void vn_savexy(void) { printf("\033[s"); }
 
+    /* RESTORE SAVED CURSOR POSITION */
     void vn_restorexy(void) { printf("\033[u"); }
 
-    void vn_savescr(void) { printf("\033[?47h"); }
+    /* SAVE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
+    void vn_savescr(void) { printf("\033[?47h"); } 
 
+    /* RESTORE SCREEN (ONLY WORK WITH SUPPORTED TERMINALS) */
     void vn_restorescr(void) { printf("\033[?47l"); }
 
+    /* 'str' => STRING, 'fg_color' => FOREGROUND COLOR, 'bg_color' => BACKGROUND COLOR, 'str_style' => STRING STYLE */
     void vn_print(char *str, char *fg_color, char *bg_color, char *str_style)
     { /* IF YOU DON'T WANT TO USE ARGUMENTS THEN ENTER  IN DOUBLE QUOTATION MARKS WITH GAP */
         printf("%s%s%s%s%s", fg_color, bg_color, str_style, str, esc_reset);
     } /* EXAMPLE: vn_print("temp", "", "", ""); */
 
     #ifdef VN_UTIL
+        /* GET CURRENT TIME AND RETURN AS STRING */
         char *vnu_get_time(void)
         {
             time_t t = time(NULL);
@@ -140,6 +161,7 @@
             return time;
         }
 
+        /* 'sleep_type' => 'hour', 'minute', 'second' or 'millisecond', 'sleep_time' => INTEGER */
         void vnu_sleep(char *sleep_type, int sleep_time)
         { /* 'sleep_time' MUST BE IN ITs OWN UNIT */
             if(!strcmp(sleep_type, "hour")) { sleep(sleep_time*3600); }
@@ -148,6 +170,7 @@
             if(!strcmp(sleep_type, "millisecond")) { sleep(sleep_time/1000); }
         } /* EXAMPLE: 'vnu_sleep("hour", 1);' IT MEAN SLEEP 1 HOUR */
 
+        /* GET USER INPUT WITHOUT '<Return>' KEY */
         char vnu_get_char_instantly(void)
         {
             system("stty raw"); /* TERMINAL 'raw' MODE */
@@ -156,6 +179,7 @@
             return key;
         }
 
+        /* GET TERMINAL SIZE, REQUIRED 'vn_init' STRUCT */
         void vnu_get_terminal_size(struct vn_init *vn) 
         {
             struct winsize terminal_size;
@@ -186,6 +210,7 @@
             return result;
         } /* 'left_side' MEAN IS IF AT LEFT SIDE THEN RETURN 2 DIGIT NUMBER WHO START WITH 10 IF NOT THEN MULTIPLY WITH 16 */
 
+        /* 'hex_color' => HEX COLOR CODE, 'is_fore' => NEED 'self.is_fore' JUST REPLACE 'self' WITH STRUCT NAME */
         char *vn_hex_color(char *hex_color, int is_fore)
         {
             int red, green, blue, red_x, red_y, green_x, green_y, blue_x, blue_y;
@@ -214,6 +239,7 @@
             return rgb;
         }
 
+        /* RGB COLOR CODE, 'is_fore' => NEED 'self.is_fore' JUST REPLACE 'self' WITH STRUCT NAME */
         char *vn_rgb_color(int red, int green, int blue, int is_fore)
         {
             char *rgb = (char*) malloc(32);
@@ -223,6 +249,7 @@
         }
     #endif /* VN_COLOR */
 
+    /* END VN SUCCESSFULLY, REQUIRED 'vn_init' STRUCT */
     void vn_end(struct vn_init vn)
     { /* FOR ELEGANT UI */
         vn_gotoxy(0, vn.height+vn.pos_y);
@@ -230,6 +257,7 @@
     } /* IF 'vn_cursor_visibility()' USED */
 
     #ifdef VN_WIDGET
+        /* DRAW A LINE AS HORIZONTAL OR VERTICAL */
         void vn_line(int pos_x, int pos_y, int length, char *bg_color, char *format)
         {
             printf("%s", bg_color); /* SET COLOR TO 'bg_color' */
@@ -255,6 +283,7 @@
             printf("%s", esc_reset); /* RESET THE COLOR */
         }
 
+        /* SET BACKGROUND SIZE AND A COLOR */
         void vn_bg(int pos_x, int pos_y, int width, int height, char *bg_color)
         { /* 'bg_color' NEED TO BE 'is_fore = 0' */
             int x = 0, y = 0;
@@ -273,6 +302,7 @@
             printf("%s", esc_reset); /* RESET THE COLOR */
         }
 
+        /* SET A FRAME AND A COLOR */
         void vn_frame(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char vertical_symbol, char horizontal_symbol)
         { /* 'fg_color' NEED TO BE 'is_fore = 1', 'bg_color' NEED TO BE 'is_fore = 0' */
             int x = 0, y = 0;
@@ -301,6 +331,7 @@
             printf("%s", esc_reset); /* RESET THE COLOR */
         } /* 'vertical_symbol' AND 'horizontal_symbol' IS NOT NECESSARY */
 
+        /* MAKE A LABEL WITH CHANGABLE SIZE, COLOR AND TEXT */
         void vn_label(int pos_x, int pos_y, int width, int height, char *fg_color, char *bg_color, char *text_style, char *str)
         { /* 'fg_color' NEED TO BE 'is_fore = 1', 'bg_color' NEED TO BE 'is_fore = 0'. 'text_style' CAN FOUND IN 'src/lib/vn_conf.h' */
             vn_bg(pos_x, pos_y, width, height, bg_color); /* SET BACKGROUND COLOR */
@@ -356,15 +387,16 @@
             else { vn_print(str, fg_color, bg_color, text_style); } /* IF 'str' NOT LONGER THAN THE 'width' */
         }
 
+        /* MAKE A PROGRESS BAR WITH CHANGABLE SIZE AND COLOR */
         void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_frame_color, char *progress_color, int progress_value)
         { /* 'progress_frame_color' NEED TO BE 'is_fore = 1', 'progress_color' NEED TO BE 'is_fore = 1' */
             int x = 0, y = 0;
 
-            while(height >= y)
+            while(height > y)
             { /* COLUMN */
                 vn_gotoxy(pos_x, pos_y+y); /* GO TO START POSITION */
                 printf("%s%s[", progress_frame_color, text_bold); /* PROGRESS BAR STARTING SYMBOL */
-                while(progress_value >= x)
+                while(progress_value > x)
                 { /* COMPLETED PROGRESS SECTION */
                     printf("%s#", progress_color);
                     x+=1;
@@ -381,23 +413,25 @@
             }
         } /* 'width' MEANS LENGTH OF THE PROGRESS BAR AND 'progress_value' MEANS POINT OF THE PROGRESS BAR */
 
+        /* POP-UP/NOTIFICATION SCREEN */
         void vn_notif(int pos_x, int pos_y, int width, int height, char notif_frame_vertical_symbol, char notif_frame_horizontal_symbol, char *notif_frame_fg, char *notif_frame_bg, char *notif_fg, char *notif_bg, char *notif_title_fg, char *notif_title, char *notif_text_style, char *notif_text)
         {
             vn_bg(pos_x, pos_y, width, height, notif_bg);
             vn_frame(pos_x, pos_y, width, height, notif_frame_fg, notif_frame_bg, notif_frame_vertical_symbol, notif_frame_horizontal_symbol);
-        
+
             vn_gotoxy(pos_x+width/2-strlen(notif_title)/2, pos_y+1); /* TITLE POSITION */
             printf("%s%s%s", text_bold, notif_title_fg, notif_bg);
             printf("%s", notif_title);
             printf("%s", esc_reset);
-        
+
             vn_label(pos_x+2, pos_y+3, width-4, height-4, notif_fg, notif_bg, notif_text_style, notif_text); /* TEXT */
         }
-        
+
+        /* COUNT TO SPECIFIC TIME. A TIMER */
         void vn_timer(int pos_x, int pos_y, char *timer_fg, char *timer_bg, char *timer_style, int time, int is_alarm)
         {
             int time_hour = 0, time_minute = 0, time_second = 0, time_buffer = time;
-        
+
             if(time > 3600)
             {
                 time_hour = time/3600;
@@ -410,7 +444,7 @@
             }
             time_second = time;
             printf("%s%s%s", timer_fg, timer_bg, timer_style);
-        
+
             while(1)
             {
                 vn_gotoxy(pos_x, pos_y);
@@ -418,7 +452,7 @@
                 else if(time_minute < 10) { printf("%d:0%d:%d\n", time_hour, time_minute, time_second); }
                 else if(time_hour < 10) { printf("0%d:%d:%d\n", time_hour, time_minute, time_second); }
                 else { printf("%d:%d:%d\n", time_hour, time_minute, time_second); }
-        
+
                 if(time_second == 0)
                 {
                     if(time_minute == 0)
