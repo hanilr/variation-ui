@@ -61,11 +61,16 @@ int main()
 
 # ![vn](img/vn.png) Compiling as shared-library or Using as default ![vn](img/vn.png)
 
+> Show make list `make` or `make run`
+```
+  make run
+```
+
 ![vn_warn](img/vn_warn.png) You can compile as shared-library and develope os specific projects. ![vn_warn](img/vn_warn.png)
 
 ![vn_example](img/vn_example.png) How should I compile? ![vn_example](img/vn_example.png)
 ```
-  make run
+  make compile
 ```
 > Unix shared-library (.so)
 >
