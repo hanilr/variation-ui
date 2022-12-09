@@ -126,12 +126,12 @@ int main()
 * **vn_cursor_visibility(int boolean);** _Set visibility of the terminal cursor. If 'boolean' is 1 then cursor is visible, if 'boolean' is 0 then cursor is invisible._
 > 'boolean' has int data type because not mixed up ansi-c to c++.
 * **vn_clear();** _Clear terminal screen._
-* **void vn_gotoxy(int pos_x, int pos_y);** _Go to certain positions in terminal._
-* **void vn_savexy();** _Save current terminal cursor position._
-* **void vn_restorexy();** _Restore saved terminal cursor position._
-* **void vn_print(char** ***str, char** ***fg_color, char** ***bg_color, char** ***str_style);** _Print with color and text style_
-* **void vn_savescr();** _Save current terminal screen. (Only for supported terminals)_
-* **void vn_restorescr();** _Restore saved terminal screen. (Only for supported terminals)_
+* **vn_gotoxy(int pos_x, int pos_y);** _Go to certain positions in terminal._
+* **vn_savexy();** _Save current terminal cursor position._
+* **vn_restorexy();** _Restore saved terminal cursor position._
+* **vn_print(char** ***str, char** ***fg_color, char** ***bg_color, char** ***str_style);** _Print with color and text style_
+* **vn_savescr();** _Save current terminal screen. (Only for supported terminals)_
+* **vn_restorescr();** _Restore saved terminal screen. (Only for supported terminals)_
 > Need 'VN_COLOR' to use 'fg_color' and 'bg_color', but you can find text styles in `src/lib/vn_conf.h` or 'vn.h' for 'str_style'.
 
 # ![vn](../../img/vn.png) Starting and ending ![vn](../../img/vn.png)
