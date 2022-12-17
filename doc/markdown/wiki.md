@@ -198,7 +198,7 @@ int main()
 
 ---
 
-![vn_info](../../img/vn_info.png) Do you need convenience widgets? If you do need, this library has 4 of pre-prepared function!
+![vn_info](../../img/vn_info.png) Do you need convenience widgets? If you do need, this library has 7 of pre-prepared function!
 
 * **vn_line(int pos_x, int pos_y, int width, char** ***bg_color);** _Draw simple line_
 * **vn_bg(int pos_x, int pos_y, int width, int height, char** ***bg_color);** _Set background_
