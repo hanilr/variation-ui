@@ -158,7 +158,7 @@ void vn_progress(int pos_x, int pos_y, int width, int height, char *progress_fra
         }
         while(width > x)
         { /* NOT COMPLETED PROGRESS SECTION */
-            printf("-");
+            printf(".");
             x+=1;
         }
         printf("%s", esc_reset); /* RESETTING */
