@@ -16,6 +16,7 @@
 #define VN_WIDGET /* SPECIAL WIDGETS */
 #include "../vn_ui.h" /* VARIATION UI LIBRARY */
 
+/* CONFIGURATION FOR 'vn_ui_test_status' FUNCTION */
 struct vn_ui_test_status_configuration
 {
     char *test_name;
@@ -23,7 +24,8 @@ struct vn_ui_test_status_configuration
     int test_height;
 };
 
-void *vn_ui_test_status_clock(t)
+/* WORKING CLOCK FOR TOP MIDDLE SIDE */
+void *vn_ui_test_status_clock()
 {
     int i = 0;
 
@@ -51,6 +53,7 @@ void *vn_ui_test_status_clock(t)
     }
 }
 
+/* STATUS BAR */
 void *vn_ui_test_status(struct vn_ui_test_status_configuration vutsc)
 {
     struct vn_init vn_test_status;
@@ -132,34 +135,42 @@ void *vn_ui_test_frame()
     blue_bg.is_fore = 1;
     blue_bg.color = vn_hex_color("3838c7", blue_bg.is_fore);
 
+    /* LINE */
     vn_gotoxy(3, 4);
     vn_print("vn_line:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* BG */
     vn_gotoxy(3, 5);
     vn_print("vn_bg:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* FRAME */
     vn_gotoxy(3, 6);
     vn_print("vn_frame:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* LABEL */
     vn_gotoxy(3, 7);
     vn_print("vn_label:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* PROGRESS */
     vn_gotoxy(3, 8);
     vn_print("vn_progress:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* NOTIFICATION */
     vn_gotoxy(3, 9);
     vn_print("vn_notif:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* TIMER */
     vn_gotoxy(3, 10);
     vn_print("vn_timer:\t", white_fg.color, black_bg.color, text_bold);
     vn_print("[.]", blue_fg.color, black_bg.color, text_bold);
 
+    /* END */
     vn_line(21, 2, 20, blue_bg.color, "vertical");
     vn_line(0, 12, 21, blue_bg.color, "horizontal");
     vn_label(3, 14, 17, 6, white_fg.color, black_bg.color, text_italic, "At the end of each test, you will be asked a (y/n) question. Result will show after the tests.");
@@ -325,6 +336,7 @@ void *vn_ui_test()
     vnu_ui_test_checker(vn_test_timer, 10);
     vn_bg(test_posx-1, test_posy-1, 34, 18, black_bg.color);
 
+    /* END */
     vn_gotoxy(2, 2);
     vn_print("[Tested]   ", black_fg.color, blue_bg.color, text_italic);
     vn_label(test_posx, test_posy, test_width, test_height, white_fg.color, black_bg.color, "", "Test finished. You can see the results at the left top side of screen. At this time the timer will continue and when finished test program will close. Or you can type 'q' and terminate the program. (If this doesn't work press <Control> and <C> at the same time!)");
@@ -338,9 +350,6 @@ void *vn_ui_test()
         exit(0);
     }
 }
-
-/* USER TEST GUIDE */
-/*  */
 
 int main(int argc, char *argv[])
 {
