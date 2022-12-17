@@ -403,7 +403,7 @@
                 }
                 while(width > x)
                 { /* NOT COMPLETED PROGRESS SECTION */
-                    printf("-");
+                    printf(".");
                     x+=1;
                 }
                 printf("%s", esc_reset); /* RESETTING */
