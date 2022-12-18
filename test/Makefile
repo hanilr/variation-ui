@@ -15,8 +15,8 @@ run:
 	@echo "\033[0m"
 	@echo "\033[38;2;55;200;55m1.\033[38;2;233;233;233m Show make list \033[38;2;200;55;55m\033[1m'make' or 'make run'\033[0m"
 	@echo "\033[38;2;55;200;55m2.\033[38;2;233;233;233m Compile test file \033[38;2;200;55;55m\033[1m'make compile'\033[0m"
-	@echo "\033[38;2;55;200;55m2.\033[38;2;233;233;233m Test compiled file \033[38;2;200;55;55m\033[1m'make test'\033[0m"
-	@echo "\033[38;2;55;200;55m3.\033[38;2;233;233;233m Clean compiled file \033[38;2;200;55;55m\033[1m'make clean'\033[0m"
+	@echo "\033[38;2;55;200;55m3.\033[38;2;233;233;233m Test compiled file \033[38;2;200;55;55m\033[1m'make test'\033[0m"
+	@echo "\033[38;2;55;200;55m4.\033[38;2;233;233;233m Clean compiled file \033[38;2;200;55;55m\033[1m'make clean'\033[0m"
 	@echo ""
 
 compile: $(_color)
