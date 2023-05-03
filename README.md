@@ -8,6 +8,8 @@
 
 Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Look [license](#license) if you want to know more).
 
+> ![vn_warn](img/vn_warn.png) If you don't need widget, then there's a lite version of this library. It's also optimized and simplified and contains no widgets. [Variation Lite UI](https://github.com/hanilr/variation-lite-ui)
+
 ### ![vn_info](img/vn_info.png) Dependencies:
 
 * ` gcc ` _> Gnu Compiler Collection_
