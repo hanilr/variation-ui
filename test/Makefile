@@ -1,49 +1,19 @@
 # ---------------------------------------------------- #
 # SINGLE-HEADER TERMINAL USER INTERFACE | VARIATION-UI #
-#                  TEST FILE MAKEFILE                  #
+#          VARIATION-UI LIBRARY TEST MAKEFILE          #
 # ---------------------------------------------------- #
 
-CC = gcc
-ANSI = -std=c89
-main = vn_ui_test.c
+.PHONY: help run
 
-.PHONY: run compile test clean
-
-run:
+help:
 	@echo ""
-	@echo "\t\t\033[38;2;55;55;200m[\033[38;2;233;233;233mMake List\033[38;2;55;55;200m]"
-	@echo "\033[0m"
-	@echo "\033[38;2;55;200;55m1.\033[38;2;233;233;233m Show make list \033[38;2;200;55;55m\033[1m'make' or 'make run'\033[0m"
-	@echo "\033[38;2;55;200;55m2.\033[38;2;233;233;233m Compile test file \033[38;2;200;55;55m\033[1m'make compile'\033[0m"
-	@echo "\033[38;2;55;200;55m3.\033[38;2;233;233;233m Test compiled file \033[38;2;200;55;55m\033[1m'make test'\033[0m"
-	@echo "\033[38;2;55;200;55m4.\033[38;2;233;233;233m Clean compiled file \033[38;2;200;55;55m\033[1m'make clean'\033[0m"
+	@echo "[ Make List ]"
+	@echo " 1. Show make list 'make' or 'make help'"
+	@echo " 2. Compile all files and run 'make test'"
 	@echo ""
 
-compile: $(_color)
-	@$(CC) $(ANSI) -pthread $(main) -o _test
-
-	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------- \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[ \033[38;2;200;55;55m\033[4mTest\033[0m\033[38;2;233;233;233m file compiled! \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------- \033[38;2;55;200;55m] "
-	@echo "\033[0m"
-
-test:
-	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------- \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;233;233;233m Test file executing \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------- \033[38;2;55;200;55m] "
-	@echo "\033[0m"
-
-	@sleep 1
-	@./_test
-
-clean:
-	@rm _*
-	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m --------------------------- \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[ Compiled test file cleaned! \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m --------------------------- \033[38;2;55;200;55m] "
-	@echo "\033[0m"
+test: 
+	@cd base && make compile && make clean
+	@cd widget && make compile && make clean
 
 # MADE BY @hanilr #

@@ -8,14 +8,10 @@
 
 Variation-ui is single-header terminal user interface library. Written in ansi-c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Look [license](#license) if you want to know more).
 
-> ![vn_warn](img/vn_warn.png) If you don't need widget, then there's a lite version of this library. It's also optimized and simplified and contains no widgets. [Variation Lite UI](https://github.com/hanilr/variation-lite-ui)
-
 ### ![vn_info](img/vn_info.png) Dependencies:
 
 * ` gcc ` _> Gnu Compiler Collection_
 * ` make ` _> Gnu Make_
-
-> You can install with package managers for linux.
 
 ## ![vn_warn](img/vn_warn.png) Important Note ![vn_warn](img/vn_warn.png)
 
@@ -29,33 +25,41 @@ You need to define ` #define VN_UI_IMPLEMENTATION ` before ` #include "vn_ui.h" 
 
 ```c
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define VN_UI_IMPLEMENTATION
-#define VN_COLOR
-#define VN_WIDGET
+#define VN_UI_IMPLEMENTATION // Base features
+#define VN_WIDGET // Widget features
 #include "vn_ui.h"
 
 int main()
 {
-  struct vn_init vn;
-  vn.width = 60;
-  vn.height = 5;
-  vn.pos_x = 2;
-  vn.pos_y = 2;
+  /* Color declaring */
+  char* color_fg_red = vn_color("#e93737", 'f');
+  char* color_bg_blue = vn_color("#3737e9", 'b');
 
-  struct vnc_color white;
-  struct vnc_color black;
-  
-  white.is_fore = 0;
-  white.color = vn_hex_color("e9e9e9", white.is_fore);
-  black.is_fore = 1;
-  black.color = vn_rgb_color(22, 22, 22, black.is_fore);
-  
-  char* msg = "This is the example. If you had a trouble please leave an issue to https://github.com/hanilr/variation/issues have fun!";
-  
-  vn_clear();
-  vn_label(vn.pos_x, vn.pos_y, vn.width, vn.height, black.color, white.color, text_italic, msg);
-  vn_end(vn);
+  /* Text attribute */
+  VN_UI_TEXT vnt;
+  strcpy(vnt.color_fg, color_fg_red);
+  strcpy(vnt.color_bg, color_bg_blue);
+  strcpy(vnt.text_style, vn_text_bold);
+
+  /* Widget values */
+  VN_UI_WIDGET vnw;
+  vnw.pos_x = 2;
+  vnw.pos_y = 2;
+  vnw.width = 20;
+  vnw.height = 10;
+
+  /* UI Section */
+  vn_bg(' ', vnt, vnw); // Background
+  vn_gotoxy((vnw.pos_x + vnw.width) / 2, (vnw.pos_y + vnw.height) / 2); // Go to middle
+  vn_print("This is the example.", 'y', vnt.color_fg, vnt.color_bg, vnt.text_style); // Colourful printing
+  vn_gotoxy((vnw.pos_x + vnw.width), (vnw.pos_y + vnw.height)); // Go to end
+
+  // Free after use 'vn_color'
+  free(color_fg_red);
+  free(color_bg_blue);
 
   return 0;
 }
@@ -76,26 +80,17 @@ int main()
 ```
 > Unix shared-library (.so)
 >
+> Windows shared-library (.dll)
+>
 > If you want to delete this file you can use ` make clean `
 
 ![vn_example](img/vn_example.png) What if I want to use as default? ![vn_example](img/vn_example.png)
 ```
   make install
 ```
-> If you only want to download library with terminal then use curl tool
-```sh
-curl -fLo /usr/include/vn/vn_ui.h --create-dirs https://raw.githubusercontent.com/hanilr/variation-ui/master/vn_ui.h
-```
-> If you use curl tool then you need to compile with sudo.
->
-> You can find in ` /usr/include/vn/ `
->
-> If you want to uninstall you can use ` make uninstall `
 
 ### [![vn_wiki](img/vn_wiki.png)](doc/markdown/wiki.md) : ![vn_warn](img/vn_warn.png) You can take a look to wiki page if you want learn more! ![vn_warn](img/vn_warn.png)
 
 #### Check Other Variation Libraries
-
-* [Variation Lite: User Interface](https://github.com/hanilr/variation-lite-ui) - A terminal user interface in Ansi-C with optimize code and no widgets.
 
 * [Variation: Binary](https://github.com/hanilr/variation-bin) - A binary analysis library in Ansi-C.

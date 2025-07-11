@@ -5,60 +5,74 @@
 
 CC = gcc
 ANSI = -std=c89
-
 lib = vn_ui.h
-out = vn_ui.so
+
+ifdef OS
+   	out = vn_ui.dll
+   	rm = cmd /c del /F /Q
+   	rmdir = cmd /c rmdir /S /Q
+   	mk = cmd /c mkdir
+   	cp = cmd /c copy
+else
+   	UNAME_S := $(shell uname -s)
+   	ifeq ($(shell uname), Linux)
+      out = vn_ui.so
+	  rm = rm -f
+	  rmdir = rm -rf
+	  mk = mkdir -p
+	  cp = cp
+   	endif
+endif
 
 .PHONY: run compile clean install uninstall
 
 run:
 	@echo ""
-	@echo "\t\t\033[38;2;55;55;200m[\033[38;2;233;233;233mMake List\033[38;2;55;55;200m]"
-	@echo "\033[0m"
-	@echo "\033[38;2;55;200;55m1.\033[38;2;233;233;233m Show make list \033[38;2;200;55;55m\033[1m'make' or 'make run'\033[0m"
-	@echo "\033[38;2;55;200;55m2.\033[38;2;233;233;233m Compile as shared-library \033[38;2;200;55;55m\033[1m'make compile'\033[0m"
-	@echo "\033[38;2;55;200;55m3.\033[38;2;233;233;233m Clean shared-library \033[38;2;200;55;55m\033[1m'make clean'\033[0m"
-	@echo "\033[38;2;55;200;55m4.\033[38;2;233;233;233m Install the library \033[38;2;200;55;55m\033[1m'make install'\033[0m"
-	@echo "\033[38;2;55;200;55m5.\033[38;2;233;233;233m Uninstall the library \033[38;2;200;55;55m\033[1m'make uninstall'\033[0m"
+	@echo " [ Make List ]"
+	@echo " 1. Show make list 'make' or 'make run'"
+	@echo " 2. Compile as shared-library 'make compile'"
+	@echo " 3. Clean shared-library 'make clean'"
+	@echo " 4. Install the library 'make install'"
+	@echo " 5. Uninstall the library 'make uninstall'"
 	@echo ""
 
 compile: $(lib)
 	@$(CC) $(ANSI) -shared -fPIC $(lib) -o $(out)
 	
 	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------------------------- \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[ \033[38;2;200;55;55m\033[4mShared-Library\033[0m\033[38;2;233;233;233m successfully compiled! \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------------------------- \033[38;2;55;200;55m] "
-	@echo "\033[0m"
+	@echo "[ ---------------------------------------------- ] "
+	@echo "[ Shared-Library successfully compiled for unix! ] "
+	@echo "[ ---------------------------------------------- ] "
+	@echo ""
 
 clean:
-	@rm $(out)
+	@$(rm) $(out)
 	
 	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------------------------ \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[ \033[38;2;200;55;55m\033[4mShared-Library\033[0m\033[38;2;233;233;233m successfully cleaned! \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------------------------ \033[38;2;55;200;55m] "
-	@echo "\033[0m"
+	@echo "[ ------------------------------------ ] "
+	@echo "[ Shared-Library successfully cleaned! ] "
+	@echo "[ ------------------------------------ ] "
+	@echo ""
 
 install: $(lib)
-	@sudo mkdir -p /usr/include/vn
-	@sudo cp vn_ui.h /usr/include/vn
-	@sudo chmod -x /usr/include/vn/vn_ui.h
+	@$(mk) vn
+	@$(cp) vn_ui.h vn
+	@$(cp) vn_ui/vn_ui_base.h vn
+	@$(cp) vn_ui/vn_ui_widget.h vn
 
 	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------------------------ \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[ \033[38;2;200;55;55m\033[4mVariation UI\033[0m\033[38;2;233;233;233m successfully installed! \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m ------------------------------------ \033[38;2;55;200;55m] "
-	@echo "\033[0m"
+	@echo "[ ------------------------------------ ] "
+	@echo "[ Variation UI successfully installed! ] "
+	@echo "[ ------------------------------------ ] "
+	@echo ""
 
 uninstall:
-	@sudo rm /usr/include/vn/vn_ui.h
-	@if [ "$(ls -A "/usr/include/vn/" 2> /dev/null)" = "" ]; then sudo rm -rf /usr/include/vn/; fi
+	@$(rmdir) vn
 
 	@echo ""
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m -------------------------------------- \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[ \033[38;2;200;55;55m\033[4mVariation UI\033[0m\033[38;2;233;233;233m successfully uninstalled! \033[38;2;55;200;55m] "
-	@echo "\t\033[38;2;55;200;55m[\033[38;2;55;55;200m -------------------------------------- \033[38;2;55;200;55m] "
-	@echo "\033[0m"
+	@echo "[ -------------------------------------- ] "
+	@echo "[ Variation UI successfully uninstalled! ] "
+	@echo "[ -------------------------------------- ] "
+	@echo ""
 
 # MADE BY @hanilr #
