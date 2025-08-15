@@ -1,5 +1,5 @@
 /* VARIATION UI (LIBRARY) */
-/*     MADE BY @hanilr     */
+/*     MADE BY @hanilr    */
 #ifndef _VN_UI_H
 #define _VN_UI_H
     /* ASCII ESCAPE SEQUENCE RESET CODE */
