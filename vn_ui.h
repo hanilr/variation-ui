@@ -180,16 +180,17 @@
             int i;
             printf("%s%s%s", vnt.color_fg, vnt.color_bg, vnt.text_style);
 
-            if(!strcmp(format, "horizontal")) {
-                vn_gotoxy(vnw.pos_x, vnw.pos_y);
-                i = vnw.width;
-            } else { i = vnw.height; }
+            vn_gotoxy(vnw.pos_x, vnw.pos_y);
+            if(!strcmp(format, "horizontal")) { 
+                i = vnw.width; }
+            else if (!strcmp(format, "vertical")) { 
+                i = vnw.height; }
 
             while(i > 0)
             {
-                if(!strcmp(format, "vertical")) vn_gotoxy(vnw.pos_x, vnw.pos_y + i);
                 printf("%c", symbol);
                 i -= 1;
+                if(!strcmp(format, "vertical")) vn_gotoxy(vnw.pos_x, vnw.pos_y + i);
             }
             printf("%s", vn_text_reset);
         }
@@ -209,9 +210,9 @@
             VN_UI_WIDGET vnw_copy = {vnw.pos_x, vnw.pos_y, vnw.width, vnw.height};
 
             vn_line(horizontal_symbol, "horizontal", vnt, vnw_copy); /* Top line. */
-            vnw_copy.pos_y += vnw_copy.height + 1; /* Vertical position change. */
+            vnw_copy.pos_y += vnw_copy.height - 1; /* Vertical position change. */
             vn_line(horizontal_symbol, "horizontal", vnt, vnw_copy); /* Bottom line. */
-            vnw_copy.pos_y -= vnw_copy.height + 1; /* Vertical position reverse. */
+            vnw_copy.pos_y -= vnw_copy.height - 1; /* Vertical position reverse. */
 
             vn_line(vertical_symbol, "vertical", vnt, vnw_copy); /* Left line. */
             vnw_copy.pos_x += vnw_copy.width - 1; /* Horizontal position change. */
