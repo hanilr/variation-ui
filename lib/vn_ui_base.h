@@ -28,7 +28,7 @@
     } VN_UI_TEXT;
 
     /* VARIATION ESCAPE SEQUENCE PRINTER */
-    void vn_printizer(char* text, char new_line, char* color_fg, char* color_bg, char* text_style); /* Variation print linker. */
+    void vn_printizer(char* text, char* color_fg, char* color_bg, char* text_style); /* Variation print linker. */
 
     /* VARIATION ESCAPE SEQUENCE CODISER */
     void vn_codizer(char* code); /* Variation code linker. */
@@ -41,18 +41,16 @@
     /* Variation Print: Escape sequence printizer linker. */
     /* -------------------------------------------------- */
     /* 'text': Context of print.                          */
-    /* 'new_line': New line after printing. If value 'y'. */
     /* 'color_fg': Foreground color.                      */
     /* 'color_bg': Background color.                      */
     /* 'text_style': Text attribute.                      */
-    #define vn_printf(text, new_line, color_fg, color_bg, text_style) (vn_printizer(text, new_line, color_fg, color_bg, text_style))
+    #define vn_printf(text, color_fg, color_bg, text_style) (vn_printizer(text, color_fg, color_bg, text_style))
 
     /* Variation Print: Escape sequence printizer linker. */
     /* -------------------------------------------------- */
     /* 'text': Context of print.                          */
-    /* 'new_line': New line after printing. If value 'y'. */
     /* 'vnt': VN_UI_TEXT struct dependency text attribute.*/
-    #define vn_print(text, new_line, vnt) (vn_printizer(text, new_line, vnt.color_fg, vnt.color_bg, vnt.text_style))
+    #define vn_print(text, vnt) (vn_printizer(text, vnt.color_fg, vnt.color_bg, vnt.text_style))
 
     /* Variation Code: Escape sequence codizer linker. */
     /* ----------------------------------------------- */
@@ -79,12 +77,10 @@
     #include <string.h>
 
     /* 'vn_print' LINKER */
-    void vn_printizer(char* text, char new_line, char* color_fg, char* color_bg, char* text_style) {
+    void vn_printizer(char* text, char* color_fg, char* color_bg, char* text_style) {
         printf("%s%s%s", color_fg, color_bg, text_style); /* Text attribute. */
         printf("%s", text); /* Context of text. */
         printf("%s", vn_text_reset); /* Reset after attribute. */
-
-        if (new_line == 'y') { printf("\n"); } /* New line situation */
     }
 
     /* 'vn_code' LINKER */

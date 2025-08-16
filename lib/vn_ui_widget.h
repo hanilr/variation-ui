@@ -131,7 +131,7 @@
             }
             printf("%s", vn_text_reset); /* RESET THE COLOR AND THE TEXT STYLE */
         }
-        else { vn_printf(text, 'n', vnt.color_fg, vnt.color_bg, vnt.text_style); } /* IF 'text' NOT LONGER THAN THE 'width' */
+        else { vn_printf(text, vnt.color_fg, vnt.color_bg, vnt.text_style); } /* IF 'text' NOT LONGER THAN THE 'width' */
     }
 
     /* MAKE A PROGRESS BAR WITH CHANGABLE SIZE AND COLOR */
@@ -167,7 +167,7 @@
         vn_frame(frame_vertical, frame_horizontal, vnt_frame, vnw);
 
         vn_gotoxy(vnw.pos_x + vnw.width / 2 - strlen(title) / 2, vnw.pos_y + 1); /* TITLE POSITION */
-        vn_printf(title, 'n', vnt_title.color_fg, vnt_title.color_bg, vnt_title.text_style);
+        vn_printf(title, vnt_title.color_fg, vnt_title.color_bg, vnt_title.text_style);
 
         vnw.pos_x += 2;
         vnw.pos_y += 3;
