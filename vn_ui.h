@@ -310,11 +310,12 @@
             vn_gotoxy(vnw.pos_x + vnw.width / 2 - strlen(title) / 2, vnw.pos_y + 1); /* TITLE POSITION */
             vn_printf(title, vnt_title.color_fg, vnt_title.color_bg, vnt_title.text_style);
 
-            vnw.pos_x += 2;
-            vnw.pos_y += 3;
-            vnw.width -= 4;
-            vnw.height -= 4;
-            vn_label(text, vnt_text, vnw); /* TEXT */
+            VN_UI_WIDGET vnw_changed;
+            vnw_changed.pos_x = vnw.pos_x + 2;
+            vnw_changed.pos_y = vnw.pos_y + 2;
+            vnw_changed.width = vnw.width - 3;
+            vnw_changed.height = vnw.height - 3;
+            vn_label(text, vnt_text, vnw_changed); /* TEXT */
         }
     #endif /* VN_WIDGET */
 #endif /* VN_UI_IMPLEMENTATION */
