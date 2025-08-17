@@ -40,7 +40,7 @@ void sys_result(char check, VN_UI_TEXT vnt_true, VN_UI_TEXT vnt_false) {
     } else if (check == 'n' || check == 'N') {
         vn_print("[NOT WORKING]\n", vnt_false);
     } else {
-        vn_print("[ - ]\n", vnt);
+        printf("[ - ]\n");
     }
 }
 
