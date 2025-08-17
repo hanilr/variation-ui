@@ -3,8 +3,8 @@ var indexSectionsWithContent =
   0: ":acdehilmnoprstuvwy",
   1: "v",
   2: "mrv",
-  3: "mv",
-  4: "chptw",
+  3: "msv",
+  4: "chptvw",
   5: "vw",
   6: ":acdeilmnoprstuvwy"
 };

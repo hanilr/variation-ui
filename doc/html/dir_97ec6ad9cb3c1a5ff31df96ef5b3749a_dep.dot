@@ -1,0 +1,22 @@
+digraph "test/base"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_13e138d54eb8818da29c3992edef070a {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="test", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_13e138d54eb8818da29c3992edef070a.html",tooltip=""]
+  subgraph clusterdir_97ec6ad9cb3c1a5ff31df96ef5b3749a {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_97ec6ad9cb3c1a5ff31df96ef5b3749a.html",tooltip=""]
+    dir_97ec6ad9cb3c1a5ff31df96ef5b3749a [shape=plaintext, label="base"];
+  dir_6bc14bc581127c78431f191992557711 [label="code", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_6bc14bc581127c78431f191992557711.html",tooltip=""];
+  dir_c8043a66c69614dcb4254d79c1f796ae [label="color", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_c8043a66c69614dcb4254d79c1f796ae.html",tooltip=""];
+  dir_5ccbfacdca21c32c927e8741027f3115 [label="print", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_5ccbfacdca21c32c927e8741027f3115.html",tooltip=""];
+  }
+  }
+  dir_97aefd0d527b934f1d99a682da8fe6a9 [label="lib", fillcolor="#edf0f7", color="grey25", style="filled", URL="dir_97aefd0d527b934f1d99a682da8fe6a9.html",tooltip=""];
+  dir_6bc14bc581127c78431f191992557711->dir_97aefd0d527b934f1d99a682da8fe6a9 [headlabel="1", labeldistance=1.5 headhref="dir_000002_000006.html" href="dir_000002_000006.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_c8043a66c69614dcb4254d79c1f796ae->dir_97aefd0d527b934f1d99a682da8fe6a9 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000006.html" href="dir_000003_000006.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_5ccbfacdca21c32c927e8741027f3115->dir_97aefd0d527b934f1d99a682da8fe6a9 [headlabel="1", labeldistance=1.5 headhref="dir_000009_000006.html" href="dir_000009_000006.html" color="steelblue1" fontcolor="steelblue1"];
+}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Variation UI: lib/vn_ui_base.h Source File</title>
+<title>Variation User Interface: lib/vn_ui_base.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Variation UI
+   <div id="projectname">Variation User Interface
    </div>
   </td>
  </tr>
@@ -136,123 +136,121 @@ $(function(){initNavTree('vn__ui__base_8h_source.html','',''); });
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">/* Variation Print: Escape sequence printizer linker. */</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">/* -------------------------------------------------- */</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">/* &#39;text&#39;: Context of print.                          */</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">/* &#39;new_line&#39;: New line after printing. If value &#39;y&#39;. */</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">/* &#39;color_fg&#39;: Foreground color.                      */</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">/* &#39;color_bg&#39;: Background color.                      */</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">/* &#39;text_style&#39;: Text attribute.                      */</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#af4e7d00b6902779aa3f45d0a68c817cb">   48</a></span><span class="preprocessor">    #define vn_printf(text, color_fg, color_bg, text_style) (vn_printizer(text, color_fg, color_bg, text_style))</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">/* Variation Print: Escape sequence printizer linker. */</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">/* -------------------------------------------------- */</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">/* &#39;text&#39;: Context of print.                          */</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">/* &#39;new_line&#39;: New line after printing. If value &#39;y&#39;. */</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">/* &#39;vnt&#39;: VN_UI_TEXT struct dependency text attribute.*/</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#a7e9e76fa40a32f3d47b77eb1fa4de5d8">   55</a></span><span class="preprocessor">    #define vn_print(text, vnt) (vn_printizer(text, vnt.color_fg, vnt.color_bg, vnt.text_style))</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">/* Variation Code: Escape sequence codizer linker. */</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">/* ----------------------------------------------- */</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">/* &#39;screen:clear&#39;: Clear the screen.               */</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">/* &#39;screen:save&#39;: Save screen.                     */</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">/* &#39;screen:restore&#39;: Restore screen.               */</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">/* &#39;cursor:visible&#39;: Cursor visiblity true.        */</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">/* &#39;cursor:invisible&#39;: Cursor visiblity false.     */</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">/* &#39;cursor:save&#39;: Save cursor position.            */</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">/* &#39;cursor:restore&#39;: Restore cursor position.      */</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#a55ea92a6e5684f0fab419ed3950c0ecc">   66</a></span><span class="preprocessor">    #define vn_code(code) (vn_codizer(code))</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">/* Variation Color: Escape sequence colorizer linker. */</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">/* -------------------------------------------------- */</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">/* &#39;color&#39;: &quot;#a1b2c3&quot; for HEX or &quot;001 024 200&quot; for RGB */</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">/* Foreground: (base = &#39;f&#39;), Background: (base = &#39;b&#39;) */</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">/* [!] Need to free after using. [!] */</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#a0eb79643bf911561673719eaba3cbd3f">   73</a></span><span class="preprocessor">    #define vn_color(color, base) (vn_colorizer(color, base))</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif </span><span class="comment">/* SUMMARY SECTION */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#ifdef VN_UI_BASE_IMPLEMENTATION</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">    #include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">    #include &lt;string.h&gt;</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">/* &#39;vn_print&#39; LINKER */</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="vn__ui__base_8h.html#a2e2094602fb5bc093cec4bc7d3a32856">vn_printizer</a>(<span class="keywordtype">char</span>* text, <span class="keywordtype">char</span>* color_fg, <span class="keywordtype">char</span>* color_bg, <span class="keywordtype">char</span>* text_style) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        printf(<span class="stringliteral">&quot;%s%s%s&quot;</span>, color_fg, color_bg, text_style); <span class="comment">/* Text attribute. */</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        printf(<span class="stringliteral">&quot;%s&quot;</span>, text); <span class="comment">/* Context of text. */</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a9185f4cbbcc6e7489024becad44b16af">vn_text_reset</a>); <span class="comment">/* Reset after attribute. */</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">/* &#39;vn_code&#39; LINKER */</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="vn__ui__base_8h.html#acbd33d1e1e3e73fc2ac2b0c3b1d1dfbf">vn_codizer</a>(<span class="keywordtype">char</span>* code) {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;screen:clear&quot;</span>)) {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a95dcd5ec069af714f37af2cff299b996">vn_clear_screen</a>);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;screen:save&quot;</span>)) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            printf(<span class="stringliteral">&quot;\033[?47h&quot;</span>);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;screen:restore&quot;</span>)) {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            printf(<span class="stringliteral">&quot;\033[?47l&quot;</span>);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:visible&quot;</span>)) {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a8d81d12901cdaa9a36ad14945ab6adf5">vn_cursor_visible</a>);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:invisible&quot;</span>)) {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a83d400642f0e016ddfb9d73105c55a3f">vn_cursor_invisible</a>);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:save&quot;</span>)) {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            printf(<span class="stringliteral">&quot;\033[s&quot;</span>);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:restore&quot;</span>)) {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            printf(<span class="stringliteral">&quot;\033[u&quot;</span>);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            fprintf(stderr, <span class="stringliteral">&quot;VN_CODE: There is no code found!\n&quot;</span>);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">/* GO TO POSITION X AND POSITION Y */</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="vn__ui__base_8h.html#ab9e12afadda0b5f4c5202888d5cf4493">vn_gotoxy</a>(<span class="keywordtype">int</span> pos_x, <span class="keywordtype">int</span> pos_y) {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        printf(<span class="stringliteral">&quot;\033[%d;%dH&quot;</span>, pos_y, pos_x);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">/* &#39;vn_color&#39; LINKER */</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="vn__ui__base_8h.html#a2b3b3ca19723680aa0a0fd9894b84634">vn_colorizer</a>(<span class="keywordtype">char</span>* color, <span class="keywordtype">char</span> base) {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (strlen(color) == 7 || strlen(color) == 9) {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <span class="keywordtype">int</span> red, green, blue;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordtype">char</span>* rgb = (<span class="keywordtype">char</span>*) malloc(32);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordflow">if</span> (rgb == NULL) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                fprintf(stderr, <span class="stringliteral">&quot;VN_COLOR: Memory allocation failed!\n&quot;</span>);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">if</span> (color[0] == <span class="charliteral">&#39;#&#39;</span> &amp;&amp; strlen(color) == 7) { <span class="comment">/* Hexadecimal color code */</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <span class="keywordtype">char</span> red_str[3] = { color[1], color[2], <span class="charliteral">&#39;\0&#39;</span> };</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                <span class="keywordtype">char</span> green_str[3] = { color[3], color[4], <span class="charliteral">&#39;\0&#39;</span> };</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <span class="keywordtype">char</span> blue_str[3] = { color[5], color[6], <span class="charliteral">&#39;\0&#39;</span> };</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                red = (int)strtol(red_str, NULL, 16);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                green = (int)strtol(green_str, NULL, 16);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                blue = (int)strtol(blue_str, NULL, 16);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            } <span class="keywordflow">else</span> { <span class="comment">/* RGB color code */</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                <span class="keywordtype">int</span> rgb_value = (int)strtol(color, NULL, 10);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                red = rgb_value / 1000000;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                green = (rgb_value / 1000) % 1000;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                blue = rgb_value % 1000;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            }</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            <span class="keywordflow">if</span> (base == <span class="charliteral">&#39;f&#39;</span>) { <span class="comment">/* Foreground selected */</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                sprintf(rgb, <span class="stringliteral">&quot;\033[38;2;%d;%d;%dm&quot;</span>, red, green, blue);</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == <span class="charliteral">&#39;b&#39;</span>) { <span class="comment">/* Background selected */</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                sprintf(rgb, <span class="stringliteral">&quot;\033[48;2;%d;%d;%dm&quot;</span>, red, green, blue);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            }</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keywordflow">return</span> rgb;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            fprintf(stderr, <span class="stringliteral">&quot;VN_COLOR: Wrong color value!\n&quot;</span>);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        }</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    } <span class="comment">/* [!] Need to free after using. [!] */</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif </span><span class="comment">/* VN_UI_BASE_IMPLEMENTATION */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html">VN_UI_TEXT</a></div><div class="ttdef"><b>Definition</b> vn_ui_base.h:24</div></div>
-<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html_a760b86079b31e7c497ed6d5add661724"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html#a760b86079b31e7c497ed6d5add661724">VN_UI_TEXT::color_bg</a></div><div class="ttdeci">char color_bg[24]</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:26</div></div>
-<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html_a89315dcb102373032d31f7833c4cecaa"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html#a89315dcb102373032d31f7833c4cecaa">VN_UI_TEXT::color_fg</a></div><div class="ttdeci">char color_fg[24]</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:25</div></div>
-<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html_ae4503952f4e8c6fc6e1fa4300ac4153d"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html#ae4503952f4e8c6fc6e1fa4300ac4153d">VN_UI_TEXT::text_style</a></div><div class="ttdeci">char text_style[24]</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:27</div></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">/* &#39;color_fg&#39;: Foreground color.                      */</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">/* &#39;color_bg&#39;: Background color.                      */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">/* &#39;text_style&#39;: Text attribute.                      */</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#af4e7d00b6902779aa3f45d0a68c817cb">   47</a></span><span class="preprocessor">    #define vn_printf(text, color_fg, color_bg, text_style) (vn_printizer(text, color_fg, color_bg, text_style))</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">/* Variation Print: Escape sequence printizer linker. */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">/* -------------------------------------------------- */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">/* &#39;text&#39;: Context of print.                          */</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">/* &#39;vnt&#39;: VN_UI_TEXT struct dependency text attribute.*/</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#a7e9e76fa40a32f3d47b77eb1fa4de5d8">   53</a></span><span class="preprocessor">    #define vn_print(text, vnt) (vn_printizer(text, vnt.color_fg, vnt.color_bg, vnt.text_style))</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">/* Variation Code: Escape sequence codizer linker. */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">/* ----------------------------------------------- */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">/* &#39;screen:clear&#39;: Clear the screen.               */</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">/* &#39;screen:save&#39;: Save screen.                     */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">/* &#39;screen:restore&#39;: Restore screen.               */</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">/* &#39;cursor:visible&#39;: Cursor visiblity true.        */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">/* &#39;cursor:invisible&#39;: Cursor visiblity false.     */</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">/* &#39;cursor:save&#39;: Save cursor position.            */</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">/* &#39;cursor:restore&#39;: Restore cursor position.      */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#a55ea92a6e5684f0fab419ed3950c0ecc">   64</a></span><span class="preprocessor">    #define vn_code(code) (vn_codizer(code))</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">/* Variation Color: Escape sequence colorizer linker. */</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">/* -------------------------------------------------- */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">/* &#39;color&#39;: &quot;#a1b2c3&quot; for HEX or &quot;001 024 200&quot; for RGB */</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">/* Foreground: (base = &#39;f&#39;), Background: (base = &#39;b&#39;) */</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">/* [!] Need to free after using. [!] */</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="vn__ui__base_8h.html#a0eb79643bf911561673719eaba3cbd3f">   71</a></span><span class="preprocessor">    #define vn_color(color, base) (vn_colorizer(color, base))</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">/* SUMMARY SECTION */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#ifdef VN_UI_BASE_IMPLEMENTATION</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">    #include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    #include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">/* &#39;vn_print&#39; LINKER */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="vn__ui__base_8h.html#a2e2094602fb5bc093cec4bc7d3a32856">vn_printizer</a>(<span class="keywordtype">char</span>* text, <span class="keywordtype">char</span>* color_fg, <span class="keywordtype">char</span>* color_bg, <span class="keywordtype">char</span>* text_style) {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        printf(<span class="stringliteral">&quot;%s%s%s&quot;</span>, color_fg, color_bg, text_style); <span class="comment">/* Text attribute. */</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        printf(<span class="stringliteral">&quot;%s&quot;</span>, text); <span class="comment">/* Context of text. */</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a9185f4cbbcc6e7489024becad44b16af">vn_text_reset</a>); <span class="comment">/* Reset after attribute. */</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">/* &#39;vn_code&#39; LINKER */</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="vn__ui__base_8h.html#acbd33d1e1e3e73fc2ac2b0c3b1d1dfbf">vn_codizer</a>(<span class="keywordtype">char</span>* code) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;screen:clear&quot;</span>)) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a95dcd5ec069af714f37af2cff299b996">vn_clear_screen</a>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;screen:save&quot;</span>)) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            printf(<span class="stringliteral">&quot;\033[?47h&quot;</span>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;screen:restore&quot;</span>)) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            printf(<span class="stringliteral">&quot;\033[?47l&quot;</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:visible&quot;</span>)) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a8d81d12901cdaa9a36ad14945ab6adf5">vn_cursor_visible</a>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:invisible&quot;</span>)) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code hl_define" href="vn__ui__base_8h.html#a83d400642f0e016ddfb9d73105c55a3f">vn_cursor_invisible</a>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:save&quot;</span>)) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            printf(<span class="stringliteral">&quot;\033[s&quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!strcmp(code, <span class="stringliteral">&quot;cursor:restore&quot;</span>)) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            printf(<span class="stringliteral">&quot;\033[u&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            fprintf(stderr, <span class="stringliteral">&quot;VN_CODE: There is no code found!\n&quot;</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">/* GO TO POSITION X AND POSITION Y */</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="vn__ui__base_8h.html#ab9e12afadda0b5f4c5202888d5cf4493">vn_gotoxy</a>(<span class="keywordtype">int</span> pos_x, <span class="keywordtype">int</span> pos_y) {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        printf(<span class="stringliteral">&quot;\033[%d;%dH&quot;</span>, pos_y, pos_x);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="comment">/* &#39;vn_color&#39; LINKER */</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="vn__ui__base_8h.html#a2b3b3ca19723680aa0a0fd9894b84634">vn_colorizer</a>(<span class="keywordtype">char</span>* color, <span class="keywordtype">char</span> base) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> (strlen(color) == 7 || strlen(color) == 9) {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordtype">int</span> red, green, blue;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="keywordtype">char</span>* rgb = (<span class="keywordtype">char</span>*) malloc(32);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordflow">if</span> (rgb == NULL) {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                fprintf(stderr, <span class="stringliteral">&quot;VN_COLOR: Memory allocation failed!\n&quot;</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">if</span> (color[0] == <span class="charliteral">&#39;#&#39;</span> &amp;&amp; strlen(color) == 7) { <span class="comment">/* Hexadecimal color code */</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                <span class="keywordtype">char</span> red_str[3] = { color[1], color[2], <span class="charliteral">&#39;\0&#39;</span> };</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                <span class="keywordtype">char</span> green_str[3] = { color[3], color[4], <span class="charliteral">&#39;\0&#39;</span> };</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <span class="keywordtype">char</span> blue_str[3] = { color[5], color[6], <span class="charliteral">&#39;\0&#39;</span> };</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                red = (int)strtol(red_str, NULL, 16);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                green = (int)strtol(green_str, NULL, 16);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                blue = (int)strtol(blue_str, NULL, 16);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            } <span class="keywordflow">else</span> { <span class="comment">/* RGB color code */</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                <span class="keywordtype">int</span> rgb_value = (int)strtol(color, NULL, 10);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                red = rgb_value / 1000000;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                green = (rgb_value / 1000) % 1000;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                blue = rgb_value % 1000;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            }</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="keywordflow">if</span> (base == <span class="charliteral">&#39;f&#39;</span>) { <span class="comment">/* Foreground selected */</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                sprintf(rgb, <span class="stringliteral">&quot;\033[38;2;%d;%d;%dm&quot;</span>, red, green, blue);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == <span class="charliteral">&#39;b&#39;</span>) { <span class="comment">/* Background selected */</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                sprintf(rgb, <span class="stringliteral">&quot;\033[48;2;%d;%d;%dm&quot;</span>, red, green, blue);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            }</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <span class="keywordflow">return</span> rgb;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            fprintf(stderr, <span class="stringliteral">&quot;VN_COLOR: Wrong color value!\n&quot;</span>);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    } <span class="comment">/* [!] Need to free after using. [!] */</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">#endif </span><span class="comment">/* VN_UI_BASE_IMPLEMENTATION */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html">VN_UI_TEXT</a></div><div class="ttdef"><b>Definition</b> <a href="#l00024">vn_ui_base.h:24</a></div></div>
+<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html_a760b86079b31e7c497ed6d5add661724"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html#a760b86079b31e7c497ed6d5add661724">VN_UI_TEXT::color_bg</a></div><div class="ttdeci">char color_bg[24]</div><div class="ttdef"><b>Definition</b> <a href="#l00026">vn_ui_base.h:26</a></div></div>
+<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html_a89315dcb102373032d31f7833c4cecaa"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html#a89315dcb102373032d31f7833c4cecaa">VN_UI_TEXT::color_fg</a></div><div class="ttdeci">char color_fg[24]</div><div class="ttdef"><b>Definition</b> <a href="#l00025">vn_ui_base.h:25</a></div></div>
+<div class="ttc" id="astruct_v_n___u_i___t_e_x_t_html_ae4503952f4e8c6fc6e1fa4300ac4153d"><div class="ttname"><a href="struct_v_n___u_i___t_e_x_t.html#ae4503952f4e8c6fc6e1fa4300ac4153d">VN_UI_TEXT::text_style</a></div><div class="ttdeci">char text_style[24]</div><div class="ttdef"><b>Definition</b> <a href="#l00027">vn_ui_base.h:27</a></div></div>
 <div class="ttc" id="avn__ui__base_8h_html_a2b3b3ca19723680aa0a0fd9894b84634"><div class="ttname"><a href="vn__ui__base_8h.html#a2b3b3ca19723680aa0a0fd9894b84634">vn_colorizer</a></div><div class="ttdeci">char * vn_colorizer(char *color, char base)</div></div>
 <div class="ttc" id="avn__ui__base_8h_html_a2e2094602fb5bc093cec4bc7d3a32856"><div class="ttname"><a href="vn__ui__base_8h.html#a2e2094602fb5bc093cec4bc7d3a32856">vn_printizer</a></div><div class="ttdeci">void vn_printizer(char *text, char *color_fg, char *color_bg, char *text_style)</div></div>
-<div class="ttc" id="avn__ui__base_8h_html_a83d400642f0e016ddfb9d73105c55a3f"><div class="ttname"><a href="vn__ui__base_8h.html#a83d400642f0e016ddfb9d73105c55a3f">vn_cursor_invisible</a></div><div class="ttdeci">#define vn_cursor_invisible</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:18</div></div>
-<div class="ttc" id="avn__ui__base_8h_html_a8d81d12901cdaa9a36ad14945ab6adf5"><div class="ttname"><a href="vn__ui__base_8h.html#a8d81d12901cdaa9a36ad14945ab6adf5">vn_cursor_visible</a></div><div class="ttdeci">#define vn_cursor_visible</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:17</div></div>
-<div class="ttc" id="avn__ui__base_8h_html_a9185f4cbbcc6e7489024becad44b16af"><div class="ttname"><a href="vn__ui__base_8h.html#a9185f4cbbcc6e7489024becad44b16af">vn_text_reset</a></div><div class="ttdeci">#define vn_text_reset</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:6</div></div>
-<div class="ttc" id="avn__ui__base_8h_html_a95dcd5ec069af714f37af2cff299b996"><div class="ttname"><a href="vn__ui__base_8h.html#a95dcd5ec069af714f37af2cff299b996">vn_clear_screen</a></div><div class="ttdeci">#define vn_clear_screen</div><div class="ttdef"><b>Definition</b> vn_ui_base.h:16</div></div>
+<div class="ttc" id="avn__ui__base_8h_html_a83d400642f0e016ddfb9d73105c55a3f"><div class="ttname"><a href="vn__ui__base_8h.html#a83d400642f0e016ddfb9d73105c55a3f">vn_cursor_invisible</a></div><div class="ttdeci">#define vn_cursor_invisible</div><div class="ttdef"><b>Definition</b> <a href="#l00018">vn_ui_base.h:18</a></div></div>
+<div class="ttc" id="avn__ui__base_8h_html_a8d81d12901cdaa9a36ad14945ab6adf5"><div class="ttname"><a href="vn__ui__base_8h.html#a8d81d12901cdaa9a36ad14945ab6adf5">vn_cursor_visible</a></div><div class="ttdeci">#define vn_cursor_visible</div><div class="ttdef"><b>Definition</b> <a href="#l00017">vn_ui_base.h:17</a></div></div>
+<div class="ttc" id="avn__ui__base_8h_html_a9185f4cbbcc6e7489024becad44b16af"><div class="ttname"><a href="vn__ui__base_8h.html#a9185f4cbbcc6e7489024becad44b16af">vn_text_reset</a></div><div class="ttdeci">#define vn_text_reset</div><div class="ttdef"><b>Definition</b> <a href="#l00006">vn_ui_base.h:6</a></div></div>
+<div class="ttc" id="avn__ui__base_8h_html_a95dcd5ec069af714f37af2cff299b996"><div class="ttname"><a href="vn__ui__base_8h.html#a95dcd5ec069af714f37af2cff299b996">vn_clear_screen</a></div><div class="ttdeci">#define vn_clear_screen</div><div class="ttdef"><b>Definition</b> <a href="#l00016">vn_ui_base.h:16</a></div></div>
 <div class="ttc" id="avn__ui__base_8h_html_ab9e12afadda0b5f4c5202888d5cf4493"><div class="ttname"><a href="vn__ui__base_8h.html#ab9e12afadda0b5f4c5202888d5cf4493">vn_gotoxy</a></div><div class="ttdeci">void vn_gotoxy(int pos_x, int pos_y)</div></div>
 <div class="ttc" id="avn__ui__base_8h_html_acbd33d1e1e3e73fc2ac2b0c3b1d1dfbf"><div class="ttname"><a href="vn__ui__base_8h.html#acbd33d1e1e3e73fc2ac2b0c3b1d1dfbf">vn_codizer</a></div><div class="ttdeci">void vn_codizer(char *code)</div></div>
 </div><!-- fragment --></div><!-- contents -->
