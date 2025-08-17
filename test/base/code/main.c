@@ -21,6 +21,7 @@ typedef struct {
     int vn_check;
     int vn_true;
     int vn_false;
+    int vn_none;
 } VN_CHECK;
 
 /* SYSTEM CHECK FUNCTION */
@@ -30,6 +31,8 @@ void sys_check(char check, VN_CHECK* vnc) {
         vnc->vn_true += 1;
     } else if (check == 'n' || check == 'N') {
         vnc->vn_false += 1;
+    } else {
+        vnc->vn_none += 1;
     }
 }
 
@@ -179,6 +182,9 @@ int main() {
 
     vn_print("Not working:", vnt);
     printf("%s%s%s %d%s,\n", vnt_false.color_fg, vnt_false.color_bg, vnt_false.text_style, vnc.vn_false, vn_text_reset);
+
+    vn_print("None:", vnt);
+    printf("%s%s%s %d%s,\n", vnt.color_fg, vnt.color_bg, vnt.text_style, vnc.vn_none, vn_text_reset);
 
     vn_print("Total:", vnt);
     printf("%s%s%s %d%s\n", vnt.color_fg, vnt.color_bg, vnt.text_style, vnc.vn_check, vn_text_reset);
