@@ -16,15 +16,16 @@
 #define VN_UI_BASE_IMPLEMENTATION
 #include "../../../lib/vn_ui_base.h"
 
-// CHECK SYSTEM STRUCTURE
+/* CHECK SYSTEM FUNCTION */
 typedef struct {
     int vn_check;
     int vn_true;
     int vn_false;
     int vn_none;
+    
 } VN_CHECK;
 
-/* SYSTEM CHECK FUNCTION */
+/* CHECK SYSTEM RESULT */
 void sys_check(char check, VN_CHECK* vnc) {
     vnc->vn_check += 1;
     if (check == 'y' || check == 'Y') {
@@ -36,7 +37,15 @@ void sys_check(char check, VN_CHECK* vnc) {
     }
 }
 
-/* SYSTEM CHECK RESULT */
+/* CHECK SYSTEM PROMPT */
+void sys_prompt(char* text, char* check, VN_UI_TEXT vnt, VN_CHECK* vnc) {
+    vn_print(text, vnt);
+    scanf(" %c", check);
+    sys_check(*check, vnc);
+    vn_code("screen:clear");
+}
+
+/* CHECK SYSTEM RESULT */
 void sys_result(char check, VN_UI_TEXT vnt_true, VN_UI_TEXT vnt_false) {
     if (check == 'y' || check == 'Y') {
         vn_print("[WORKING]\n", vnt_true);
@@ -89,10 +98,7 @@ int main() {
     vn_code("screen:clear");
 
     // CHECK SYSTEM
-    vn_print("\nIs screen clear? (Y/n): ", vnt);
-    scanf(" %c", &check_screen_clear);
-    sys_check(check_screen_clear, &vnc);
-    vn_code("screen:clear");
+    sys_prompt("\nIs screen clear? (Y/n): ", &check_screen_clear, vnt, &vnc);
 
     // Screen Save
     vn_print("[ ---------------------- ]\n", vnt);
@@ -106,10 +112,7 @@ int main() {
     vn_code("screen:restore");
     
     // CHECK SYSTEM
-    vn_print("\nIs screen restored? (Y/n): ", vnt);
-    scanf(" %c", &check_screen_save_restore);
-    sys_check(check_screen_save_restore, &vnc);
-    vn_code("screen:clear");
+    sys_prompt("\nIs screen restored? (Y/n): ", &check_screen_save_restore, vnt, &vnc);
 
     // Cursor Visibility
     vn_print("[ ------------------------------------- ]\n", vnt);
@@ -123,10 +126,7 @@ int main() {
     wait(1);
     
     // CHECK SYSTEM
-    vn_print("\nIs cursor invisible? (Y/n): ", vnt);
-    scanf(" %c", &check_cursor_invisible);
-    sys_check(check_cursor_invisible, &vnc);
-    vn_code("screen:clear");
+    sys_prompt("\nIs cursor invisible? (Y/n): ", &check_cursor_invisible, vnt, &vnc);
 
     vn_print("[ ------------------------------------ ]\n", vnt);
     vn_print("[ Cursor visibility will be turned on. ]\n", vnt);
@@ -139,10 +139,7 @@ int main() {
     wait(1);
 
     // CHECK SYSTEM
-    vn_print("\nIs cursor visible? (Y/n): ", vnt);
-    scanf(" %c", &check_cursor_visible);
-    sys_check(check_cursor_visible, &vnc);
-    vn_code("screen:clear");
+    sys_prompt("\nIs cursor visible? (Y/n): ", &check_cursor_visible, vnt, &vnc);
 
     // Cursor Position
     vn_print("[ ------------------------------------------------------------------------------------- ]\n", vnt);
@@ -155,10 +152,7 @@ int main() {
     vn_print(" > Cursor position [RESTORED].\n", vnt);
 
     // CHECK SYSTEM
-    vn_print("\nIs cursor position changed? (Y/n): ", vnt);
-    scanf(" %c", &check_cursor_save_restore);
-    sys_check(check_cursor_save_restore, &vnc);
-    vn_code("screen:clear");
+    sys_prompt("\nIs cursor position changed? (Y/n): ", &check_cursor_save_restore, vnt, &vnc);
 
     // Go to x and y
     vn_print("[ ---------------------------- ]\n", vnt);
@@ -170,10 +164,7 @@ int main() {
     wait(1);
 
     // CHECK SYSTEM
-    vn_print("\nIs cursor position changed? (Y/n): ", vnt);
-    scanf(" %c", &check_cursor_xy);
-    sys_check(check_cursor_xy, &vnc);
-    vn_code("screen:clear");
+    sys_prompt("\nIs cursor position changed? (Y/n): ", &check_cursor_xy, vnt, &vnc);
 
     // End
     vn_print("[ ----------------------------------------- ]\n", vnt);
