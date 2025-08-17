@@ -56,17 +56,17 @@ compile: $(lib)
 	@echo "[ ------------------- ] "
 	@echo ""
 
-	@$(unix)background$(win)
+	@$(unix)background$(out)
 	@$(wait)
-	@$(unix)frame$(win)
+	@$(unix)frame$(out)
 	@$(wait)
-	@$(unix)label$(win)
+	@$(unix)label$(out)
 	@$(wait)
-	@$(unix)line$(win)
+	@$(unix)line$(out)
 	@$(wait)
-	@$(unix)notification$(win)
+	@$(unix)notification$(out)
 	@$(wait)
-	@$(unix)progress$(win)
+	@$(unix)progress$(out)
 	@$(wait)
 
 	@echo ""
@@ -91,7 +91,7 @@ clean:
 
 background: $(lib)
 	@$(CC) $(background) -o background$(out)
-	@$(unix)background$(win)
+	@$(unix)background$(out)
 	@$(wait)
 
 	@echo ""
@@ -102,7 +102,7 @@ background: $(lib)
 
 frame: $(lib)
 	@$(CC) $(frame) -o frame$(out)
-	@$(unix)frame$(win)
+	@$(unix)frame$(out)
 	@$(wait)
 
 	@echo ""
@@ -113,7 +113,7 @@ frame: $(lib)
 
 label: $(lib)
 	@$(CC) $(label) -o label$(out)
-	@$(unix)label$(win)
+	@$(unix)label$(out)
 	@$(wait)
 
 	@echo ""
@@ -124,7 +124,7 @@ label: $(lib)
 
 line: $(lib)
 	@$(CC) $(line) -o line$(out)
-	@$(unix)line$(win)
+	@$(unix)line$(out)
 	@$(wait)
 
 	@echo ""
@@ -135,7 +135,7 @@ line: $(lib)
 
 notification: $(lib)
 	@$(CC) $(notification) -o notification$(out)
-	@$(unix)notification$(win)
+	@$(unix)notification$(out)
 	@$(wait)
 
 	@echo ""
@@ -146,7 +146,7 @@ notification: $(lib)
 
 progress: $(lib)
 	@$(CC) $(progress) -o progress$(out)
-	@$(unix)progress$(win)
+	@$(unix)progress$(out)
 	@$(wait)
 
 	@echo ""

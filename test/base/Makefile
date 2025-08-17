@@ -45,9 +45,9 @@ compile: $(lib)
 	@echo "[ ------------------- ] "
 	@echo ""
 
-	@$(unix)code$(win)
-	@$(unix)color$(win)
-	@$(unix)print$(win)
+	@$(unix)code$(out)
+	@$(unix)color$(out)
+	@$(unix)print$(out)
 
 	@echo ""
 	@echo "[ ---------------------------- ] "
@@ -68,7 +68,7 @@ clean:
 
 code: $(lib)
 	@$(CC) $(code) -o code$(out)
-	@$(unix)code$(win)
+	@$(unix)code$(out)
 
 	@echo ""
 	@echo "[ ----------------------------------- ] "
@@ -78,7 +78,7 @@ code: $(lib)
 
 color: $(lib)
 	@$(CC) $(color) -o color$(out)
-	@$(unix)color$(win)
+	@$(unix)color$(out)
 
 	@echo ""
 	@echo "[ ------------------------------------ ] "
@@ -88,7 +88,7 @@ color: $(lib)
 
 print: $(lib)
 	@$(CC) $(print) -o print$(out)
-	@$(unix)print$(win)
+	@$(unix)print$(out)
 
 	@echo ""
 	@echo "[ ------------------------------------ ] "
