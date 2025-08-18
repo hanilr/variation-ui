@@ -1,0 +1,62 @@
+\doxysection{main.\+c}
+\label{test_2base_2color_2main_8c_source}\index{test/base/color/main.c@{test/base/color/main.c}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ STANDARD\ LIBRARIES}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ VARIATION\ UI\ LIBRARY}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ VN\_UI\_BASE\_IMPLEMENTATION}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../../../lib/vn\_ui\_base.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{/*\ COLOR\ DECLARING\ */}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{char}*\ red\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#e93737"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{char}*\ green\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#37e937"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{char}*\ blue\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#3737e9"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}*\ white\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#e9e9e9"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}*\ black\_bg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#161616"{}},\ \textcolor{charliteral}{'b'});}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{/*\ TEXT\ ATTRIBUTES\ */}}
+\DoxyCodeLine{00020\ \ \ \ \ VN\_UI\_TEXT\ red\_text;}
+\DoxyCodeLine{00021\ \ \ \ \ strcpy(red\_text.color\_fg,\ red\_fg);}
+\DoxyCodeLine{00022\ \ \ \ \ strcpy(red\_text.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00023\ \ \ \ \ strcpy(red\_text.text\_style,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ VN\_UI\_TEXT\ green\_text;}
+\DoxyCodeLine{00026\ \ \ \ \ strcpy(green\_text.color\_fg,\ green\_fg);}
+\DoxyCodeLine{00027\ \ \ \ \ strcpy(green\_text.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00028\ \ \ \ \ strcpy(green\_text.text\_style,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ VN\_UI\_TEXT\ blue\_text;}
+\DoxyCodeLine{00031\ \ \ \ \ strcpy(blue\_text.color\_fg,\ blue\_fg);}
+\DoxyCodeLine{00032\ \ \ \ \ strcpy(blue\_text.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00033\ \ \ \ \ strcpy(blue\_text.text\_style,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{/*\ COLOR\ ATTRIBUTES\ */}}
+\DoxyCodeLine{00037\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n\(\backslash\)n"{}},\ white\_fg,\ black\_bg,\ vn\_text\_bold);}
+\DoxyCodeLine{00038\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}\(\backslash\)tText\ Attributes:\(\backslash\)n\(\backslash\)n"{}},\ blue\_text);}
+\DoxyCodeLine{00039\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}1.\ Bold\(\backslash\)n"{}},\ red\_fg,\ black\_bg,\ vn\_text\_bold);}
+\DoxyCodeLine{00040\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}2.\ Italic\(\backslash\)n"{}},\ green\_fg,\ black\_bg,\ vn\_text\_italic);}
+\DoxyCodeLine{00041\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}3.\ Underline\(\backslash\)n"{}},\ blue\_fg,\ black\_bg,\ vn\_text\_underline);}
+\DoxyCodeLine{00042\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}4.\ Blink\(\backslash\)n"{}},\ red\_fg,\ black\_bg,\ vn\_text\_blink);}
+\DoxyCodeLine{00043\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}5.\ Strikethrough\(\backslash\)n"{}},\ green\_fg,\ black\_bg,\ vn\_text\_strikethrough);}
+\DoxyCodeLine{00044\ \ \ \ \ vn\_printf(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n\(\backslash\)n"{}},\ white\_fg,\ black\_bg,\ vn\_text\_bold);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{/*\ FREE\ 'vn\_color'\ */}}
+\DoxyCodeLine{00048\ \ \ \ \ free(red\_fg);}
+\DoxyCodeLine{00049\ \ \ \ \ free(green\_fg);}
+\DoxyCodeLine{00050\ \ \ \ \ free(blue\_fg);}
+\DoxyCodeLine{00051\ \ \ \ \ free(white\_fg);}
+\DoxyCodeLine{00052\ \ \ \ \ free(black\_bg);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00054\ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,186 @@
+\doxysection{vn\+\_\+ui\+\_\+widget.\+h}
+\label{vn__ui__widget_8h_source}\index{lib/vn\_ui\_widget.h@{lib/vn\_ui\_widget.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ VARIATION\ UI\ (WIDGET)\ */}}
+\DoxyCodeLine{00002\ \textcolor{comment}{/*\ \ \ \ \ MADE\ BY\ @hanilr\ \ \ \ \ */}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ \_VN\_UI\_WIDGET\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ \_VN\_UI\_WIDGET\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#define\ VN\_UI\_BASE\_IMPLEMENTATION}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}vn\_ui\_base.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{comment}{/*\ VARIATION\ USER\ INTERFACE\ WIDGET\ STRUCTURE\ */}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_x;\ \textcolor{comment}{/*\ Horizontal\ position.\ */}}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_y;\ \textcolor{comment}{/*\ Vertical\ position.\ */}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width;\ \textcolor{comment}{/*\ Widget's\ width.\ */}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height;\ \textcolor{comment}{/*\ Widget's\ height.\ */}}
+\DoxyCodeLine{00014\ \ \ \ \ \}\ VN\_UI\_WIDGET;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{/*\ DRAW\ A\ LINE\ AS\ HORIZONTAL\ OR\ VERTICAL\ */}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_line(\textcolor{keywordtype}{char}\ symbol,\ \textcolor{keywordtype}{char}*\ format,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{/*\ SET\ BACKGROUND\ SIZE\ AND\ A\ COLOR\ */}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_bg(\textcolor{keywordtype}{char}\ symbol,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{/*\ SET\ A\ FRAME\ AND\ A\ COLOR\ */}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_frame(\textcolor{keywordtype}{char}\ vertical\_symbol,\ \textcolor{keywordtype}{char}\ horizontal\_symbol,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{/*\ MAKE\ A\ LABEL\ WITH\ CHANGABLE\ SIZE,\ COLOR\ AND\ TEXT\ */}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_label(\textcolor{keywordtype}{char}*\ text,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{/*\ MAKE\ A\ PROGRESS\ BAR\ WITH\ CHANGABLE\ SIZE\ AND\ COLOR\ */}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_progress(\textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{char}\ frame,\ \textcolor{keywordtype}{char}\ complete,\ \textcolor{keywordtype}{char}\ incomplete,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{/*\ POP-\/UP/NOTIFICATION\ SCREEN\ */}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_notif(\textcolor{keywordtype}{char}*\ title,\ \textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}\ frame\_vertical,\ \textcolor{keywordtype}{char}\ frame\_horizontal,\ VN\_UI\_TEXT\ vnt\_frame,\ VN\_UI\_TEXT\ vnt\_title,\ VN\_UI\_TEXT\ vnt\_text,\ VN\_UI\_WIDGET\ vnw);}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SUMMARY\ SECTION\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ VN\_UI\_WIDGET\_IMPLEMENTATION}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{/*\ DRAW\ A\ LINE\ AS\ HORIZONTAL\ OR\ VERTICAL\ */}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_line(\textcolor{keywordtype}{char}\ symbol,\ \textcolor{keywordtype}{char}*\ format,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s"{}},\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x,\ vnw.pos\_y);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!strcmp(format,\ \textcolor{stringliteral}{"{}horizontal"{}}))\ \{\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ vnw.width;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!strcmp(format,\ \textcolor{stringliteral}{"{}vertical"{}}))\ \{\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ vnw.height;\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(i\ >\ 0)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%c"{}},\ symbol);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ i\ -\/=\ 1;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!strcmp(format,\ \textcolor{stringliteral}{"{}vertical"{}}))\ vn\_gotoxy(vnw.pos\_x,\ vnw.pos\_y\ +\ i);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ vn\_text\_reset);}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{/*\ SET\ BACKGROUND\ SIZE\ AND\ A\ COLOR\ */}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_bg(\textcolor{keywordtype}{char}\ symbol,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ vnw.height;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ >\ 0)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ vn\_line(symbol,\ \textcolor{stringliteral}{"{}horizontal"{}},\ vnt,\ vnw);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ vnw.pos\_y\ +=\ 1;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ i\ -\/=\ 1;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{/*\ SET\ A\ FRAME\ AND\ A\ COLOR\ */}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_frame(\textcolor{keywordtype}{char}\ vertical\_symbol,\ \textcolor{keywordtype}{char}\ horizontal\_symbol,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ VN\_UI\_WIDGET\ vnw\_copy\ =\ \{vnw.pos\_x,\ vnw.pos\_y,\ vnw.width,\ vnw.height\};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ vn\_line(horizontal\_symbol,\ \textcolor{stringliteral}{"{}horizontal"{}},\ vnt,\ vnw\_copy);\ \textcolor{comment}{/*\ Top\ line.\ */}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ vnw\_copy.pos\_y\ +=\ vnw\_copy.height\ -\/\ 1;\ \textcolor{comment}{/*\ Vertical\ position\ change.\ */}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ vn\_line(horizontal\_symbol,\ \textcolor{stringliteral}{"{}horizontal"{}},\ vnt,\ vnw\_copy);\ \textcolor{comment}{/*\ Bottom\ line.\ */}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ vnw\_copy.pos\_y\ -\/=\ vnw\_copy.height\ -\/\ 1;\ \textcolor{comment}{/*\ Vertical\ position\ reverse.\ */}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ vn\_line(vertical\_symbol,\ \textcolor{stringliteral}{"{}vertical"{}},\ vnt,\ vnw\_copy);\ \textcolor{comment}{/*\ Left\ line.\ */}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ vnw\_copy.pos\_x\ +=\ vnw\_copy.width\ -\/\ 1;\ \textcolor{comment}{/*\ Horizontal\ position\ change.\ */}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ vn\_line(vertical\_symbol,\ \textcolor{stringliteral}{"{}vertical"{}},\ vnt,\ vnw\_copy);\ \textcolor{comment}{/*\ Right\ line.\ */}}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{/*\ MAKE\ A\ LABEL\ WITH\ CHANGABLE\ SIZE,\ COLOR\ AND\ TEXT\ */}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_label(\textcolor{keywordtype}{char}*\ text,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ vn\_bg(\textcolor{charliteral}{'\ '},\ vnt,\ vnw);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x,\ vnw.pos\_y);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(strlen(text)\ >\ vnw.width)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ IF\ 'text'\ LONGER\ THAN\ THE\ 'width'\ */}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 0,\ y\ =\ 0,\ z\ =\ 0,\ i\ =\ 0;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s"{}},\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style);\ \textcolor{comment}{/*\ SET\ COLOR\ TO\ 'fg\_color'\ AND\ 'bg\_color',\ SET\ TEXT\ STYLE\ TO\ 'text\_style'\ */}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(strlen(text)\ >\ x)}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ LOOP\ TILL\ 'text'\ NOT\ OVER\ */}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(z\ ==\ vnw.width)}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ IF\ PRINTED\ 'text'\ CHAR\ REACHED\ THE\ 'width'\ */}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 1;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ +=\ 1;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ space\_pos\ =\ 0;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(text[x+1]\ !=\ \textcolor{charliteral}{'\ '}\ ||\ text[x]\ !=\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ IF\ LAST\ WORD\ NOT\ OVER\ */}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ x;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(1)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ LOOP\ TILL\ LAST\ WORD\ MOVED\ TO\ NEXT\ LINE\ */}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(text[z]\ !=\ \textcolor{charliteral}{'\ '})\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ IF\ 'text'\ REACHED\ TO\ SPACE\ */}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ space\_pos\ +=\ 1;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ -\/=\ 1;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x\ +\ vnw.width\ -\/\ space\_pos,\ vnw.pos\_y\ +\ y\ -\/\ 1);\ \textcolor{comment}{/*\ GO\ TO\ HALF\ PRINTED\ WORD\ */}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ "{}});\ \textcolor{comment}{/*\ FILL\ WITH\ SPACE\ HALF\ PRINTED\ WORD\ */}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ IF\ 'text'\ NOT\ REACHED\ TO\ SPACE\ */}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ -\/=\ space\_pos-\/1;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x,\ vnw.pos\_y\ +\ y);\ \textcolor{comment}{/*\ GO\ TO\ NEW\ LINE\ */}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z=0;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ vnw.height)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ IF\ 'text'\ RECHED\ TO\ 'height'\ */}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x\ +\ vnw.width\ -\/\ 3,\ vnw.pos\_y\ +\ vnw.height\ -\/\ 1);\ \textcolor{comment}{/*\ GO\ TO\ LAST\ LINE\ AND\ GO\ TO\ 'width'-\/3\ */}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}..."{}});\ \textcolor{comment}{/*\ FILL\ WITH\ '...'\ */}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%c"{}},\ text[x]);\ \textcolor{comment}{/*\ 'text'\ PRINT\ SECTION\ */}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x+=1;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z+=1;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ vn\_text\_reset);\ \textcolor{comment}{/*\ RESET\ THE\ COLOR\ AND\ THE\ TEXT\ STYLE\ */}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ vn\_printf(text,\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style);\ \}\ \textcolor{comment}{/*\ IF\ 'text'\ NOT\ LONGER\ THAN\ THE\ 'width'\ */}}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{/*\ MAKE\ A\ PROGRESS\ BAR\ WITH\ CHANGABLE\ SIZE\ AND\ COLOR\ */}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{/*\ 'value'\ variable\ has\ dependency\ from\ 'vnw'\ struct.}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ \ \ \ If\ vnw.width\ has\ 10\ value\ then\ 10\ is\ the\ maximum\ value.}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ \ If\ 'value'\ is\ 5\ and\ 'vnw.width'\ is\ 10,\ then\ progress\ bar\ is\ \%50\ completed.\ */}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_progress(\textcolor{keywordtype}{int}\ value,\ \textcolor{keywordtype}{char}\ frame,\ \textcolor{keywordtype}{char}\ complete,\ \textcolor{keywordtype}{char}\ incomplete,\ VN\_UI\_TEXT\ vnt,\ VN\_UI\_WIDGET\ vnw)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 0,\ y\ =\ 0;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(vnw.height\ >\ y)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ COLUMN\ */}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x,\ vnw.pos\_y\ +\ y);\ \textcolor{comment}{/*\ GO\ TO\ START\ POSITION\ */}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s\%c"{}},\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style,\ frame);\ \textcolor{comment}{/*\ PROGRESS\ BAR\ STARTING\ SYMBOL\ */}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(value\ >\ x)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ COMPLETED\ PROGRESS\ SECTION\ */}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%c"{}},\ complete);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x+=1;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(vnw.width\ >\ x)}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{/*\ INCOMPLETED\ PROGRESS\ SECTION\ */}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%c"{}},\ incomplete);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x+=1;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%c\%s"{}},\ frame,\ vn\_text\_reset);\ \textcolor{comment}{/*\ RESETTING\ */}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ x=0;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ y+=1;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{/*\ POP-\/UP/NOTIFICATION\ SCREEN\ */}}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_notif(\textcolor{keywordtype}{char}*\ title,\ \textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}\ frame\_vertical,\ \textcolor{keywordtype}{char}\ frame\_horizontal,\ VN\_UI\_TEXT\ vnt\_frame,\ VN\_UI\_TEXT\ vnt\_title,\ VN\_UI\_TEXT\ vnt\_text,\ VN\_UI\_WIDGET\ vnw)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ vn\_bg(\textcolor{charliteral}{'\ '},\ vnt\_text,\ vnw);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ vn\_frame(frame\_vertical,\ frame\_horizontal,\ vnt\_frame,\ vnw);}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ vn\_gotoxy(vnw.pos\_x\ +\ vnw.width\ /\ 2\ -\/\ strlen(title)\ /\ 2,\ vnw.pos\_y\ +\ 1);\ \textcolor{comment}{/*\ TITLE\ POSITION\ */}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ vn\_printf(title,\ vnt\_title.color\_fg,\ vnt\_title.color\_bg,\ vnt\_title.text\_style);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ VN\_UI\_WIDGET\ vnw\_changed;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ vnw\_changed.pos\_x\ =\ vnw.pos\_x\ +\ 2;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ vnw\_changed.pos\_y\ =\ vnw.pos\_y\ +\ 2;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ vnw\_changed.width\ =\ vnw.width\ -\/\ 3;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ vnw\_changed.height\ =\ vnw.height\ -\/\ 3;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ vn\_label(text,\ vnt\_text,\ vnw\_changed);\ \textcolor{comment}{/*\ TEXT\ */}}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ VN\_UI\_WIDGET\_IMPLEMENTATION\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

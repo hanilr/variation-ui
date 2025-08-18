@@ -1,0 +1,154 @@
+\doxysection{vn\+\_\+ui\+\_\+base.\+h}
+\label{vn__ui__base_8h_source}\index{lib/vn\_ui\_base.h@{lib/vn\_ui\_base.h}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ VARIATION\ UI\ (BASE)\ */}}
+\DoxyCodeLine{00002\ \textcolor{comment}{/*\ \ \ \ \ MADE\ BY\ @hanilr\ \ \ \ \ */}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ \_VN\_UI\_BASE\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ \_VN\_UI\_BASE\_H}}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{comment}{/*\ ASCII\ ESCAPE\ SEQUENCE\ RESET\ CODE\ */}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_text\_reset\ "{}\(\backslash\)033[0m"{}\ }\textcolor{comment}{/*\ Use\ after\ escape\ sequences.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{comment}{/*\ ASCII\ ESCAPE\ SEQUENCE\ TEXT\ STYLES\ */}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_text\_bold\ "{}\(\backslash\)033[1m"{}\ }\textcolor{comment}{/*\ Bold\ text.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_text\_italic\ "{}\(\backslash\)033[3m"{}\ }\textcolor{comment}{/*\ Italic\ text.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_text\_underline\ "{}\(\backslash\)033[4m"{}\ }\textcolor{comment}{/*\ Text\ with\ underline.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_text\_blink\ "{}\(\backslash\)033[5m"{}\ }\textcolor{comment}{/*\ Blinker\ text.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_text\_strikethrough\ "{}\(\backslash\)033[9m"{}\ }\textcolor{comment}{/*\ Text\ with\ strikethrough.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{/*\ ASCII\ ESCAPE\ SEQUENCE\ UTILITY\ CODES\ */}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_clear\_screen\ "{}\(\backslash\)033[2J\(\backslash\)033[H"{}\ }\textcolor{comment}{/*\ Screen\ clear.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_cursor\_visible\ "{}\(\backslash\)033[?25h"{}\ }\textcolor{comment}{/*\ Visible\ cursor.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_cursor\_invisible\ "{}\(\backslash\)033[?25l"{}\ }\textcolor{comment}{/*\ Invisible\ cursor.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{/*\ VARIATION\ TEXT\ ATTRIBUTE\ STRUCT\ */}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{/*\ You\ should\ use\ 'vn\_color'\ with\ 'strcpy'\ function.\ */}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{/*\ [!]\ 'vn\_color'\ function\ need\ to\ be\ free\ after\ use\ [!]\ */}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ color\_fg[24];}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ color\_bg[24];}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ text\_style[24];}
+\DoxyCodeLine{00028\ \ \ \ \ \}\ VN\_UI\_TEXT;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{/*\ VARIATION\ ESCAPE\ SEQUENCE\ PRINTER\ */}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_printizer(\textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}*\ color\_fg,\ \textcolor{keywordtype}{char}*\ color\_bg,\ \textcolor{keywordtype}{char}*\ text\_style);\ \textcolor{comment}{/*\ Variation\ print\ linker.\ */}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*\ VARIATION\ ESCAPE\ SEQUENCE\ CODISER\ */}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_codizer(\textcolor{keywordtype}{char}*\ code);\ \textcolor{comment}{/*\ Variation\ code\ linker.\ */}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_gotoxy(\textcolor{keywordtype}{int}\ pos\_x,\ \textcolor{keywordtype}{int}\ pos\_y);\ \textcolor{comment}{/*\ Variation\ cursor\ position\ manipulation.\ */}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{/*\ VARIATION\ COLORIZER\ */}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{char}*\ vn\_colorizer(\textcolor{keywordtype}{char}*\ color,\ \textcolor{keywordtype}{char}\ base);\ \textcolor{comment}{/*\ Variation\ color\ linker.\ */}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{/*\ Variation\ Print:\ Escape\ sequence\ printizer\ linker.\ */}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{/*\ 'text':\ Context\ of\ print.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{/*\ 'color\_fg':\ Foreground\ color.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{/*\ 'color\_bg':\ Background\ color.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{/*\ 'text\_style':\ Text\ attribute.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_printf(text,\ color\_fg,\ color\_bg,\ text\_style)\ (vn\_printizer(text,\ color\_fg,\ color\_bg,\ text\_style))}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{/*\ Variation\ Print:\ Escape\ sequence\ printizer\ linker.\ */}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{/*\ 'text':\ Context\ of\ print.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{/*\ 'vnt':\ VN\_UI\_TEXT\ struct\ dependency\ text\ attribute.*/}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_print(text,\ vnt)\ (vn\_printizer(text,\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style))}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{/*\ Variation\ Code:\ Escape\ sequence\ codizer\ linker.\ */}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{/*\ 'screen:clear':\ Clear\ the\ screen.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{/*\ 'screen:save':\ Save\ screen.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{/*\ 'screen:restore':\ Restore\ screen.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{/*\ 'cursor:visible':\ Cursor\ visiblity\ true.\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{/*\ 'cursor:invisible':\ Cursor\ visiblity\ false.\ \ \ \ \ */}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{/*\ 'cursor:save':\ Save\ cursor\ position.\ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{/*\ 'cursor:restore':\ Restore\ cursor\ position.\ \ \ \ \ \ */}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_code(code)\ (vn\_codizer(code))}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{/*\ Variation\ Color:\ Escape\ sequence\ colorizer\ linker.\ */}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{/*\ 'color':\ "{}\#a1b2c3"{}\ for\ HEX\ or\ "{}001\ 024\ 200"{}\ for\ RGB\ */}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{/*\ Foreground:\ (base\ =\ 'f'),\ Background:\ (base\ =\ 'b')\ */}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{/*\ [!]\ Need\ to\ free\ after\ using.\ [!]\ */}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \#define\ vn\_color(color,\ base)\ (vn\_colorizer(color,\ base))}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SUMMARY\ SECTION\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#ifdef\ VN\_UI\_BASE\_IMPLEMENTATION}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdlib.h>}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string.h>}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{/*\ 'vn\_print'\ LINKER\ */}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_printizer(\textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}*\ color\_fg,\ \textcolor{keywordtype}{char}*\ color\_bg,\ \textcolor{keywordtype}{char}*\ text\_style)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s"{}},\ color\_fg,\ color\_bg,\ text\_style);\ \textcolor{comment}{/*\ Text\ attribute.\ */}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ text);\ \textcolor{comment}{/*\ Context\ of\ text.\ */}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ vn\_text\_reset);\ \textcolor{comment}{/*\ Reset\ after\ attribute.\ */}}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{/*\ 'vn\_code'\ LINKER\ */}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_codizer(\textcolor{keywordtype}{char}*\ code)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}screen:clear"{}}))\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ vn\_clear\_screen);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}screen:save"{}}))\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[?47h"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}screen:restore"{}}))\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[?47l"{}});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}cursor:visible"{}}))\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ vn\_cursor\_visible);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}cursor:invisible"{}}))\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ vn\_cursor\_invisible);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}cursor:save"{}}))\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[s"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!strcmp(code,\ \textcolor{stringliteral}{"{}cursor:restore"{}}))\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[u"{}});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}VN\_CODE:\ There\ is\ no\ code\ found!\(\backslash\)n"{}});}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{/*\ GO\ TO\ POSITION\ X\ AND\ POSITION\ Y\ */}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ vn\_gotoxy(\textcolor{keywordtype}{int}\ pos\_x,\ \textcolor{keywordtype}{int}\ pos\_y)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)033[\%d;\%dH"{}},\ pos\_y,\ pos\_x);}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{/*\ 'vn\_color'\ LINKER\ */}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{char}*\ vn\_colorizer(\textcolor{keywordtype}{char}*\ color,\ \textcolor{keywordtype}{char}\ base)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strlen(color)\ ==\ 7\ ||\ strlen(color)\ ==\ 9)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ red,\ green,\ blue;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ rgb\ =\ (\textcolor{keywordtype}{char}*)\ malloc(32);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rgb\ ==\ NULL)\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}VN\_COLOR:\ Memory\ allocation\ failed!\(\backslash\)n"{}});}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (color[0]\ ==\ \textcolor{charliteral}{'\#'}\ \&\&\ strlen(color)\ ==\ 7)\ \{\ \textcolor{comment}{/*\ Hexadecimal\ color\ code\ */}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ red\_str[3]\ =\ \{\ color[1],\ color[2],\ \textcolor{charliteral}{'\(\backslash\)0'}\ \};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ green\_str[3]\ =\ \{\ color[3],\ color[4],\ \textcolor{charliteral}{'\(\backslash\)0'}\ \};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ blue\_str[3]\ =\ \{\ color[5],\ color[6],\ \textcolor{charliteral}{'\(\backslash\)0'}\ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ red\ =\ (int)strtol(red\_str,\ NULL,\ 16);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ green\ =\ (int)strtol(green\_str,\ NULL,\ 16);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ blue\ =\ (int)strtol(blue\_str,\ NULL,\ 16);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{/*\ RGB\ color\ code\ */}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rgb\_value\ =\ (int)strtol(color,\ NULL,\ 10);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ red\ =\ rgb\_value\ /\ 1000000;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ green\ =\ (rgb\_value\ /\ 1000)\ \%\ 1000;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ blue\ =\ rgb\_value\ \%\ 1000;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (base\ ==\ \textcolor{charliteral}{'f'})\ \{\ \textcolor{comment}{/*\ Foreground\ selected\ */}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(rgb,\ \textcolor{stringliteral}{"{}\(\backslash\)033[38;2;\%d;\%d;\%dm"{}},\ red,\ green,\ blue);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (base\ ==\ \textcolor{charliteral}{'b'})\ \{\ \textcolor{comment}{/*\ Background\ selected\ */}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(rgb,\ \textcolor{stringliteral}{"{}\(\backslash\)033[48;2;\%d;\%d;\%dm"{}},\ red,\ green,\ blue);}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rgb;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}VN\_COLOR:\ Wrong\ color\ value!\(\backslash\)n"{}});}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \}\ \textcolor{comment}{/*\ [!]\ Need\ to\ free\ after\ using.\ [!]\ */}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ VN\_UI\_BASE\_IMPLEMENTATION\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

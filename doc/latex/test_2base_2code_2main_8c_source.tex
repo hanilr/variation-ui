@@ -1,0 +1,220 @@
+\doxysection{main.\+c}
+\label{test_2base_2code_2main_8c_source}\index{test/base/code/main.c@{test/base/code/main.c}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ STANDARD\ LIBRARIES}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 'wait'\ FUNCTION\ FOR\ CROSS\ PLATFORM}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <windows.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ wait(x)\ Sleep((x)\ *\ 1000)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ <unistd.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#define\ wait(x)\ sleep(x)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ VARIATION\ UI\ LIBRARY}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ VN\_UI\_BASE\_IMPLEMENTATION}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../../../lib/vn\_ui\_base.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*\ CHECK\ SYSTEM\ FUNCTION\ */}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ vn\_check;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ vn\_true;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ vn\_false;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ vn\_none;}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \}\ VN\_CHECK;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/*\ CHECK\ SYSTEM\ RESULT\ */}}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ sys\_check(\textcolor{keywordtype}{char}\ check,\ VN\_CHECK*\ vnc)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ vnc-\/>vn\_check\ +=\ 1;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (check\ ==\ \textcolor{charliteral}{'y'}\ ||\ check\ ==\ \textcolor{charliteral}{'Y'})\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ vnc-\/>vn\_true\ +=\ 1;}
+\DoxyCodeLine{00033\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (check\ ==\ \textcolor{charliteral}{'n'}\ ||\ check\ ==\ \textcolor{charliteral}{'N'})\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ vnc-\/>vn\_false\ +=\ 1;}
+\DoxyCodeLine{00035\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ vnc-\/>vn\_none\ +=\ 1;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{/*\ CHECK\ SYSTEM\ PROMPT\ */}}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ sys\_prompt(\textcolor{keywordtype}{char}*\ text,\ \textcolor{keywordtype}{char}*\ check,\ VN\_UI\_TEXT\ vnt,\ VN\_CHECK*\ vnc)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ vn\_print(text,\ vnt);}
+\DoxyCodeLine{00043\ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\ \%c"{}},\ check);}
+\DoxyCodeLine{00044\ \ \ \ \ sys\_check(*check,\ vnc);}
+\DoxyCodeLine{00045\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}screen:clear"{}});}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{/*\ CHECK\ SYSTEM\ RESULT\ */}}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ sys\_result(\textcolor{keywordtype}{char}\ check,\ VN\_UI\_TEXT\ vnt\_true,\ VN\_UI\_TEXT\ vnt\_false)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (check\ ==\ \textcolor{charliteral}{'y'}\ ||\ check\ ==\ \textcolor{charliteral}{'Y'})\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[WORKING]\(\backslash\)n"{}},\ vnt\_true);}
+\DoxyCodeLine{00052\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (check\ ==\ \textcolor{charliteral}{'n'}\ ||\ check\ ==\ \textcolor{charliteral}{'N'})\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[NOT\ WORKING]\(\backslash\)n"{}},\ vnt\_false);}
+\DoxyCodeLine{00054\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[\ -\/\ ]\(\backslash\)n"{}});}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ TRUE\ FALSE\ SYSTEM\ INITIAL}}
+\DoxyCodeLine{00061\ \ \ \ \ VN\_CHECK\ vnc\ =\ \{0\};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{char}\ check\_screen\_clear,\ check\_screen\_save\_restore;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{char}\ check\_cursor\_invisible,\ check\_cursor\_visible;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{char}\ check\_cursor\_save\_restore,\ check\_cursor\_xy;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{/*\ COLOR\ DECLARING\ */}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{char}*\ red\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#e93737"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{char}*\ green\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#37e937"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{char}*\ blue\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#3737e9"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{char}*\ black\_bg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#161616"{}},\ \textcolor{charliteral}{'b'});}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{/*\ TEXT\ ATTRIBUTES\ */}}
+\DoxyCodeLine{00074\ \ \ \ \ VN\_UI\_TEXT\ vnt;}
+\DoxyCodeLine{00075\ \ \ \ \ strcpy(vnt.color\_fg,\ blue\_fg);}
+\DoxyCodeLine{00076\ \ \ \ \ strcpy(vnt.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00077\ \ \ \ \ strcpy(vnt.text\_style,\ vn\_text\_italic);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ VN\_UI\_TEXT\ vnt\_true;}
+\DoxyCodeLine{00080\ \ \ \ \ strcpy(vnt\_true.color\_fg,\ green\_fg);}
+\DoxyCodeLine{00081\ \ \ \ \ strcpy(vnt\_true.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00082\ \ \ \ \ strcpy(vnt\_true.text\_style,\ vn\_text\_bold);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ VN\_UI\_TEXT\ vnt\_false;}
+\DoxyCodeLine{00085\ \ \ \ \ strcpy(vnt\_false.color\_fg,\ red\_fg);}
+\DoxyCodeLine{00086\ \ \ \ \ strcpy(vnt\_false.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00087\ \ \ \ \ strcpy(vnt\_false.text\_style,\ vn\_text\_bold);}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{/*\ TESTING\ CODES\ */}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ Screen\ Clear}}
+\DoxyCodeLine{00094\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00095\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ This\ text\ will\ be\ cleared.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00096\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00097\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00098\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}screen:clear"{}});}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ CHECK\ SYSTEM}}
+\DoxyCodeLine{00101\ \ \ \ \ sys\_prompt(\textcolor{stringliteral}{"{}\(\backslash\)nIs\ screen\ clear?\ (Y/n):\ "{}},\ \&check\_screen\_clear,\ vnt,\ \&vnc);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Screen\ Save}}
+\DoxyCodeLine{00104\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00105\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ This\ screen\ will\ save.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00106\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00107\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}screen:save"{}});}
+\DoxyCodeLine{00108\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00109\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}screen:clear"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Screen\ Restore}}
+\DoxyCodeLine{00112\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}screen:restore"{}});}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ CHECK\ SYSTEM}}
+\DoxyCodeLine{00115\ \ \ \ \ sys\_prompt(\textcolor{stringliteral}{"{}\(\backslash\)nIs\ screen\ restored?\ (Y/n):\ "{}},\ \&check\_screen\_save\_restore,\ vnt,\ \&vnc);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ Cursor\ Visibility}}
+\DoxyCodeLine{00118\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00119\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ Cursor\ visibility\ will\ be\ turned\ off.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00120\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00121\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00122\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}cursor:invisible"{}});}
+\DoxyCodeLine{00123\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00124\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ Cursor\ is\ now\ invisible.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00125\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00126\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//\ CHECK\ SYSTEM}}
+\DoxyCodeLine{00129\ \ \ \ \ sys\_prompt(\textcolor{stringliteral}{"{}\(\backslash\)nIs\ cursor\ invisible?\ (Y/n):\ "{}},\ \&check\_cursor\_invisible,\ vnt,\ \&vnc);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00132\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ Cursor\ visibility\ will\ be\ turned\ on.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00133\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00134\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00135\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}cursor:visible"{}});}
+\DoxyCodeLine{00136\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00137\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ Cursor\ is\ now\ visible.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00138\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00139\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ CHECK\ SYSTEM}}
+\DoxyCodeLine{00142\ \ \ \ \ sys\_prompt(\textcolor{stringliteral}{"{}\(\backslash\)nIs\ cursor\ visible?\ (Y/n):\ "{}},\ \&check\_cursor\_visible,\ vnt,\ \&vnc);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ Cursor\ Position}}
+\DoxyCodeLine{00145\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00146\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ Cursor\ position\ will\ be\ saved\ and\ restored.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00147\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00148\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}cursor:save"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}\ >\ Cursor\ position\ [SAVED].\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00150\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00151\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}cursor:restore"{}});}
+\DoxyCodeLine{00152\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}\ >\ Cursor\ position\ [RESTORED].\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//\ CHECK\ SYSTEM}}
+\DoxyCodeLine{00155\ \ \ \ \ sys\_prompt(\textcolor{stringliteral}{"{}\(\backslash\)nIs\ cursor\ position\ changed?\ (Y/n):\ "{}},\ \&check\_cursor\_save\_restore,\ vnt,\ \&vnc);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ Go\ to\ x\ and\ y}}
+\DoxyCodeLine{00158\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00159\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ Cursor\ position\ will\ change.\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00160\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00161\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00162\ \ \ \ \ vn\_gotoxy(2,\ 1);}
+\DoxyCodeLine{00163\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Cursor\ position\ did\ changed.\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00164\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ CHECK\ SYSTEM}}
+\DoxyCodeLine{00167\ \ \ \ \ sys\_prompt(\textcolor{stringliteral}{"{}\(\backslash\)nIs\ cursor\ position\ changed?\ (Y/n):\ "{}},\ \&check\_cursor\_xy,\ vnt,\ \&vnc);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{//\ End}}
+\DoxyCodeLine{00170\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00171\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Working:"{}},\ vnt);}
+\DoxyCodeLine{00172\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s\ \%d\%s,\(\backslash\)n"{}},\ vnt\_true.color\_fg,\ vnt\_true.color\_bg,\ vnt\_true.text\_style,\ vnc.vn\_true,\ vn\_text\_reset);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Not\ working:"{}},\ vnt);}
+\DoxyCodeLine{00175\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s\ \%d\%s,\(\backslash\)n"{}},\ vnt\_false.color\_fg,\ vnt\_false.color\_bg,\ vnt\_false.text\_style,\ vnc.vn\_false,\ vn\_text\_reset);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}None:"{}},\ vnt);}
+\DoxyCodeLine{00178\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s\ \%d\%s,\(\backslash\)n"{}},\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style,\ vnc.vn\_none,\ vn\_text\_reset);}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Total:"{}},\ vnt);}
+\DoxyCodeLine{00181\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\%s\%s\ \%d\%s\(\backslash\)n"{}},\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style,\ vnc.vn\_check,\ vn\_text\_reset);}
+\DoxyCodeLine{00182\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ wait(1);}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Screen\ Clear:\ "{}},\ vnt);}
+\DoxyCodeLine{00187\ \ \ \ \ sys\_result(check\_screen\_clear,\ vnt\_true,\ vnt\_false);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Screen\ Save\ Restore:\ "{}},\ vnt);}
+\DoxyCodeLine{00190\ \ \ \ \ sys\_result(check\_screen\_save\_restore,\ vnt\_true,\ vnt\_false);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Cursor\ Invisible:\ "{}},\ vnt);}
+\DoxyCodeLine{00193\ \ \ \ \ sys\_result(check\_cursor\_invisible,\ vnt\_true,\ vnt\_false);}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Cursor\ Visible:\ "{}},\ vnt);}
+\DoxyCodeLine{00196\ \ \ \ \ sys\_result(check\_cursor\_visible,\ vnt\_true,\ vnt\_false);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Cursor\ Save\ Restore"{}},\ vnt);}
+\DoxyCodeLine{00199\ \ \ \ \ sys\_result(check\_cursor\_save\_restore,\ vnt\_true,\ vnt\_false);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}Cursor\ Go\ To\ (x,\ y):\ "{}},\ vnt);}
+\DoxyCodeLine{00202\ \ \ \ \ sys\_result(check\_cursor\_xy,\ vnt\_true,\ vnt\_false);}
+\DoxyCodeLine{00203\ \ \ \ \ vn\_print(\textcolor{stringliteral}{"{}[\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ]\(\backslash\)n"{}},\ vnt);}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{/*\ FREE\ 'vn\_color'\ */}}
+\DoxyCodeLine{00207\ \ \ \ \ free(red\_fg);}
+\DoxyCodeLine{00208\ \ \ \ \ free(green\_fg);}
+\DoxyCodeLine{00209\ \ \ \ \ free(blue\_fg);}
+\DoxyCodeLine{00210\ \ \ \ \ free(black\_bg);}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00214\ \}}
+
+\end{DoxyCode}

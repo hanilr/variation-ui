@@ -1,0 +1,229 @@
+\doxysection{lib/vn\+\_\+ui\+\_\+base.h File Reference}
+\label{vn__ui__base_8h}\index{lib/vn\_ui\_base.h@{lib/vn\_ui\_base.h}}
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ vn\+\_\+text\+\_\+reset}~"{}\textbackslash{}033[0m"{} /$\ast$ Use after escape sequences. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+text\+\_\+bold}~"{}\textbackslash{}033[1m"{} /$\ast$ Bold text. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+text\+\_\+italic}~"{}\textbackslash{}033[3m"{} /$\ast$ Italic text. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+text\+\_\+underline}~"{}\textbackslash{}033[4m"{} /$\ast$ Text with underline. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+text\+\_\+blink}~"{}\textbackslash{}033[5m"{} /$\ast$ Blinker text. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+text\+\_\+strikethrough}~"{}\textbackslash{}033[9m"{} /$\ast$ Text with strikethrough. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+clear\+\_\+screen}~"{}\textbackslash{}033[2J\textbackslash{}033[H"{} /$\ast$ Screen clear. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+cursor\+\_\+visible}~"{}\textbackslash{}033[?25h"{} /$\ast$ Visible cursor. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+cursor\+\_\+invisible}~"{}\textbackslash{}033[?25l"{} /$\ast$ Invisible cursor. $\ast$/
+\item 
+\#define \textbf{ vn\+\_\+printf}(text,  color\+\_\+fg,  color\+\_\+bg,  text\+\_\+style)
+\item 
+\#define \textbf{ vn\+\_\+print}(text,  vnt)
+\item 
+\#define \textbf{ vn\+\_\+code}(code)
+\item 
+\#define \textbf{ vn\+\_\+color}(color,  base)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ vn\+\_\+printizer} (char $\ast$text, char $\ast$color\+\_\+fg, char $\ast$color\+\_\+bg, char $\ast$text\+\_\+style)
+\item 
+void \textbf{ vn\+\_\+codizer} (char $\ast$code)
+\item 
+void \textbf{ vn\+\_\+gotoxy} (int pos\+\_\+x, int pos\+\_\+y)
+\item 
+char $\ast$ \textbf{ vn\+\_\+colorizer} (char $\ast$color, char base)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_clear\_screen@{vn\_clear\_screen}}
+\index{vn\_clear\_screen@{vn\_clear\_screen}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_clear\_screen}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a95dcd5ec069af714f37af2cff299b996} 
+\#define vn\+\_\+clear\+\_\+screen~"{}\textbackslash{}033[2J\textbackslash{}033[H"{} /$\ast$ Screen clear. $\ast$/}
+
+
+
+Definition at line \textbf{ 16} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_code@{vn\_code}}
+\index{vn\_code@{vn\_code}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_code}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a55ea92a6e5684f0fab419ed3950c0ecc} 
+\#define vn\+\_\+code(\begin{DoxyParamCaption}\item[{}]{code}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(vn\_codizer(code))}
+
+\end{DoxyCode}
+
+
+Definition at line \textbf{ 64} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_color@{vn\_color}}
+\index{vn\_color@{vn\_color}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_color}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a0eb79643bf911561673719eaba3cbd3f} 
+\#define vn\+\_\+color(\begin{DoxyParamCaption}\item[{}]{color}{, }\item[{}]{base}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(vn\_colorizer(color,\ base))}
+
+\end{DoxyCode}
+
+
+Definition at line \textbf{ 71} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_cursor\_invisible@{vn\_cursor\_invisible}}
+\index{vn\_cursor\_invisible@{vn\_cursor\_invisible}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_cursor\_invisible}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a83d400642f0e016ddfb9d73105c55a3f} 
+\#define vn\+\_\+cursor\+\_\+invisible~"{}\textbackslash{}033[?25l"{} /$\ast$ Invisible cursor. $\ast$/}
+
+
+
+Definition at line \textbf{ 18} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_cursor\_visible@{vn\_cursor\_visible}}
+\index{vn\_cursor\_visible@{vn\_cursor\_visible}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_cursor\_visible}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a8d81d12901cdaa9a36ad14945ab6adf5} 
+\#define vn\+\_\+cursor\+\_\+visible~"{}\textbackslash{}033[?25h"{} /$\ast$ Visible cursor. $\ast$/}
+
+
+
+Definition at line \textbf{ 17} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_print@{vn\_print}}
+\index{vn\_print@{vn\_print}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_print}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a7e9e76fa40a32f3d47b77eb1fa4de5d8} 
+\#define vn\+\_\+print(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{vnt}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(vn\_printizer(text,\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style))}
+
+\end{DoxyCode}
+
+
+Definition at line \textbf{ 53} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_printf@{vn\_printf}}
+\index{vn\_printf@{vn\_printf}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_printf}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_af4e7d00b6902779aa3f45d0a68c817cb} 
+\#define vn\+\_\+printf(\begin{DoxyParamCaption}\item[{}]{text}{, }\item[{}]{color\+\_\+fg}{, }\item[{}]{color\+\_\+bg}{, }\item[{}]{text\+\_\+style}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(vn\_printizer(text,\ color\_fg,\ color\_bg,\ text\_style))}
+
+\end{DoxyCode}
+
+
+Definition at line \textbf{ 47} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_text\_blink@{vn\_text\_blink}}
+\index{vn\_text\_blink@{vn\_text\_blink}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_text\_blink}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a1020f0675192c2cd28d0873d59048792} 
+\#define vn\+\_\+text\+\_\+blink~"{}\textbackslash{}033[5m"{} /$\ast$ Blinker text. $\ast$/}
+
+
+
+Definition at line \textbf{ 12} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_text\_bold@{vn\_text\_bold}}
+\index{vn\_text\_bold@{vn\_text\_bold}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_text\_bold}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a812bd357e7024398bde08b6ff0ecb46f} 
+\#define vn\+\_\+text\+\_\+bold~"{}\textbackslash{}033[1m"{} /$\ast$ Bold text. $\ast$/}
+
+
+
+Definition at line \textbf{ 9} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_text\_italic@{vn\_text\_italic}}
+\index{vn\_text\_italic@{vn\_text\_italic}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_text\_italic}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a93a4892199f96aa5b3482f1b682af324} 
+\#define vn\+\_\+text\+\_\+italic~"{}\textbackslash{}033[3m"{} /$\ast$ Italic text. $\ast$/}
+
+
+
+Definition at line \textbf{ 10} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_text\_reset@{vn\_text\_reset}}
+\index{vn\_text\_reset@{vn\_text\_reset}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_text\_reset}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a9185f4cbbcc6e7489024becad44b16af} 
+\#define vn\+\_\+text\+\_\+reset~"{}\textbackslash{}033[0m"{} /$\ast$ Use after escape sequences. $\ast$/}
+
+
+
+Definition at line \textbf{ 6} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_text\_strikethrough@{vn\_text\_strikethrough}}
+\index{vn\_text\_strikethrough@{vn\_text\_strikethrough}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_text\_strikethrough}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_ae777fc0f100dbf6d4332567097b763d1} 
+\#define vn\+\_\+text\+\_\+strikethrough~"{}\textbackslash{}033[9m"{} /$\ast$ Text with strikethrough. $\ast$/}
+
+
+
+Definition at line \textbf{ 13} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_text\_underline@{vn\_text\_underline}}
+\index{vn\_text\_underline@{vn\_text\_underline}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_text\_underline}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a623510537fcce758edda4f0dfc0030ec} 
+\#define vn\+\_\+text\+\_\+underline~"{}\textbackslash{}033[4m"{} /$\ast$ Text with underline. $\ast$/}
+
+
+
+Definition at line \textbf{ 11} of file \textbf{ vn\+\_\+ui\+\_\+base.\+h}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_codizer@{vn\_codizer}}
+\index{vn\_codizer@{vn\_codizer}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_codizer()}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_acbd33d1e1e3e73fc2ac2b0c3b1d1dfbf} 
+void vn\+\_\+codizer (\begin{DoxyParamCaption}\item[{char $\ast$}]{code}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_colorizer@{vn\_colorizer}}
+\index{vn\_colorizer@{vn\_colorizer}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_colorizer()}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a2b3b3ca19723680aa0a0fd9894b84634} 
+char $\ast$ vn\+\_\+colorizer (\begin{DoxyParamCaption}\item[{char $\ast$}]{color}{, }\item[{char}]{base}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_gotoxy@{vn\_gotoxy}}
+\index{vn\_gotoxy@{vn\_gotoxy}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_gotoxy()}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_ab9e12afadda0b5f4c5202888d5cf4493} 
+void vn\+\_\+gotoxy (\begin{DoxyParamCaption}\item[{int}]{pos\+\_\+x}{, }\item[{int}]{pos\+\_\+y}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_base.h@{vn\_ui\_base.h}!vn\_printizer@{vn\_printizer}}
+\index{vn\_printizer@{vn\_printizer}!vn\_ui\_base.h@{vn\_ui\_base.h}}
+\doxysubsubsection{vn\_printizer()}
+{\footnotesize\ttfamily \label{vn__ui__base_8h_a2e2094602fb5bc093cec4bc7d3a32856} 
+void vn\+\_\+printizer (\begin{DoxyParamCaption}\item[{char $\ast$}]{text}{, }\item[{char $\ast$}]{color\+\_\+fg}{, }\item[{char $\ast$}]{color\+\_\+bg}{, }\item[{char $\ast$}]{text\+\_\+style}{}\end{DoxyParamCaption})}
+

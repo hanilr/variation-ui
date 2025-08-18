@@ -1,0 +1,82 @@
+\doxysection{lib/vn\+\_\+ui\+\_\+widget.h File Reference}
+\label{vn__ui__widget_8h}\index{lib/vn\_ui\_widget.h@{lib/vn\_ui\_widget.h}}
+{\ttfamily \#include "{}vn\+\_\+ui\+\_\+base.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ VN\+\_\+\+UI\+\_\+\+BASE\+\_\+\+IMPLEMENTATION}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ vn\+\_\+line} (char symbol, char $\ast$format, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw)
+\item 
+void \textbf{ vn\+\_\+bg} (char symbol, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw)
+\item 
+void \textbf{ vn\+\_\+frame} (char vertical\+\_\+symbol, char horizontal\+\_\+symbol, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw)
+\item 
+void \textbf{ vn\+\_\+label} (char $\ast$text, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw)
+\item 
+void \textbf{ vn\+\_\+progress} (int value, char frame, char complete, char incomplete, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw)
+\item 
+void \textbf{ vn\+\_\+notif} (char $\ast$title, char $\ast$text, char frame\+\_\+vertical, char frame\+\_\+horizontal, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+frame, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+title, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+text, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!VN\_UI\_BASE\_IMPLEMENTATION@{VN\_UI\_BASE\_IMPLEMENTATION}}
+\index{VN\_UI\_BASE\_IMPLEMENTATION@{VN\_UI\_BASE\_IMPLEMENTATION}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{VN\_UI\_BASE\_IMPLEMENTATION}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_ab03fd82e982d96b7acd27a6df8ce082b} 
+\#define VN\+\_\+\+UI\+\_\+\+BASE\+\_\+\+IMPLEMENTATION}
+
+
+
+Definition at line \textbf{ 5} of file \textbf{ vn\+\_\+ui\+\_\+widget.\+h}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!vn\_bg@{vn\_bg}}
+\index{vn\_bg@{vn\_bg}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{vn\_bg()}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_a89d500a6ee28a4cc75e546d1a1e5505b} 
+void vn\+\_\+bg (\begin{DoxyParamCaption}\item[{char}]{symbol}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!vn\_frame@{vn\_frame}}
+\index{vn\_frame@{vn\_frame}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{vn\_frame()}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_a0a9cdf848ce052f9683162f324b7f019} 
+void vn\+\_\+frame (\begin{DoxyParamCaption}\item[{char}]{vertical\+\_\+symbol}{, }\item[{char}]{horizontal\+\_\+symbol}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!vn\_label@{vn\_label}}
+\index{vn\_label@{vn\_label}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{vn\_label()}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_ae2af12a2a83965e6bef9dc26a8b867a8} 
+void vn\+\_\+label (\begin{DoxyParamCaption}\item[{char $\ast$}]{text}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!vn\_line@{vn\_line}}
+\index{vn\_line@{vn\_line}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{vn\_line()}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_a5d44f170f7c193f26a59f9a6088b1eb1} 
+void vn\+\_\+line (\begin{DoxyParamCaption}\item[{char}]{symbol}{, }\item[{char $\ast$}]{format}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!vn\_notif@{vn\_notif}}
+\index{vn\_notif@{vn\_notif}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{vn\_notif()}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_aca85d7ce4eb6c98140e530b9fd969366} 
+void vn\+\_\+notif (\begin{DoxyParamCaption}\item[{char $\ast$}]{title}{, }\item[{char $\ast$}]{text}{, }\item[{char}]{frame\+\_\+vertical}{, }\item[{char}]{frame\+\_\+horizontal}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+frame}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+title}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+text}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{}\end{DoxyParamCaption})}
+
+\index{vn\_ui\_widget.h@{vn\_ui\_widget.h}!vn\_progress@{vn\_progress}}
+\index{vn\_progress@{vn\_progress}!vn\_ui\_widget.h@{vn\_ui\_widget.h}}
+\doxysubsubsection{vn\_progress()}
+{\footnotesize\ttfamily \label{vn__ui__widget_8h_a2ce512ae905c0be0ce1abf0d3f6f5eca} 
+void vn\+\_\+progress (\begin{DoxyParamCaption}\item[{int}]{value}{, }\item[{char}]{frame}{, }\item[{char}]{complete}{, }\item[{char}]{incomplete}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{}\end{DoxyParamCaption})}
+

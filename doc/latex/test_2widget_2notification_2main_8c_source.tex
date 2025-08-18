@@ -1,0 +1,99 @@
+\doxysection{main.\+c}
+\label{test_2widget_2notification_2main_8c_source}\index{test/widget/notification/main.c@{test/widget/notification/main.c}}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ STANDARD\ LIBRARIES}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ VARIATION\ UI\ LIBRARY}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ VN\_UI\_WIDGET\_IMPLEMENTATION}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../../../lib/vn\_ui\_widget.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{/*\ COLOR\ DECLARING\ */}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{char}*\ red\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#e93737"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{char}*\ green\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#37e937"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{char}*\ blue\_fg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#3737e9"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}*\ black\_bg\ =\ vn\_color(\textcolor{stringliteral}{"{}\#161616"{}},\ \textcolor{charliteral}{'b'});}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{/*\ TEXT\ ATTRIBUTES\ */}}
+\DoxyCodeLine{00019\ \ \ \ \ VN\_UI\_TEXT\ vnt\_red;}
+\DoxyCodeLine{00020\ \ \ \ \ strcpy(vnt\_red.color\_fg,\ red\_fg);}
+\DoxyCodeLine{00021\ \ \ \ \ strcpy(vnt\_red.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00022\ \ \ \ \ strcpy(vnt\_red.text\_style,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ VN\_UI\_TEXT\ vnt\_green;}
+\DoxyCodeLine{00025\ \ \ \ \ strcpy(vnt\_green.color\_fg,\ green\_fg);}
+\DoxyCodeLine{00026\ \ \ \ \ strcpy(vnt\_green.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00027\ \ \ \ \ strcpy(vnt\_green.text\_style,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ VN\_UI\_TEXT\ vnt\_blue;}
+\DoxyCodeLine{00030\ \ \ \ \ strcpy(vnt\_blue.color\_fg,\ blue\_fg);}
+\DoxyCodeLine{00031\ \ \ \ \ strcpy(vnt\_blue.color\_bg,\ black\_bg);}
+\DoxyCodeLine{00032\ \ \ \ \ strcpy(vnt\_blue.text\_style,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{/*\ SIZE\ ATTRIBUTES\ */}}
+\DoxyCodeLine{00036\ \ \ \ \ VN\_UI\_WIDGET\ vnw\_first;}
+\DoxyCodeLine{00037\ \ \ \ \ vnw\_first.pos\_x\ =\ 2;}
+\DoxyCodeLine{00038\ \ \ \ \ vnw\_first.pos\_y\ =\ 2;}
+\DoxyCodeLine{00039\ \ \ \ \ vnw\_first.width\ \ =\ 30;}
+\DoxyCodeLine{00040\ \ \ \ \ vnw\_first.height\ =\ 15;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ VN\_UI\_WIDGET\ vnw\_firsty;}
+\DoxyCodeLine{00043\ \ \ \ \ vnw\_firsty.pos\_x\ =\ vnw\_first.pos\_x\ -\/\ 1;}
+\DoxyCodeLine{00044\ \ \ \ \ vnw\_firsty.pos\_y\ =\ vnw\_first.pos\_y\ -\/\ 1;}
+\DoxyCodeLine{00045\ \ \ \ \ vnw\_firsty.width\ \ =\ vnw\_first.width\ \ +\ 2;}
+\DoxyCodeLine{00046\ \ \ \ \ vnw\_firsty.height\ =\ vnw\_first.height\ +\ 2;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ VN\_UI\_WIDGET\ vnw\_second;}
+\DoxyCodeLine{00049\ \ \ \ \ vnw\_second.width\ \ =\ 20;}
+\DoxyCodeLine{00050\ \ \ \ \ vnw\_second.height\ =\ 10;}
+\DoxyCodeLine{00051\ \ \ \ \ vnw\_second.pos\_x\ =\ vnw\_firsty.pos\_x\ +\ vnw\_firsty.width\ +\ 2;}
+\DoxyCodeLine{00052\ \ \ \ \ vnw\_second.pos\_y\ =\ vnw\_first.pos\_y;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ VN\_UI\_WIDGET\ vnw\_secondy;}
+\DoxyCodeLine{00055\ \ \ \ \ vnw\_secondy.pos\_x\ =\ vnw\_second.pos\_x\ -\/\ 1;}
+\DoxyCodeLine{00056\ \ \ \ \ vnw\_secondy.pos\_y\ =\ vnw\_second.pos\_y\ -\/\ 1;}
+\DoxyCodeLine{00057\ \ \ \ \ vnw\_secondy.width\ \ =\ vnw\_second.width\ \ +\ 2;}
+\DoxyCodeLine{00058\ \ \ \ \ vnw\_secondy.height\ =\ vnw\_second.height\ +\ 2;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ VN\_UI\_WIDGET\ vnw\_third;}
+\DoxyCodeLine{00061\ \ \ \ \ vnw\_third.width\ \ =\ 10;}
+\DoxyCodeLine{00062\ \ \ \ \ vnw\_third.height\ =\ 5;}
+\DoxyCodeLine{00063\ \ \ \ \ vnw\_third.pos\_x\ =\ vnw\_secondy.pos\_x\ +\ vnw\_secondy.width\ +\ 2;}
+\DoxyCodeLine{00064\ \ \ \ \ vnw\_third.pos\_y\ =\ vnw\_second.pos\_y;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ VN\_UI\_WIDGET\ vnw\_thirdy;}
+\DoxyCodeLine{00067\ \ \ \ \ vnw\_thirdy.pos\_x\ =\ vnw\_third.pos\_x\ -\/\ 1;}
+\DoxyCodeLine{00068\ \ \ \ \ vnw\_thirdy.pos\_y\ =\ vnw\_third.pos\_y\ -\/\ 1;}
+\DoxyCodeLine{00069\ \ \ \ \ vnw\_thirdy.width\ \ =\ vnw\_third.width\ \ +\ 2;}
+\DoxyCodeLine{00070\ \ \ \ \ vnw\_thirdy.height\ =\ vnw\_third.height\ +\ 2;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{/*\ TESTING\ CODES\ */}}
+\DoxyCodeLine{00074\ \ \ \ \ vn\_code(\textcolor{stringliteral}{"{}screen:clear"{}});}
+\DoxyCodeLine{00075\ \ \ \ \ vn\_bg(\textcolor{charliteral}{'X'},\ vnt\_red,\ vnw\_firsty);}
+\DoxyCodeLine{00076\ \ \ \ \ vn\_notif(\textcolor{stringliteral}{"{}First\ Notif"{}},\ \textcolor{stringliteral}{"{}This\ is\ the\ first\ notification."{}},\ \textcolor{charliteral}{'0'},\ \textcolor{charliteral}{'0'},\ vnt\_red,\ vnt\_green,\ vnt\_blue,\ vnw\_first);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ vn\_bg(\textcolor{charliteral}{'X'},\ vnt\_green,\ vnw\_secondy);}
+\DoxyCodeLine{00079\ \ \ \ \ vn\_notif(\textcolor{stringliteral}{"{}Second\ Notif"{}},\ \textcolor{stringliteral}{"{}This\ is\ the\ second\ notification."{}},\ \textcolor{charliteral}{'X'},\ \textcolor{charliteral}{'X'},\ vnt\_green,\ vnt\_blue,\ vnt\_red,\ vnw\_second);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ vn\_bg(\textcolor{charliteral}{'X'},\ vnt\_blue,\ vnw\_thirdy);}
+\DoxyCodeLine{00082\ \ \ \ \ vn\_notif(\textcolor{stringliteral}{"{}Third\ Notif"{}},\ \textcolor{stringliteral}{"{}This\ is\ the\ third\ notification."{}},\ \textcolor{charliteral}{'I'},\ \textcolor{charliteral}{'I'},\ vnt\_blue,\ vnt\_red,\ vnt\_green,\ vnw\_third);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{/*\ FREE\ 'vn\_color'\ */}}
+\DoxyCodeLine{00086\ \ \ \ \ free(red\_fg);}
+\DoxyCodeLine{00087\ \ \ \ \ free(green\_fg);}
+\DoxyCodeLine{00088\ \ \ \ \ free(blue\_fg);}
+\DoxyCodeLine{00089\ \ \ \ \ free(black\_bg);}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00093\ \}}
+
+\end{DoxyCode}

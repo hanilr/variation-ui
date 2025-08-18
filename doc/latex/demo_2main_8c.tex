@@ -1,0 +1,115 @@
+\doxysection{demo/main.c File Reference}
+\label{demo_2main_8c}\index{demo/main.c@{demo/main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include "{}../vn\+\_\+ui.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ VN\+\_\+\+CHECK}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ wait}(x)
+\item 
+\#define \textbf{ VN\+\_\+\+UI\+\_\+\+IMPLEMENTATION}
+\item 
+\#define \textbf{ VN\+\_\+\+WIDGET}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ sys\+\_\+check} (char check, \textbf{ VN\+\_\+\+CHECK} $\ast$vnc)
+\item 
+void \textbf{ sys\+\_\+prompt} (char $\ast$check, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET} vnw, \textbf{ VN\+\_\+\+CHECK} $\ast$vnc)
+\item 
+void \textbf{ sys\+\_\+result} (char check, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+true, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+false, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt)
+\item 
+int \textbf{ main} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\index{main.c@{main.c}!VN\_UI\_IMPLEMENTATION@{VN\_UI\_IMPLEMENTATION}}
+\index{VN\_UI\_IMPLEMENTATION@{VN\_UI\_IMPLEMENTATION}!main.c@{main.c}}
+\doxysubsubsection{VN\_UI\_IMPLEMENTATION}
+{\footnotesize\ttfamily \label{demo_2main_8c_ad0eb2c9d2cf318b4cd4548e7275abdf1} 
+\#define VN\+\_\+\+UI\+\_\+\+IMPLEMENTATION}
+
+
+
+Definition at line \textbf{ 16} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!VN\_WIDGET@{VN\_WIDGET}}
+\index{VN\_WIDGET@{VN\_WIDGET}!main.c@{main.c}}
+\doxysubsubsection{VN\_WIDGET}
+{\footnotesize\ttfamily \label{demo_2main_8c_ad67480de2a03e5650f702a5300c9559d} 
+\#define VN\+\_\+\+WIDGET}
+
+
+
+Definition at line \textbf{ 17} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!wait@{wait}}
+\index{wait@{wait}!main.c@{main.c}}
+\doxysubsubsection{wait}
+{\footnotesize\ttfamily \label{demo_2main_8c_ad41b78802a591e01923d130ae21ac3e8} 
+\#define wait(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sleep(x)}
+
+\end{DoxyCode}
+
+
+Definition at line \textbf{ 12} of file \textbf{ main.\+c}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{main()}
+{\footnotesize\ttfamily \label{demo_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 63} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!sys\_check@{sys\_check}}
+\index{sys\_check@{sys\_check}!main.c@{main.c}}
+\doxysubsubsection{sys\_check()}
+{\footnotesize\ttfamily \label{demo_2main_8c_a0045ffe65ec7882789faa00efd7625b3} 
+void sys\+\_\+check (\begin{DoxyParamCaption}\item[{char}]{check}{, }\item[{\textbf{ VN\+\_\+\+CHECK} $\ast$}]{vnc}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!sys\_prompt@{sys\_prompt}}
+\index{sys\_prompt@{sys\_prompt}!main.c@{main.c}}
+\doxysubsubsection{sys\_prompt()}
+{\footnotesize\ttfamily \label{demo_2main_8c_ac37e3bb72acc9c0958c84191ebb3baa3} 
+void sys\+\_\+prompt (\begin{DoxyParamCaption}\item[{char $\ast$}]{check}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+WIDGET}}]{vnw}{, }\item[{\textbf{ VN\+\_\+\+CHECK} $\ast$}]{vnc}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!sys\_result@{sys\_result}}
+\index{sys\_result@{sys\_result}!main.c@{main.c}}
+\doxysubsubsection{sys\_result()}
+{\footnotesize\ttfamily \label{demo_2main_8c_a11ee25af575a0bffc49eaa9c68696163} 
+void sys\+\_\+result (\begin{DoxyParamCaption}\item[{char}]{check}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+true}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+false}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 53} of file \textbf{ main.\+c}.
+

@@ -1,0 +1,103 @@
+\doxysection{test/base/code/main.c File Reference}
+\label{test_2base_2code_2main_8c}\index{test/base/code/main.c@{test/base/code/main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include "{}../../../lib/vn\+\_\+ui\+\_\+base.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ VN\+\_\+\+CHECK}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ wait}(x)
+\item 
+\#define \textbf{ VN\+\_\+\+UI\+\_\+\+BASE\+\_\+\+IMPLEMENTATION}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ sys\+\_\+check} (char check, \textbf{ VN\+\_\+\+CHECK} $\ast$vnc)
+\item 
+void \textbf{ sys\+\_\+prompt} (char $\ast$text, char $\ast$check, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt, \textbf{ VN\+\_\+\+CHECK} $\ast$vnc)
+\item 
+void \textbf{ sys\+\_\+result} (char check, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+true, \textbf{ VN\+\_\+\+UI\+\_\+\+TEXT} vnt\+\_\+false)
+\item 
+int \textbf{ main} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\index{main.c@{main.c}!VN\_UI\_BASE\_IMPLEMENTATION@{VN\_UI\_BASE\_IMPLEMENTATION}}
+\index{VN\_UI\_BASE\_IMPLEMENTATION@{VN\_UI\_BASE\_IMPLEMENTATION}!main.c@{main.c}}
+\doxysubsubsection{VN\_UI\_BASE\_IMPLEMENTATION}
+{\footnotesize\ttfamily \label{test_2base_2code_2main_8c_ab03fd82e982d96b7acd27a6df8ce082b} 
+\#define VN\+\_\+\+UI\+\_\+\+BASE\+\_\+\+IMPLEMENTATION}
+
+
+
+Definition at line \textbf{ 16} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!wait@{wait}}
+\index{wait@{wait}!main.c@{main.c}}
+\doxysubsubsection{wait}
+{\footnotesize\ttfamily \label{test_2base_2code_2main_8c_ad41b78802a591e01923d130ae21ac3e8} 
+\#define wait(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sleep(x)}
+
+\end{DoxyCode}
+
+
+Definition at line \textbf{ 12} of file \textbf{ main.\+c}.
+
+
+
+\label{doc-func-members}
+\doxysubsection{Function Documentation}
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{main()}
+{\footnotesize\ttfamily \label{test_2base_2code_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 59} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!sys\_check@{sys\_check}}
+\index{sys\_check@{sys\_check}!main.c@{main.c}}
+\doxysubsubsection{sys\_check()}
+{\footnotesize\ttfamily \label{test_2base_2code_2main_8c_a0045ffe65ec7882789faa00efd7625b3} 
+void sys\+\_\+check (\begin{DoxyParamCaption}\item[{char}]{check}{, }\item[{\textbf{ VN\+\_\+\+CHECK} $\ast$}]{vnc}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 29} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!sys\_prompt@{sys\_prompt}}
+\index{sys\_prompt@{sys\_prompt}!main.c@{main.c}}
+\doxysubsubsection{sys\_prompt()}
+{\footnotesize\ttfamily \label{test_2base_2code_2main_8c_a43b85f605357322aa0cecdfc8610a1ab} 
+void sys\+\_\+prompt (\begin{DoxyParamCaption}\item[{char $\ast$}]{text}{, }\item[{char $\ast$}]{check}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt}{, }\item[{\textbf{ VN\+\_\+\+CHECK} $\ast$}]{vnc}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 41} of file \textbf{ main.\+c}.
+
+\index{main.c@{main.c}!sys\_result@{sys\_result}}
+\index{sys\_result@{sys\_result}!main.c@{main.c}}
+\doxysubsubsection{sys\_result()}
+{\footnotesize\ttfamily \label{test_2base_2code_2main_8c_aa7e1fb321acb88105193774c84167157} 
+void sys\+\_\+result (\begin{DoxyParamCaption}\item[{char}]{check}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+true}{, }\item[{\textbf{ VN\+\_\+\+UI\+\_\+\+TEXT}}]{vnt\+\_\+false}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \textbf{ 49} of file \textbf{ main.\+c}.
+

@@ -1,0 +1,95 @@
+\chapter{README }
+\label{md__r_e_a_d_m_e}\index{README@{README}}
+\doxysection{ VARIATION UI }\label{md__r_e_a_d_m_e_autotoc_md0}
+Variation-\/ui is single-\/header terminal user interface library. Written in ansi-\/c. Simple to use, easy to learn and has small codebase. Also updatable thanks to MIT license (Look license if you want to know more).\doxysubsubsection{ Dependencies\+:}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\ttfamily  gcc } {\itshape $>$ Gnu Compiler Collection}
+\item {\ttfamily  make } {\itshape $>$ Gnu Make}
+\end{DoxyItemize}\doxysubsection{ Important Note }\label{md__r_e_a_d_m_e_autotoc_md2}
+You need to define {\ttfamily  \#define VN\+\_\+\+UI\+\_\+\+IMPLEMENTATION } before {\ttfamily  \#include "{}vn\+\_\+ui.\+h"{} } 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ VN\_UI\_IMPLEMENTATION}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}vn\_ui.h"{}}}
+
+\end{DoxyCode}
+\doxysubsection{ Example }\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ VN\_UI\_IMPLEMENTATION\ }\textcolor{comment}{//\ Base\ features}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ VN\_WIDGET\ }\textcolor{comment}{//\ Widget\ features}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}vn\_ui.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{comment}{/*\ Color\ declaring\ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{char}*\ color\_fg\_red\ =\ vn\_color(\textcolor{stringliteral}{"{}\#e93737"{}},\ \textcolor{charliteral}{'f'});}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{char}*\ color\_bg\_blue\ =\ vn\_color(\textcolor{stringliteral}{"{}\#3737e9"{}},\ \textcolor{charliteral}{'b'});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{/*\ Text\ attribute\ */}}
+\DoxyCodeLine{\ \ VN\_UI\_TEXT\ vnt;}
+\DoxyCodeLine{\ \ strcpy(vnt.color\_fg,\ color\_fg\_red);}
+\DoxyCodeLine{\ \ strcpy(vnt.color\_bg,\ color\_bg\_blue);}
+\DoxyCodeLine{\ \ strcpy(vnt.text\_style,\ vn\_text\_bold);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{/*\ Widget\ values\ */}}
+\DoxyCodeLine{\ \ VN\_UI\_WIDGET\ vnw;}
+\DoxyCodeLine{\ \ vnw.pos\_x\ =\ 2;}
+\DoxyCodeLine{\ \ vnw.pos\_y\ =\ 2;}
+\DoxyCodeLine{\ \ vnw.width\ =\ 20;}
+\DoxyCodeLine{\ \ vnw.height\ =\ 10;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{/*\ UI\ Section\ */}}
+\DoxyCodeLine{\ \ vn\_bg(\textcolor{charliteral}{'\ '},\ vnt,\ vnw);\ \textcolor{comment}{//\ Background}}
+\DoxyCodeLine{\ \ vn\_gotoxy((vnw.pos\_x\ +\ vnw.width)\ /\ 2,\ (vnw.pos\_y\ +\ vnw.height)\ /\ 2);\ \textcolor{comment}{//\ Go\ to\ middle}}
+\DoxyCodeLine{\ \ vn\_print(\textcolor{stringliteral}{"{}This\ is\ the\ example."{}},\ \textcolor{charliteral}{'y'},\ vnt.color\_fg,\ vnt.color\_bg,\ vnt.text\_style);\ \textcolor{comment}{//\ Colourful\ printing}}
+\DoxyCodeLine{\ \ vn\_gotoxy((vnw.pos\_x\ +\ vnw.width),\ (vnw.pos\_y\ +\ vnw.height));\ \textcolor{comment}{//\ Go\ to\ end}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Free\ after\ use\ 'vn\_color'}}
+\DoxyCodeLine{\ \ free(color\_fg\_red);}
+\DoxyCodeLine{\ \ free(color\_bg\_blue);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\doxysection{ Compiling as shared-\/library or Using as default }\label{md__r_e_a_d_m_e_autotoc_md4}
+\begin{quote}
+Show make list {\ttfamily make} or {\ttfamily make run} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ run}
+
+\end{DoxyCode}
+ \end{quote}
+
+
+ You can compile as shared-\/library and develope os specific projects. 
+
+ How should I compile?  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ compile}
+
+\end{DoxyCode}
+ \begin{quote}
+Unix shared-\/library (.so)
+
+Windows shared-\/library (.dll)
+
+If you want to delete this file you can use {\ttfamily  make clean } \end{quote}
+
+
+ What if I want to use as default?  
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ install}
+
+\end{DoxyCode}
+\doxysubsubsection{ \+:  You can take a look to wiki page if you want learn more! }\label{md__r_e_a_d_m_e_autotoc_md5}
+\doxysubsubsubsection{Check Other Variation Libraries}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item {\texttt{Variation\+: Binary}} -\/ A binary analysis library in Ansi-\/C. 
+\end{DoxyItemize}
