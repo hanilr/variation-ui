@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Variation User Interface", "index.html", [
+  [ "Variation UI", "index.html", [
     [ "README", "md__r_e_a_d_m_e.html", [
       [ "<img src=\"img/vn.png\" alt=\"vn\" class=\"inline\"/> VARIATION UI <img src=\"img/vn.png\" alt=\"vn\" class=\"inline\"/>", "md__r_e_a_d_m_e.html#autotoc_md0", [
         [ "<img src=\"img/vn_warn.png\" alt=\"vn_warn\" class=\"inline\"/> Important Note <img src=\"img/vn_warn.png\" alt=\"vn_warn\" class=\"inline\"/>", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
