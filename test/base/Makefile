@@ -35,9 +35,9 @@ help:
 	@echo ""
 
 compile: $(lib)
-	@$(CC) $(code) -o code$(out)
-	@$(CC) $(color) -o color$(out)
-	@$(CC) $(print) -o print$(out)
+	@$(CC) $(code) -o t_code$(out)
+	@$(CC) $(color) -o t_color$(out)
+	@$(CC) $(print) -o t_print$(out)
 
 	@echo ""
 	@echo "[ ------------------- ] "
@@ -45,9 +45,9 @@ compile: $(lib)
 	@echo "[ ------------------- ] "
 	@echo ""
 
-	@$(unix)code$(out)
-	@$(unix)color$(out)
-	@$(unix)print$(out)
+	@$(unix)t_code$(out)
+	@$(unix)t_color$(out)
+	@$(unix)t_print$(out)
 
 	@echo ""
 	@echo "[ ---------------------------- ] "
@@ -56,9 +56,9 @@ compile: $(lib)
 	@echo ""
 
 clean:
-	@$(rm) code$(out)
-	@$(rm) color$(out)
-	@$(rm) print$(out)
+	@$(rm) t_code$(out)
+	@$(rm) t_color$(out)
+	@$(rm) t_print$(out)
 
 	@echo ""
 	@echo "[ --------------------------- ] "
@@ -67,8 +67,8 @@ clean:
 	@echo ""
 
 code: $(lib)
-	@$(CC) $(code) -o code$(out)
-	@$(unix)code$(out)
+	@$(CC) $(code) -o t_code$(out)
+	@$(unix)t_code$(out)
 
 	@echo ""
 	@echo "[ ----------------------------------- ] "
@@ -77,8 +77,8 @@ code: $(lib)
 	@echo ""
 
 color: $(lib)
-	@$(CC) $(color) -o color$(out)
-	@$(unix)color$(out)
+	@$(CC) $(color) -o t_color$(out)
+	@$(unix)t_color$(out)
 
 	@echo ""
 	@echo "[ ------------------------------------ ] "
@@ -87,8 +87,8 @@ color: $(lib)
 	@echo ""
 
 print: $(lib)
-	@$(CC) $(print) -o print$(out)
-	@$(unix)print$(out)
+	@$(CC) $(print) -o t_print$(out)
+	@$(unix)t_print$(out)
 
 	@echo ""
 	@echo "[ ------------------------------------ ] "
