@@ -54,7 +54,7 @@ int main()
   /* UI Section */
   vn_bg(' ', vnt, vnw); // Background
   vn_gotoxy((vnw.pos_x + vnw.width) / 2, (vnw.pos_y + vnw.height) / 2); // Go to middle
-  vn_print("This is the example.", 'y', vnt.color_fg, vnt.color_bg, vnt.text_style); // Colourful printing
+  vn_print("This is the example.", vnt); // Colourful printing
   vn_gotoxy((vnw.pos_x + vnw.width), (vnw.pos_y + vnw.height)); // Go to end
 
   // Free after use 'vn_color'
